@@ -11,7 +11,7 @@
     --primary-color: #2c3e50;
     --secondary-color: #3498db;
     --text-color: #333;
-    --light-gray: #f8f9fa;
+    --light-gray: #f5f5f5;
     --border-color: #ddd;
     --link-color: #0066cc;
     --link-hover: #004499;
@@ -27,7 +27,49 @@ body {
                  "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
     color: var(--text-color);
     background-color: #fff;
-    padding: 20px;
+    margin: 0;
+}
+
+/* ========================================
+   ナビゲーションバー
+   ======================================== */
+.navbar {
+    background-color: var(--primary-color);
+    padding: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-container {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-start;
+    gap: 0;
+}
+
+.nav-link {
+    color: #fff;
+    text-decoration: none;
+    padding: 15px 20px;
+    display: block;
+    transition: background-color 0.3s ease;
+    font-size: 0.95rem;
+}
+
+.nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.nav-link.active {
+    background-color: rgba(255, 255, 255, 0.2);
+    font-weight: 600;
+}
+
+.nav-link.lang-switch {
+    margin-left: auto;
 }
 
 /* ========================================
@@ -36,19 +78,24 @@ body {
 .container {
     max-width: 900px;
     margin: 0 auto;
-    background-color: #fff;
+    padding: 40px 20px;
 }
 
 /* ========================================
-   ヘッダー
+   プロフィールヘッダー
    ======================================== */
-header {
-    margin-bottom: 3rem;
-    padding-bottom: 1.5rem;
-    border-bottom: 3px solid var(--primary-color);
+.profile-header {
+    margin-bottom: 4rem;
 }
 
-header h1 {
+.profile-content {
+    display: grid;
+    grid-template-columns: 1fr 200px;
+    gap: 40px;
+    align-items: start;
+}
+
+.profile-text h1 {
     font-size: 2.5rem;
     color: var(--primary-color);
     margin-bottom: 0.5rem;
@@ -56,9 +103,69 @@ header h1 {
 }
 
 .subtitle {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     color: #666;
     font-weight: 400;
+    margin-bottom: 1.5rem;
+}
+
+.affiliation {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+}
+
+.affiliation a {
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+.affiliation a:hover {
+    text-decoration: underline;
+}
+
+.bio {
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+.contact {
+    margin-bottom: 1.5rem;
+}
+
+.contact p {
+    margin-bottom: 0.5rem;
+}
+
+.links {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: var(--secondary-color);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #2980b9;
+}
+
+.profile-image {
+    text-align: center;
+}
+
+.profile-image img {
+    width: 100%;
+    max-width: 200px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* ========================================
@@ -77,8 +184,8 @@ h2 {
     color: var(--primary-color);
     margin-bottom: 1rem;
     font-weight: 600;
-    border-left: 5px solid var(--secondary-color);
-    padding-left: 15px;
+    border-bottom: 2px solid var(--secondary-color);
+    padding-bottom: 0.5rem;
 }
 
 h3 {
@@ -106,39 +213,72 @@ li {
     line-height: 1.8;
 }
 
-/* ========================================
-   テーブル
-   ======================================== */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 1.5rem 0;
-    background-color: #fff;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+.keywords ul {
+    list-style-type: none;
+    margin-left: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
-thead {
-    background-color: var(--primary-color);
-    color: #fff;
-}
-
-th, td {
-    padding: 12px 15px;
-    text-align: left;
-    border-bottom: 1px solid var(--border-color);
-}
-
-th {
-    font-weight: 600;
-    text-align: center;
-}
-
-tbody tr:hover {
+.keywords li {
     background-color: var(--light-gray);
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 0.9rem;
 }
 
-tbody tr:last-child td {
-    border-bottom: none;
+/* ========================================
+   タイムライン
+   ======================================== */
+.timeline {
+    list-style-type: none;
+    margin-left: 0;
+}
+
+.timeline li {
+    padding-left: 2rem;
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.timeline li::before {
+    content: "●";
+    position: absolute;
+    left: 0;
+    color: var(--secondary-color);
+    font-size: 1.2rem;
+}
+
+.year {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* ========================================
+   ニュースリスト
+   ======================================== */
+.news-list {
+    list-style-type: none;
+    margin-left: 0;
+}
+
+.news-list li {
+    margin-bottom: 1rem;
+    padding: 10px;
+    background-color: var(--light-gray);
+    border-radius: 4px;
+}
+
+.date {
+    display: inline-block;
+    background-color: var(--secondary-color);
+    color: #fff;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 0.85rem;
+    margin-right: 10px;
+    font-weight: 600;
 }
 
 /* ========================================
@@ -153,10 +293,6 @@ a {
 a:hover {
     color: var(--link-hover);
     text-decoration: underline;
-}
-
-a:visited {
-    color: #551a8b;
 }
 
 /* ========================================
@@ -179,45 +315,51 @@ footer p {
    レスポンシブデザイン
    ======================================== */
 @media (max-width: 768px) {
-    body {
-        padding: 10px;
+    .profile-content {
+        grid-template-columns: 1fr;
+        gap: 20px;
     }
     
-    header h1 {
+    .profile-image {
+        order: -1;
+    }
+    
+    .profile-text h1 {
         font-size: 2rem;
     }
     
     .subtitle {
-        font-size: 1rem;
+        font-size: 1.1rem;
     }
     
     h2 {
         font-size: 1.5rem;
     }
     
-    h3 {
-        font-size: 1.2rem;
+    .nav-container {
+        flex-wrap: wrap;
     }
     
-    table {
+    .nav-link {
+        padding: 12px 15px;
         font-size: 0.9rem;
-    }
-    
-    th, td {
-        padding: 8px 10px;
     }
 }
 
 @media (max-width: 480px) {
-    header h1 {
+    .container {
+        padding: 20px 15px;
+    }
+    
+    .profile-text h1 {
         font-size: 1.6rem;
     }
     
-    table {
-        font-size: 0.85rem;
+    .links {
+        flex-direction: column;
     }
     
-    th, td {
-        padding: 6px 8px;
+    .btn {
+        text-align: center;
     }
 }
