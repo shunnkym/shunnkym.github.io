@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>都市空間解析 | 中山研究室</title>
+    <meta name="description" content="GISデータや3D都市モデルを活用した都市空間解析の研究">
+    <!-- Using system Helvetica - no external fonts needed -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <!-- Particle Background -->
+    <canvas id="particle-canvas"></canvas>
+    
+    <!-- Navigation -->
+    <nav class="navbar scrolled">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">
+                <span class="logo-text">NAKAYAMA</span>
+                <span class="logo-sub">LABORATORY</span>
+            </a>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span class="hamburger"></span>
+            </button>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="../index.html#home" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="../index.html#about" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="../index.html#news" class="nav-link">News</a></li>
+                <li class="nav-item"><a href="../index.html#research" class="nav-link active">Research</a></li>
+                <li class="nav-item"><a href="../index.html#publications" class="nav-link">Publications</a></li>
+                <li class="nav-item"><a href="../index.html#awards" class="nav-link">Awards</a></li>
+                <li class="nav-item"><a href="../index.html#members" class="nav-link">Members</a></li>
+                <li class="nav-item"><a href="../index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Detail Content -->
+    <section class="section detail-page">
+        <div class="container">
+            <a href="../index.html#research" class="back-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                <span>Back to Research</span>
+            </a>
+            
+            <article class="detail-content">
+                <header class="detail-header">
+                    <span class="detail-category">Research</span>
+                    <h1 class="detail-title">都市空間解析</h1>
+                    <p class="detail-meta">Urban Space Analytics</p>
+                </header>
+                
+                <div class="detail-image-placeholder">
+                    <span>Research Image</span>
+                </div>
+                
+                <h2>研究概要</h2>
+                
+                <p>
+                    都市空間解析研究では、GIS（地理情報システム）データや3D都市モデルを活用し、
+                    都市の構造や空間特性を定量的に分析しています。建物の配置、道路ネットワーク、
+                    緑地分布などの空間要素が、人々の行動や都市機能にどのような影響を与えるかを解明します。
+                </p>
+                
+                <h2>研究テーマ</h2>
+                
+                <h3>1. 3D都市モデルを用いた空間分析</h3>
+                <p>
+                    PLATEAU等の3D都市モデルデータを活用し、建物の高さ、容積、日影などの
+                    3次元的な空間特性を分析しています。これにより、従来の2Dマップでは
+                    捉えられなかった都市空間の複雑な特徴を明らかにします。
+                </p>
+                
+                <h3>2. 街路空間の定量評価</h3>
+                <p>
+                    Street View画像や点群データを用いて、街路空間の開放感、緑視率、
+                    歩行者の視覚環境を定量的に評価する手法を開発しています。
+                    これらの指標は、歩きやすい街づくりの計画に活用されます。
+                </p>
+                
+                <h3>3. 土地利用パターンの解析</h3>
+                <p>
+                    リモートセンシングデータや統計データを組み合わせ、
+                    都市の土地利用パターンとその変化を分析しています。
+                    持続可能な都市開発のための基礎データを提供します。
+                </p>
+                
+                <h2>使用技術・データ</h2>
+                
+                <ul>
+                    <li>GISプラットフォーム（QGIS, ArcGIS）</li>
+                    <li>3D都市モデル（PLATEAU, OpenStreetMap 3D）</li>
+                    <li>リモートセンシングデータ（衛星画像、航空写真）</li>
+                    <li>Street View画像解析</li>
+                    <li>空間統計解析（GeoPandas, R spatial）</li>
+                </ul>
+                
+                <h2>関連論文</h2>
+                
+                <p>
+                    このテーマに関連する論文は<a href="../index.html#publications">Publications</a>セクションをご覧ください。
+                </p>
+            </article>
+            
+            <div class="related-section">
+                <h3 class="related-title">Other Research</h3>
+                <div class="research-grid">
+                    <article class="research-card">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M12 6v6l4 2"/>
+                            </svg>
+                        </div>
+                        <h3 class="card-title">人流解析</h3>
+                        <p class="card-description">
+                            GPSデータやセンサーデータを用いた人々の移動パターンの解明
+                        </p>
+                        <a href="human-flow.html" class="card-link">
+                            <span>詳細を見る</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </a>
+                    </article>
+                    <article class="research-card">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M12 2a2 2 0 012 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 017 7h1v3h-1a7 7 0 01-14 0H5v-3h1a7 7 0 017-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 012-2z"/>
+                            </svg>
+                        </div>
+                        <h3 class="card-title">AI・機械学習</h3>
+                        <p class="card-description">
+                            深層学習を活用した都市データからの知見抽出と予測モデル構築
+                        </p>
+                        <a href="ai-ml.html" class="card-link">
+                            <span>詳細を見る</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </a>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-text">NAKAYAMA</span>
+                    <span class="logo-sub">LABORATORY</span>
+                </div>
+                <div class="footer-links">
+                    <a href="../index.html#home">Home</a>
+                    <a href="../index.html#about">About</a>
+                    <a href="../index.html#news">News</a>
+                    <a href="../index.html#research">Research</a>
+                    <a href="../index.html#publications">Publications</a>
+                    <a href="../index.html#awards">Awards</a>
+                    <a href="../index.html#members">Members</a>
+                    <a href="../index.html#contact">Contact</a>
+                </div>
+                <div class="footer-social">
+                    <a href="#" class="social-link" aria-label="Twitter">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+                        </svg>
+                    </a>
+                    <a href="https://github.com/shunnkym" class="social-link" aria-label="GitHub">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Nakayama Laboratory. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>
+

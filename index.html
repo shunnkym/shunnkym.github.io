@@ -3,134 +3,1302 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>中山俊 | Dr. Shun Nakayama</title>
-    <link rel="stylesheet" href="style.css">
+    <title>中山研究室 | Nakayama Laboratory</title>
+    <meta name="description" content="専修大学 中山研究室のホームページです。都市空間解析・人流解析・AIの研究を行っています。">
+    <!-- Using system Helvetica - no external fonts needed -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <!-- Particle Background -->
+    <canvas id="particle-canvas"></canvas>
+    
+    <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <a href="index.html" class="nav-link active">ホーム</a>
-            <a href="cv.html" class="nav-link">CV</a>
-            <a href="research.html" class="nav-link">研究</a>
-            <a href="teaching.html" class="nav-link">授業</a>
-            <a href="resources.html" class="nav-link">その他</a>
-            <a href="en/" class="nav-link lang-switch">English</a>
+            <a href="index.html" class="nav-logo">
+                <span class="logo-text">NAKAYAMA</span>
+                <span class="logo-sub">LABORATORY</span>
+            </a>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span class="hamburger"></span>
+            </button>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#home" class="nav-link active">Home</a></li>
+                <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="#news" class="nav-link">News</a></li>
+                <li class="nav-item"><a href="#research" class="nav-link">Research</a></li>
+                <li class="nav-item"><a href="#publications" class="nav-link">Publications</a></li>
+                <li class="nav-item"><a href="#awards" class="nav-link">Awards</a></li>
+                <li class="nav-item"><a href="#members" class="nav-link">Members</a></li>
+                <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
         </div>
     </nav>
 
-    <div class="container">
-        <header class="profile-header">
-            <div class="profile-content">
-                <div class="profile-text">
-                    <h1>中山 俊</h1>
-                    <h2 class="subtitle">Shun Nakayama, Ph.D.</h2>
-                    
-                    <p class="affiliation">
-                        <a href="https://www.senshu-u.ac.jp/">専修大学</a>
-                        <a href="https://www.senshu-u.ac.jp/academics/network_info/">ネットワーク情報学部</a>
-                        特任教授<br>
-                        <a href="https://www.senshu-u.ac.jp/">慶應義塾大学大学院</a>
-                        <a href="https://www.senshu-u.ac.jp/academics/network_info/">政策・メディア研究科</a>
-                        特任講師
-                    </p>
-                    
-                    <p class="bio">
-                        2025年2月に慶應義塾大学大学院政策・メディア研究科より博士（政策・メディア）の学位を取得しました。
-                        都市計画、空間情報科学、環境評価を中心に研究を行っています。
-                    </p>
-                    
-                    <div class="contact">
-                        <p><strong>Email:</strong> <a href="mailto:shunnkym[@]isc.senshu-u.ac.jp">shunnkym[@]isc.senshu-u.ac.jp</a></p>
-                        <p><strong>Office:</strong> 専修大学 生田キャンパス 8号館 8307号室</p>
-                    </div>
-                    
-                    <div class="links">
-                        <a href="https://github.com/shunnkym" class="btn">GitHub</a>
-                        <a href="https://scholar.google.com/citations?user=CQ7L6kEAAAAJ&hl=ja" class="btn">Google Scholar</a>
-                        <a href="https://researchmap.jp/shunnkym" class="btn">researchmap</a>
-                    </div>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    <span class="title-line" data-text="NAKAYAMA">NAKAYAMA</span>
+                    <span class="title-line accent" data-text="LABORATORY">LABORATORY</span>
+                </h1>
+                <p class="hero-subtitle">
+                    <span class="typing-text">Urban Analytics × Human Flow × AI</span>
+                </p>
+                <div class="hero-description">
+                    <p>専修大学ネットワーク情報学部 中山研究室</p>
+                    <p>Geo-Spatial Intelligence: 地理空間AIで都市を解析する</p>
                 </div>
-                
-                <div class="profile-image">
-                    <img src="images/profile.jpg" alt="中山俊">
+                <div class="hero-buttons">
+                    <a href="#about" class="btn btn-primary">
+                        <span>EXPLORE</span>
+                        <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">CONTACT US</a>
                 </div>
             </div>
-        </header>
-
-        <main>
-            <section id="research-interests">
-                <h2>研究分野</h2>
-                <p>
-                    私の研究は、都市の脱炭素化と持続可能な都市開発に焦点を当てています。
-                    特に、GIS（地理情報システム）とPythonを用いた空間データ分析、
-                    GPSデータを活用した人流分析、炭素会計手法の開発に取り組んでいます。
-                </p>
-                
-                <div class="keywords">
-                    <h3>キーワード</h3>
-                    <ul>
-                        <li>都市計画 (Urban Planning)</li>
-                        <li>空間情報科学 (Spatial Information Science)</li>
-                        <li>環境評価 (Environmental Assessment)</li>
-                        <li>GIS（地理情報システム）</li>
-                        <li>カーボンアカウンティング (Carbon Accounting)</li>
-                        <li>人流データ分析 (Human Flow Analysis)</li>
-                        <li>持続可能な都市開発 (Sustainable Urban Development)</li>
-                    </ul>
+            <div class="hero-visual">
+                <!-- GIS-Style Urban Analytics Visualization -->
+                <div class="city-visualization">
+                    <svg class="city-grid" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid meet">
+                        <defs>
+                            <!-- Heat map gradients -->
+                            <radialGradient id="heat1" cx="50%" cy="50%" r="50%">
+                                <stop offset="0%" stop-color="#bc002d" stop-opacity="0.7"/>
+                                <stop offset="40%" stop-color="#bc002d" stop-opacity="0.3"/>
+                                <stop offset="100%" stop-color="#bc002d" stop-opacity="0"/>
+                            </radialGradient>
+                            <radialGradient id="heat2" cx="50%" cy="50%" r="50%">
+                                <stop offset="0%" stop-color="#bc002d" stop-opacity="0.5"/>
+                                <stop offset="50%" stop-color="#bc002d" stop-opacity="0.2"/>
+                                <stop offset="100%" stop-color="#bc002d" stop-opacity="0"/>
+                            </radialGradient>
+                            <radialGradient id="heat3" cx="50%" cy="50%" r="50%">
+                                <stop offset="0%" stop-color="#bc002d" stop-opacity="0.35"/>
+                                <stop offset="60%" stop-color="#bc002d" stop-opacity="0.1"/>
+                                <stop offset="100%" stop-color="#bc002d" stop-opacity="0"/>
+                            </radialGradient>
+                            <!-- Flow glow -->
+                            <filter id="flowGlow" x="-50%" y="-50%" width="200%" height="200%">
+                                <feGaussianBlur stdDeviation="2" result="blur"/>
+                                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                            </filter>
+                            <!-- Node pulse -->
+                            <radialGradient id="nodePulse" cx="50%" cy="50%" r="50%">
+                                <stop offset="0%" stop-color="#bc002d" stop-opacity="1"/>
+                                <stop offset="100%" stop-color="#bc002d" stop-opacity="0"/>
+                            </radialGradient>
+                        </defs>
+                        
+                        <!-- === BASE MAP LAYER === -->
+                        <!-- Coordinate Grid -->
+                        <g class="coord-grid" stroke="#000" stroke-width="0.3" opacity="0.08">
+                            <line x1="0" y1="40" x2="400" y2="40"/><line x1="0" y1="80" x2="400" y2="80"/>
+                            <line x1="0" y1="120" x2="400" y2="120"/><line x1="0" y1="160" x2="400" y2="160"/>
+                            <line x1="0" y1="200" x2="400" y2="200"/><line x1="0" y1="240" x2="400" y2="240"/>
+                            <line x1="0" y1="280" x2="400" y2="280"/><line x1="0" y1="320" x2="400" y2="320"/>
+                            <line x1="0" y1="360" x2="400" y2="360"/>
+                            <line x1="40" y1="0" x2="40" y2="400"/><line x1="80" y1="0" x2="80" y2="400"/>
+                            <line x1="120" y1="0" x2="120" y2="400"/><line x1="160" y1="0" x2="160" y2="400"/>
+                            <line x1="200" y1="0" x2="200" y2="400"/><line x1="240" y1="0" x2="240" y2="400"/>
+                            <line x1="280" y1="0" x2="280" y2="400"/><line x1="320" y1="0" x2="320" y2="400"/>
+                            <line x1="360" y1="0" x2="360" y2="400"/>
+                        </g>
+                        
+                        <!-- Street Network Layer -->
+                        <g class="streets" stroke="#000" fill="none" opacity="0.12">
+                            <!-- Major arterials -->
+                            <path d="M0,200 L400,200" stroke-width="3"/>
+                            <path d="M200,0 L200,400" stroke-width="3"/>
+                            <path d="M0,120 L400,120" stroke-width="2"/>
+                            <path d="M0,280 L400,280" stroke-width="2"/>
+                            <path d="M120,0 L120,400" stroke-width="2"/>
+                            <path d="M280,0 L280,400" stroke-width="2"/>
+                            <!-- Secondary roads -->
+                            <path d="M0,160 L400,160" stroke-width="1"/>
+                            <path d="M0,240 L400,240" stroke-width="1"/>
+                            <path d="M160,0 L160,400" stroke-width="1"/>
+                            <path d="M240,0 L240,400" stroke-width="1"/>
+                            <!-- Diagonal roads -->
+                            <path d="M0,0 L200,200 L400,400" stroke-width="1.5"/>
+                            <path d="M400,0 L200,200 L0,400" stroke-width="1.5"/>
+                            <!-- Ring road -->
+                            <ellipse cx="200" cy="200" rx="140" ry="130" stroke-width="2" stroke-dasharray="8,4"/>
+                        </g>
+                        
+                        <!-- Building Footprints Layer -->
+                        <g class="buildings" fill="#000" opacity="0.06">
+                            <!-- Central district -->
+                            <rect x="170" y="170" width="25" height="30"/>
+                            <rect x="200" y="165" width="35" height="35"/>
+                            <rect x="155" y="205" width="20" height="25"/>
+                            <rect x="180" y="210" width="30" height="20"/>
+                            <rect x="215" y="205" width="25" height="30"/>
+                            <!-- North district -->
+                            <rect x="180" y="90" width="40" height="25"/>
+                            <rect x="160" y="120" width="25" height="20"/>
+                            <rect x="195" y="125" width="30" height="25"/>
+                            <rect x="230" y="100" width="20" height="30"/>
+                            <!-- South district -->
+                            <rect x="170" y="280" width="30" height="25"/>
+                            <rect x="205" y="275" width="25" height="35"/>
+                            <rect x="150" y="310" width="35" height="20"/>
+                            <rect x="200" y="315" width="40" height="25"/>
+                            <!-- West district -->
+                            <rect x="60" y="180" width="30" height="40"/>
+                            <rect x="95" y="170" width="25" height="25"/>
+                            <rect x="70" y="225" width="35" height="30"/>
+                            <rect x="50" y="130" width="25" height="35"/>
+                            <!-- East district -->
+                            <rect x="290" y="175" width="35" height="30"/>
+                            <rect x="330" y="165" width="25" height="40"/>
+                            <rect x="300" y="210" width="30" height="25"/>
+                            <rect x="280" y="240" width="40" height="20"/>
+                            <!-- Scattered -->
+                            <rect x="100" y="80" width="20" height="25"/>
+                            <rect x="300" y="90" width="25" height="20"/>
+                            <rect x="80" y="300" width="30" height="25"/>
+                            <rect x="310" y="290" width="25" height="30"/>
+                        </g>
+                        
+                        <!-- === DENSITY HEAT MAP LAYER === -->
+                        <g class="heatmap">
+                            <!-- Primary hotspots -->
+                            <ellipse cx="200" cy="200" rx="80" ry="75" fill="url(#heat1)">
+                                <animate attributeName="rx" values="80;90;80" dur="4s" repeatCount="indefinite"/>
+                                <animate attributeName="ry" values="75;85;75" dur="4s" repeatCount="indefinite"/>
+                            </ellipse>
+                            <!-- Secondary hotspots -->
+                            <circle cx="120" cy="160" r="50" fill="url(#heat2)">
+                                <animate attributeName="r" values="50;58;50" dur="5s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="280" cy="180" r="45" fill="url(#heat2)">
+                                <animate attributeName="r" values="45;52;45" dur="4.5s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="180" cy="300" r="50" fill="url(#heat2)">
+                                <animate attributeName="r" values="50;55;50" dur="5.5s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="200" cy="100" r="40" fill="url(#heat2)">
+                                <animate attributeName="r" values="40;48;40" dur="4s" repeatCount="indefinite"/>
+                            </circle>
+                            <!-- Tertiary hotspots -->
+                            <circle cx="80" cy="240" r="35" fill="url(#heat3)"/>
+                            <circle cx="300" cy="280" r="30" fill="url(#heat3)"/>
+                            <circle cx="100" cy="100" r="28" fill="url(#heat3)"/>
+                            <circle cx="320" cy="120" r="30" fill="url(#heat3)"/>
+                        </g>
+                        
+                        <!-- === FLOW NETWORK LAYER === -->
+                        <g class="flow-network" filter="url(#flowGlow)">
+                            <!-- Major flow corridors -->
+                            <path class="flow-major" d="M0,200 Q100,195 200,200 Q300,205 400,200" stroke="#bc002d" stroke-width="3" fill="none" opacity="0.6"/>
+                            <path class="flow-major" d="M200,0 Q205,100 200,200 Q195,300 200,400" stroke="#bc002d" stroke-width="3" fill="none" opacity="0.6"/>
+                            
+                            <!-- Secondary flows - converging to center -->
+                            <path class="flow-secondary" d="M0,80 Q100,120 200,200" stroke="#bc002d" stroke-width="2" fill="none" opacity="0.5"/>
+                            <path class="flow-secondary" d="M400,80 Q300,120 200,200" stroke="#bc002d" stroke-width="2" fill="none" opacity="0.5"/>
+                            <path class="flow-secondary" d="M0,320 Q100,280 200,200" stroke="#bc002d" stroke-width="2" fill="none" opacity="0.5"/>
+                            <path class="flow-secondary" d="M400,320 Q300,280 200,200" stroke="#bc002d" stroke-width="2" fill="none" opacity="0.5"/>
+                            
+                            <!-- Orbital flows -->
+                            <path class="flow-orbital" d="M80,200 Q80,120 160,80 Q240,40 320,80 Q380,120 380,200" stroke="#bc002d" stroke-width="1.5" fill="none" opacity="0.4"/>
+                            <path class="flow-orbital" d="M80,200 Q80,280 160,320 Q240,360 320,320 Q380,280 380,200" stroke="#bc002d" stroke-width="1.5" fill="none" opacity="0.4"/>
+                            
+                            <!-- Micro flows between nodes -->
+                            <path class="flow-micro" d="M120,160 Q160,180 200,200" stroke="#bc002d" stroke-width="1" fill="none" opacity="0.3"/>
+                            <path class="flow-micro" d="M280,180 Q240,190 200,200" stroke="#bc002d" stroke-width="1" fill="none" opacity="0.3"/>
+                            <path class="flow-micro" d="M180,300 Q190,250 200,200" stroke="#bc002d" stroke-width="1" fill="none" opacity="0.3"/>
+                            <path class="flow-micro" d="M200,100 Q200,150 200,200" stroke="#bc002d" stroke-width="1" fill="none" opacity="0.3"/>
+                            <path class="flow-micro" d="M80,240 Q130,220 200,200" stroke="#bc002d" stroke-width="1" fill="none" opacity="0.3"/>
+                            <path class="flow-micro" d="M300,280 Q250,240 200,200" stroke="#bc002d" stroke-width="1" fill="none" opacity="0.3"/>
+                            
+                            <!-- Cross-city diagonal flows -->
+                            <path class="flow-diagonal" d="M50,50 Q125,125 200,200 Q275,275 350,350" stroke="#000" stroke-width="1" fill="none" opacity="0.15"/>
+                            <path class="flow-diagonal" d="M350,50 Q275,125 200,200 Q125,275 50,350" stroke="#000" stroke-width="1" fill="none" opacity="0.15"/>
+                        </g>
+                        
+                        <!-- === ANIMATED PARTICLES === -->
+                        <g class="particles">
+                            <!-- Major horizontal flow -->
+                            <circle r="4" fill="#bc002d"><animateMotion dur="5s" repeatCount="indefinite" path="M0,200 Q100,195 200,200 Q300,205 400,200"/></circle>
+                            <circle r="3" fill="#bc002d" opacity="0.7"><animateMotion dur="5s" repeatCount="indefinite" begin="1.7s" path="M0,200 Q100,195 200,200 Q300,205 400,200"/></circle>
+                            <circle r="2.5" fill="#bc002d" opacity="0.5"><animateMotion dur="5s" repeatCount="indefinite" begin="3.3s" path="M0,200 Q100,195 200,200 Q300,205 400,200"/></circle>
+                            <!-- Reverse flow -->
+                            <circle r="3" fill="#bc002d" opacity="0.6"><animateMotion dur="5.5s" repeatCount="indefinite" path="M400,200 Q300,205 200,200 Q100,195 0,200"/></circle>
+                            
+                            <!-- Major vertical flow -->
+                            <circle r="4" fill="#bc002d"><animateMotion dur="5s" repeatCount="indefinite" path="M200,0 Q205,100 200,200 Q195,300 200,400"/></circle>
+                            <circle r="3" fill="#bc002d" opacity="0.7"><animateMotion dur="5s" repeatCount="indefinite" begin="2.5s" path="M200,0 Q205,100 200,200 Q195,300 200,400"/></circle>
+                            <!-- Reverse -->
+                            <circle r="2.5" fill="#bc002d" opacity="0.5"><animateMotion dur="5.5s" repeatCount="indefinite" path="M200,400 Q195,300 200,200 Q205,100 200,0"/></circle>
+                            
+                            <!-- Diagonal flows -->
+                            <circle r="3.5" fill="#bc002d"><animateMotion dur="4s" repeatCount="indefinite" path="M0,80 Q100,120 200,200"/></circle>
+                            <circle r="3" fill="#bc002d" opacity="0.7"><animateMotion dur="4s" repeatCount="indefinite" begin="2s" path="M400,80 Q300,120 200,200"/></circle>
+                            <circle r="3.5" fill="#bc002d"><animateMotion dur="4.5s" repeatCount="indefinite" path="M0,320 Q100,280 200,200"/></circle>
+                            <circle r="3" fill="#bc002d" opacity="0.7"><animateMotion dur="4.5s" repeatCount="indefinite" begin="2.2s" path="M400,320 Q300,280 200,200"/></circle>
+                            
+                            <!-- Orbital particles -->
+                            <circle r="2.5" fill="#bc002d" opacity="0.6"><animateMotion dur="8s" repeatCount="indefinite" path="M80,200 Q80,120 160,80 Q240,40 320,80 Q380,120 380,200"/></circle>
+                            <circle r="2" fill="#bc002d" opacity="0.5"><animateMotion dur="8s" repeatCount="indefinite" begin="4s" path="M380,200 Q380,280 320,320 Q240,360 160,320 Q80,280 80,200"/></circle>
+                            
+                            <!-- Micro flow particles -->
+                            <circle r="2" fill="#bc002d" opacity="0.5"><animateMotion dur="3s" repeatCount="indefinite" path="M120,160 Q160,180 200,200"/></circle>
+                            <circle r="2" fill="#bc002d" opacity="0.5"><animateMotion dur="2.5s" repeatCount="indefinite" path="M280,180 Q240,190 200,200"/></circle>
+                            <circle r="2" fill="#bc002d" opacity="0.5"><animateMotion dur="3.5s" repeatCount="indefinite" path="M180,300 Q190,250 200,200"/></circle>
+                            <circle r="2" fill="#bc002d" opacity="0.5"><animateMotion dur="3s" repeatCount="indefinite" path="M200,100 Q200,150 200,200"/></circle>
+                            <circle r="1.5" fill="#bc002d" opacity="0.4"><animateMotion dur="4s" repeatCount="indefinite" path="M80,240 Q130,220 200,200"/></circle>
+                            <circle r="1.5" fill="#bc002d" opacity="0.4"><animateMotion dur="3.5s" repeatCount="indefinite" path="M300,280 Q250,240 200,200"/></circle>
+                            
+                            <!-- Cross-city particles (data/resources) -->
+                            <rect width="4" height="2" fill="#000" opacity="0.4"><animateMotion dur="7s" repeatCount="indefinite" rotate="auto" path="M50,50 Q125,125 200,200 Q275,275 350,350"/></rect>
+                            <rect width="4" height="2" fill="#000" opacity="0.4"><animateMotion dur="7s" repeatCount="indefinite" begin="3.5s" rotate="auto" path="M350,50 Q275,125 200,200 Q125,275 50,350"/></rect>
+                        </g>
+                        
+                        <!-- === DATA NODES LAYER === -->
+                        <g class="nodes">
+                            <!-- Central hub -->
+                            <g class="node-central" transform="translate(200, 200)">
+                                <circle r="20" fill="url(#nodePulse)" opacity="0.5">
+                                    <animate attributeName="r" values="20;30;20" dur="3s" repeatCount="indefinite"/>
+                                    <animate attributeName="opacity" values="0.5;0.2;0.5" dur="3s" repeatCount="indefinite"/>
+                                </circle>
+                                <circle r="8" fill="none" stroke="#bc002d" stroke-width="2"/>
+                                <circle r="4" fill="#bc002d"/>
+                            </g>
+                            
+                            <!-- Secondary nodes -->
+                            <g class="node-secondary">
+                                <circle cx="120" cy="160" r="5" fill="none" stroke="#bc002d" stroke-width="1.5"/>
+                                <circle cx="120" cy="160" r="2" fill="#bc002d"/>
+                            </g>
+                            <g class="node-secondary">
+                                <circle cx="280" cy="180" r="5" fill="none" stroke="#bc002d" stroke-width="1.5"/>
+                                <circle cx="280" cy="180" r="2" fill="#bc002d"/>
+                            </g>
+                            <g class="node-secondary">
+                                <circle cx="180" cy="300" r="5" fill="none" stroke="#bc002d" stroke-width="1.5"/>
+                                <circle cx="180" cy="300" r="2" fill="#bc002d"/>
+                            </g>
+                            <g class="node-secondary">
+                                <circle cx="200" cy="100" r="5" fill="none" stroke="#bc002d" stroke-width="1.5"/>
+                                <circle cx="200" cy="100" r="2" fill="#bc002d"/>
+                            </g>
+                            
+                            <!-- Tertiary nodes -->
+                            <circle cx="80" cy="240" r="3" fill="none" stroke="#000" stroke-width="1" opacity="0.4"/>
+                            <circle cx="300" cy="280" r="3" fill="none" stroke="#000" stroke-width="1" opacity="0.4"/>
+                            <circle cx="100" cy="100" r="3" fill="none" stroke="#000" stroke-width="1" opacity="0.4"/>
+                            <circle cx="320" cy="120" r="3" fill="none" stroke="#000" stroke-width="1" opacity="0.4"/>
+                            <circle cx="60" cy="180" r="3" fill="none" stroke="#000" stroke-width="1" opacity="0.4"/>
+                            <circle cx="340" cy="200" r="3" fill="none" stroke="#000" stroke-width="1" opacity="0.4"/>
+                        </g>
+                        
+                        <!-- === UI OVERLAY === -->
+                        <g class="ui-layer" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+                            <!-- Coordinates -->
+                            <g class="coordinates" fill="#000" font-size="6" opacity="0.3">
+                                <text x="5" y="12">35.70°N</text>
+                                <text x="5" y="395">35.65°N</text>
+                                <text x="355" y="395">139.75°E</text>
+                                <text x="355" y="12">139.70°E</text>
+                            </g>
+                            
+                            <!-- Scale bar -->
+                            <g class="scale-bar" transform="translate(300, 375)">
+                                <line x1="0" y1="0" x2="60" y2="0" stroke="#000" stroke-width="1" opacity="0.4"/>
+                                <line x1="0" y1="-3" x2="0" y2="3" stroke="#000" stroke-width="1" opacity="0.4"/>
+                                <line x1="60" y1="-3" x2="60" y2="3" stroke="#000" stroke-width="1" opacity="0.4"/>
+                                <text x="30" y="12" font-size="6" fill="#000" opacity="0.4" text-anchor="middle">1 km</text>
+                            </g>
+                            
+                            <!-- Layer indicator -->
+                            <g class="layer-info" transform="translate(10, 340)">
+                                <rect width="75" height="50" rx="2" fill="#fff" stroke="#000" stroke-width="0.3" opacity="0.85"/>
+                                <text x="5" y="12" font-size="6" fill="#000" opacity="0.6">LAYERS</text>
+                                <g transform="translate(5, 18)">
+                                    <rect width="8" height="8" fill="#bc002d" opacity="0.5"/>
+                                    <text x="12" y="7" font-size="5" fill="#000" opacity="0.5">Density</text>
+                                </g>
+                                <g transform="translate(5, 28)">
+                                    <line x1="0" y1="4" x2="8" y2="4" stroke="#bc002d" stroke-width="2"/>
+                                    <text x="12" y="7" font-size="5" fill="#000" opacity="0.5">Flow</text>
+                                </g>
+                                <g transform="translate(5, 38)">
+                                    <circle cx="4" cy="4" r="3" fill="none" stroke="#bc002d" stroke-width="1"/>
+                                    <text x="12" y="7" font-size="5" fill="#000" opacity="0.5">Nodes</text>
+                                </g>
+                            </g>
+                            
+                            <!-- Live badge -->
+                            <g class="live-badge" transform="translate(340, 10)">
+                                <rect width="50" height="18" rx="2" fill="#fff" stroke="#000" stroke-width="0.5" opacity="0.9"/>
+                                <circle cx="12" cy="9" r="4" fill="#bc002d">
+                                    <animate attributeName="opacity" values="1;0.3;1" dur="1s" repeatCount="indefinite"/>
+                                </circle>
+                                <text x="20" y="13" font-size="9" fill="#000" font-weight="bold">LIVE</text>
+                            </g>
+                            
+                            <!-- Data readout -->
+                            <g class="data-readout" transform="translate(10, 10)">
+                                <text font-size="7" fill="#000" opacity="0.4" letter-spacing="1">URBAN ANALYTICS</text>
+                            </g>
+                        </g>
+                    </svg>
                 </div>
-            </section>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
 
-            <section id="recent-work">
-                <h2>最近の研究</h2>
-                <p>
-                    現在、建築密度と床面積率が都市のCO₂排出量に与える影響について、
-                    エネルギー、水、食料システムの観点から分析を進めています。
-                    また、DBSCAN clustering algorithmを用いた歩行者行動分析や、
-                    Service Point-Based Carbon Accounting (SPBCA)フレームワークの開発にも取り組んでいます。
-                </p>
-            </section>
+    <!-- About Section -->
+    <section id="about" class="section about">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">01</span>
+                <h2 class="section-title">ABOUT US</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="about-grid">
+                <div class="about-content">
+                    <h3 class="about-heading">研究室について</h3>
+                    <p class="about-text">
+                        中山研究室では、Geo-Spatial Intelligenceを活用し、
+                        建物密度と環境負荷の関係や、GPSデータから見える歩行者の行動パターンなど、都市に潜む「見えない構造」をデータと現地調査から明らかにします。
+                        持続可能な都市の姿を、エビデンスをもとに描き出すことを目指しています。
+                    </p>
+                    <p class="about-text">
+                        また仮想空間と物理空間を融合したCyber Physical Systemを具体化した「TangibleGIS」など、専門家も市民も手で触れながら都市の未来を議論できる仕組みをつくっています。
+                        データを「伝わるかたち」に変え、まちづくりの対話を支えます。
+                    </p>
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <span class="stat-number" data-count="11">0</span>
+                            <span class="stat-label">Members</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-count="46">0</span>
+                            <span class="stat-label">Publications</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-count="6">0</span>
+                            <span class="stat-label">Awards</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <div class="image-frame">
+                        <div class="frame-corner top-left"></div>
+                        <div class="frame-corner top-right"></div>
+                        <div class="frame-corner bottom-left"></div>
+                        <div class="frame-corner bottom-right"></div>
+                        <div class="image-placeholder">
+                            <svg viewBox="0 0 100 100" class="placeholder-icon">
+                                <rect x="10" y="20" width="80" height="60" rx="2" fill="none" stroke="currentColor" stroke-width="1"/>
+                                <circle cx="30" cy="40" r="8" fill="none" stroke="currentColor" stroke-width="1"/>
+                                <path d="M10 70 L35 50 L55 65 L75 45 L90 60 L90 80 L10 80 Z" fill="currentColor" opacity="0.3"/>
+                            </svg>
+                            <span>Lab Photo</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-            <section id="education">
-                <h2>学歴</h2>
-                <ul class="timeline">
-                    <li>
-                        <strong>博士（政策・メディア）</strong><br>
-                        慶應義塾大学大学院 政策・メディア研究科<br>
-                        <span class="year">2025年2月</span><br>
-                        慶應義塾大学大学院 政策・メディア研究科 博士課程 単位取得退学<br>
-                        <span class="year">2023年9月</span>
-                    </li>
-                    <li>
-                        <strong>修士（政策・メディア）</strong><br>
-                        慶應義塾大学大学院 政策・メディア研究科 修士課程修了<br>
-                        <span class="year">2021年9月</span>
-                    </li>
-                </ul>
-            </section>
+    <!-- News Section -->
+    <section id="news" class="section news">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">02</span>
+                <h2 class="section-title">NEWS</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="news-grid">
+                <article class="news-card">
+                    <div class="news-eyecatch">
+                        <img src="photo/DSC00639.jpg" alt="final-presentation2025">
+                    </div>
+                    <div class="news-body">
+                        <div class="news-date">
+                            <span class="date-day">13</span>
+                            <span class="date-month">Dec 2025</span>
+                        </div>
+                        <div class="news-content">
+                            <span class="news-category">イベント</span>
+                            <h4 class="news-title">プロジェクト最終発表会で発表しました</h4>
+                            <p class="news-excerpt">ネットワーク情報学部のプロジェクト最終発表会にて、学部3年生がプロジェクトの成果を発表しました。</p>
+                            <a href="news/final-presentation2025.html" class="news-link">続きを読む</a>
+                        </div>
+                    </div>
+                </article>
+                <article class="news-card">
+                    <div class="news-eyecatch">
+                        <img src="photo/IMG_0193.JPG" alt="GeoHB 2025">
+                    </div>
+                    <div class="news-body">
+                        <div class="news-date">
+                            <span class="date-day">15</span>
+                            <span class="date-month">Nov 2025</span>
+                        </div>
+                        <div class="news-content">
+                            <span class="news-category">学会参加</span>
+                            <h4 class="news-title">GeoHB2025で研究成果を発表しました</h4>
+                            <p class="news-excerpt">2nd International Workshop on Geo-spatial Computing for Understanding Human Behavior にて研究発表を行いました。</p>
+                            <a href="news/geohb2025.html" class="news-link">続きを読む</a>
+                        </div>
+                    </div>
+                </article>
+                <article class="news-card">
+                    <div class="news-eyecatch">
+                        <img src="photo/IMG_0107.JPG" alt="GIS学会">
+                    </div>
+                    <div class="news-body">
+                        <div class="news-date">
+                            <span class="date-day">01</span>
+                            <span class="date-month">Nov 2025</span>
+                        </div>
+                        <div class="news-content">
+                            <span class="news-category">学会参加</span>
+                            <h4 class="news-title">第34回地理情報システム学会で研究成果を発表しました</h4>
+                            <p class="news-excerpt">地理情報システム学会学術研究発表大会にて、研究室から5件の発表を行いました。</p>
+                            <a href="news/gisa2025.html" class="news-link">続きを読む</a>
+                        </div>
+                    </div>
+                </article>
+                <article class="news-card">
+                    <div class="news-eyecatch">
+                        <img src="photo/IMG_9641.JPG" alt="IUSAM 2025">
+                    </div>
+                    <div class="news-body">
+                        <div class="news-date">
+                            <span class="date-day">19</span>
+                            <span class="date-month">Sep 2025</span>
+                        </div>
+                        <div class="news-content">
+                            <span class="news-category">学会参加</span>
+                            <h4 class="news-title">Inter-University Symposium on Asian Megacities 2025で発表しました</h4>
+                            <p class="news-excerpt">Asian Megacitiesに関する国際シンポジウムにて研究発表を行いました。</p>
+                            <a href="news/iusam2025.html" class="news-link">続きを読む</a>
+                        </div>
+                    </div>
+                </article>
+                <article class="news-card">
+                    <div class="news-eyecatch">
+                        <img src="photo/IMG_9128.JPG" alt="CUPUM 2025">
+                    </div>
+                    <div class="news-body">
+                        <div class="news-date">
+                            <span class="date-day">23</span>
+                            <span class="date-month">Jun 2025</span>
+                        </div>
+                        <div class="news-content">
+                            <span class="news-category">学会参加</span>
+                            <h4 class="news-title">CUPUM2025で研究成果を発表しました</h4>
+                            <p class="news-excerpt">Computational Urban Planning and Urban Management (CUPUM) 2025にて研究発表を行いました。</p>
+                            <a href="news/cupum2025.html" class="news-link">続きを読む</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            
+            <!-- Past News Link -->
+            <div class="news-archive-section">
+                <a href="news/archive.html" class="news-archive-link">
+                    <span>過去のニュースはこちら</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
 
-            <section id="news">
-                <h2>お知らせ</h2>
-                <ul class="news-list">
-                    <li>
-                        <span class="date">2025年9月</span>
-                        日本環境共生学会より奨励賞を受賞しました
-                    </li>
-                    <li>
-                        <span class="date">2025年4月</span>
-                        専修大学ネットワーク情報学部に着任しました
-                    </li>
-                    <li>
-                        <span class="date">2025年2月</span>
-                        慶應義塾大学大学院より博士号を取得しました
-                    </li>
-                </ul>
-            </section>
-        </main>
+    <!-- Research Section -->
+    <section id="research" class="section research">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">03</span>
+                <h2 class="section-title">RESEARCH</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="research-grid">
+                <article class="research-card">
+                    <div class="research-card-eyecatch">
+                        <img src="photo/DSCF0034.jpg" alt="脱炭素化に向けた都市の密度制御">
+                    </div>
+                    <div class="research-card-body">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <rect x="3" y="3" width="7" height="7"/>
+                                <rect x="14" y="3" width="7" height="7"/>
+                                <rect x="14" y="14" width="7" height="7"/>
+                                <rect x="3" y="14" width="7" height="7"/>
+                                <path d="M10 6.5h4M17.5 10v4M10 17.5h4M6.5 10v4"/>
+                            </svg>
+                        </div>
+                        <h3 class="card-title">都市の脱炭素化に向けた容積率等の密度制御手法の提案</h3>
+                        <p class="card-description">
+                            都市の容積率や建物配置がエネルギー・水・食料消費に与える影響を分析し、
+                            脱炭素社会の実現に向けた最適な都市密度のあり方を探求しています。
+                        </p>
+                        <a href="research/urban-density.html" class="card-link">
+                            <span>詳細を見る</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </a>
+                    </div>
+                </article>
+                <article class="research-card">
+                    <div class="research-card-eyecatch">
+                        <img src="photo/図1.jpg" alt="駅まち構造と人流動創出の関連性解明">
+                    </div>
+                    <div class="research-card-body">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M12 6v6l4 2"/>
+                                <circle cx="12" cy="12" r="2"/>
+                                <path d="M12 2v2M22 12h-2M12 22v-2M2 12h2"/>
+                            </svg>
+                        </div>
+                        <h3 class="card-title">複雑な駅まち構造がもたらす人流動創出のメカニズム解明</h3>
+                        <p class="card-description">
+                            駅周辺の建物ボリュームや空間配置が人の流れに与える影響を定量的に分析し、
+                            賑わいのある駅まちづくりに貢献する知見を導出しています。
+                        </p>
+                        <a href="research/station-flow.html" class="card-link">
+                            <span>詳細を見る</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </a>
+                    </div>
+                </article>
+                <article class="research-card">
+                    <div class="research-card-eyecatch">
+                        <img src="photo/DSC00548.jpg" alt="Tangible GISの開発と検証">
+                    </div>
+                    <div class="research-card-body">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <rect x="2" y="6" width="20" height="12" rx="2"/>
+                                <path d="M12 12h.01"/>
+                                <path d="M17 12h.01"/>
+                                <path d="M7 12h.01"/>
+                                <path d="M2 10h20"/>
+                                <path d="M12 6v-2"/>
+                                <path d="M12 20v-2"/>
+                            </svg>
+                        </div>
+                        <h3 class="card-title">物理空間と仮想空間の融合によるTangible GISの開発</h3>
+                        <p class="card-description">
+                            物理模型とデジタル技術を融合し、直感的に操作できるGISプラットフォームを開発。
+                            都市計画や防災計画における新しいコミュニケーションツールを目指しています。
+                        </p>
+                        <a href="research/tangible-gis.html" class="card-link">
+                            <span>詳細を見る</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
 
-        <footer>
-            <p>&copy; 2025 Shun Nakayama. All rights reserved.</p>
-            <p>Last updated: <time datetime="2025-04">2025年4月</time></p>
-        </footer>
-    </div>
+    <!-- Publications Section -->
+    <section id="publications" class="section publications">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">04</span>
+                <h2 class="section-title">PUBLICATIONS</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="publications-filter">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="journal">Journal</button>
+                <button class="filter-btn" data-filter="conference">Conference</button>
+                <button class="filter-btn" data-filter="book">Book</button>
+            </div>
+            <div class="publications-list">
+                <!-- 2025 -->
+                <article class="publication-item" data-type="journal">
+                    <div class="pub-year">2025</div>
+                    <div class="pub-content">
+                        <h4 class="pub-title">Unravelling food carbon footprint heterogeneity in metropolitan areas using Tokyo as a case study</h4>
+                        <p class="pub-authors">Shun Nakayama, Wanglin Yan</p>
+                        <p class="pub-venue">Sustainable Cities and Society, Vol. 121, 106236</p>
+                        <div class="pub-links">
+                            <a href="https://doi.org/10.1016/j.scs.2025.106236" class="pub-link" target="_blank">DOI</a>
+                        </div>
+                    </div>
+                </article>
+                <article class="publication-item" data-type="conference">
+                    <div class="pub-year">2025</div>
+                    <div class="pub-content">
+                        <h4 class="pub-title">Development of 3D-GIS Platform through Integration of Typical and Atypical Height Information</h4>
+                        <p class="pub-authors">Hironobu Kasuga, Shun Nakayama, Wanglin Yan</p>
+                        <p class="pub-venue">GeoHB2025: 2nd International Workshop on Geo-spatial Computing for Understanding Human Behavior</p>
+                    </div>
+                </article>
+                <article class="publication-item" data-type="conference">
+                    <div class="pub-year">2025</div>
+                    <div class="pub-content">
+                        <h4 class="pub-title">Understanding the Impact of Building Volume and Spatial Arrangement on People Flow Generation in Station Areas</h4>
+                        <p class="pub-authors">Shun Nakayama, Takahiro Kanamori, Wanglin Yan</p>
+                        <p class="pub-venue">GeoHB2025: 2nd International Workshop on Geo-spatial Computing for Understanding Human Behavior</p>
+                    </div>
+                </article>
+                <article class="publication-item" data-type="conference">
+                    <div class="pub-year">2025</div>
+                    <div class="pub-content">
+                        <h4 class="pub-title">大都市近郊の竹林拡大に与える自然的要因の比較評価－2018年と2023年の神奈川県川崎市多摩区を対象として－</h4>
+                        <p class="pub-authors">古川万莉菜, 中山俊</p>
+                        <p class="pub-venue">第34回地理情報システム学会学術研究発表大会</p>
+                    </div>
+                </article>
+                <article class="publication-item" data-type="conference">
+                    <div class="pub-year">2025</div>
+                    <div class="pub-content">
+                        <h4 class="pub-title">GPSデータを用いた滞在抽出による駅周辺回遊行動の定量化とその課題</h4>
+                        <p class="pub-authors">中山俊, 金森貴洋, 厳網林</p>
+                        <p class="pub-venue">第34回地理情報システム学会学術研究発表大会</p>
+                    </div>
+                </article>
+                <article class="publication-item" data-type="conference">
+                    <div class="pub-year">2025</div>
+                    <div class="pub-content">
+                        <h4 class="pub-title">駅からの距離を考慮した歩道構造と沿道施設が滞在数に及ぼす影響－大井町駅と吉祥寺駅周辺部を対象として－</h4>
+                        <p class="pub-authors">金森貴洋, 中山俊, 厳網林</p>
+                        <p class="pub-venue">第34回地理情報システム学会学術研究発表大会</p>
+                    </div>
+                </article>
+                <article class="publication-item" data-type="conference">
+                    <div class="pub-year">2025</div>
+                    <div class="pub-content">
+                        <h4 class="pub-title">Three.jsとARマーカーを用いた物理模型操作の即時反映を可能にするWebベース触れるGISプラットフォームの開発</h4>
+                        <p class="pub-authors">石黒希海, 中村暢佑, 中山俊</p>
+                        <p class="pub-venue">第34回地理情報システム学会学術研究発表大会</p>
+                    </div>
+                </article>
+                <article class="publication-item" data-type="conference">
+                    <div class="pub-year">2025</div>
+                    <div class="pub-content">
+                        <h4 class="pub-title">RFIDを用いた複数レイヤ同時取得のための触れるGIS基盤に関する研究</h4>
+                        <p class="pub-authors">中村暢佑, 石黒希海, 中山俊</p>
+                        <p class="pub-venue">第34回地理情報システム学会学術研究発表大会</p>
+                    </div>
+                </article>
+                <article class="publication-item" data-type="conference">
+                    <div class="pub-year">2025</div>
+                    <div class="pub-content">
+                        <h4 class="pub-title">Quantitative Evaluation of Fatigue-Induced Walking Speed Reduction During Continuous Walking</h4>
+                        <p class="pub-authors">Shun Nakayama, Kuori Hirabayashi, Keiichi Sato</p>
+                        <p class="pub-venue">Inter University Symposium on Asian Megacities 2025</p>
+                    </div>
+                </article>
+                <article class="publication-item" data-type="conference">
+                    <div class="pub-year">2025</div>
+                    <div class="pub-content">
+                        <h4 class="pub-title">Developing and Validating a Prioritization Framework for Implementing Decarbonization Strategies in Buildings</h4>
+                        <p class="pub-authors">Amane Fujita, Shun Nakayama, Wanglin Yan</p>
+                        <p class="pub-venue">Inter University Symposium on Asian Megacities 2025</p>
+                    </div>
+                </article>
+                <article class="publication-item" data-type="conference">
+                    <div class="pub-year">2025</div>
+                    <div class="pub-content">
+                        <h4 class="pub-title">Predicting the Pace of Solar Power Introduction Considering the Timing of Building Renovations in Suburban Residential Areas -A Case of Shiratori-dai, Aoba-ku, Yokohama City-</h4>
+                        <p class="pub-authors">Iroha Mizutani, Shun Nakayama, Wanglin Yan</p>
+                        <p class="pub-venue">Inter University Symposium on Asian Megacities 2025</p>
+                    </div>
+                </article>
+                <article class="publication-item" data-type="conference">
+                    <div class="pub-year">2025</div>
+                    <div class="pub-content">
+                        <h4 class="pub-title">Floor Area Ratio Management for Decarbonization: Insights from Energy, Water and Food Consumption</h4>
+                        <p class="pub-authors">Shun Nakayama, Wanglin Yan</p>
+                        <p class="pub-venue">Computational Urban Planning and Urban Management CUPUM2025</p>
+                    </div>
+                </article>
+
+                <!-- 2024 -->
+                <article class="publication-item" data-type="journal">
+                    <div class="pub-year">2024</div>
+                    <div class="pub-content">
+                        <h4 class="pub-title">Developing an energy audit methodology for assessing decarbonization potential in high performance buildings</h4>
+                        <p class="pub-authors">Shun Nakayama, Wanglin Yan, Amane Fujita</p>
+                        <p class="pub-venue">Energy Conversion and Management: X, Vol. 24, 100765</p>
+                        <div class="pub-links">
+                            <a href="https://doi.org/10.1016/j.ecmx.2024.100765" class="pub-link" target="_blank">DOI</a>
+                        </div>
+                    </div>
+                </article>
+                <article class="publication-item" data-type="book">
+                    <div class="pub-year">2024</div>
+                    <div class="pub-content">
+                        <h4 class="pub-title">Identifying Gaps Between Food Supply and Demand Under Compact City Policies</h4>
+                        <p class="pub-authors">Shun Nakayama, Wanglin Yan, Rajib Shaw</p>
+                        <p class="pub-venue">Resilient and Adaptive Tokyo, Springer Nature Singapore, pp. 135-147</p>
+                        <div class="pub-links">
+                            <a href="https://doi.org/10.1007/978-981-99-3834-6_8" class="pub-link" target="_blank">DOI</a>
+                        </div>
+                    </div>
+                </article>
+                <article class="publication-item" data-type="book">
+                    <div class="pub-year">2024</div>
+                    <div class="pub-content">
+                        <h4 class="pub-title">Calculating the Demand for Food, Energy, and Water in the Spatial Perspective</h4>
+                        <p class="pub-authors">Shun Nakayama, Wanglin Yan, William Galloway</p>
+                        <p class="pub-venue">Resilient and Adaptive Tokyo, Springer Nature Singapore, pp. 123-133</p>
+                        <div class="pub-links">
+                            <a href="https://doi.org/10.1007/978-981-99-3834-6_7" class="pub-link" target="_blank">DOI</a>
+                        </div>
+                    </div>
+                </article>
+                <article class="publication-item" data-type="book">
+                    <div class="pub-year">2024</div>
+                    <div class="pub-content">
+                        <h4 class="pub-title">Design-Led Nexus Approach for Sustainable Urbanization</h4>
+                        <p class="pub-authors">Wanglin Yan, Shun Nakayama</p>
+                        <p class="pub-venue">Resilient and Adaptive Tokyo, Springer Nature Singapore, pp. 17-45</p>
+                        <div class="pub-links">
+                            <a href="https://doi.org/10.1007/978-981-99-3834-6_2" class="pub-link" target="_blank">DOI</a>
+                        </div>
+                    </div>
+                </article>
+                <article class="publication-item" data-type="conference">
+                    <div class="pub-year">2024</div>
+                    <div class="pub-content">
+                        <h4 class="pub-title">都市計画と脱炭素の関連性の解明 -階層型レコードリンケージを用いた用途地域スケールの炭素会計手法の開発を通して-</h4>
+                        <p class="pub-authors">中山俊, 厳網林, 藤田周</p>
+                        <p class="pub-venue">地理情報システム学会第33回学術研究発表大会</p>
+                    </div>
+                </article>
+                <article class="publication-item" data-type="conference">
+                    <div class="pub-year">2024</div>
+                    <div class="pub-content">
+                        <h4 class="pub-title">The Energy Saving Potential of Cogeneration Systems in Commercial Complexes</h4>
+                        <p class="pub-authors">Iroha Mizutani, Shun Nakayama, Wanglin Yan</p>
+                        <p class="pub-venue">Inter University Symposium on Asian Megacities 2024</p>
+                    </div>
+                </article>
+                <article class="publication-item" data-type="conference">
+                    <div class="pub-year">2024</div>
+                    <div class="pub-content">
+                        <h4 class="pub-title">Experiment of Simplified Radio Wave Propagation Simulation Using GIS -A Case Study of Shonan Fujisawa Campus, Keio University-</h4>
+                        <p class="pub-authors">Hironobu Kasuga, Shun Nakayama, Wanglin Yan</p>
+                        <p class="pub-venue">Inter University Symposium on Asian Megacities 2024</p>
+                    </div>
+                </article>
+                <article class="publication-item" data-type="conference">
+                    <div class="pub-year">2024</div>
+                    <div class="pub-content">
+                        <h4 class="pub-title">Development of a Carbon Accounting Method for the Food Sector Considering the Relationship between Urban Form and Food Environment</h4>
+                        <p class="pub-authors">Shun Nakayama, Wanglin Yan</p>
+                        <p class="pub-venue">Inter University Symposium on Asian Megacities 2024</p>
+                    </div>
+                </article>
+
+                <!-- 2023 -->
+                <article class="publication-item" data-type="conference">
+                    <div class="pub-year">2023</div>
+                    <div class="pub-content">
+                        <h4 class="pub-title">ネクサスマトリックスを用いた炭素会計手法の開発</h4>
+                        <p class="pub-authors">中山俊, 厳網林</p>
+                        <p class="pub-venue">地理情報システム学会第32回学術研究発表大会</p>
+                    </div>
+                </article>
+
+                <!-- 2022 -->
+                <article class="publication-item" data-type="journal">
+                    <div class="pub-year">2022</div>
+                    <div class="pub-content">
+                        <h4 class="pub-title">Towards fossil free cities – Emission assessment of food and resources consumption with the FEWprint carbon accounting platform</h4>
+                        <p class="pub-authors">Pieter Nick ten Caa, Martin J. Tenpierik, Tithi Sanyal, Nico M.J.D. Tillie, Andy A.J.F. van den Dobbelsteen, Geoffrey Thün, Sean Cullen, Shun Nakayama, Theodora Karanisa, Stewart Monti</p>
+                        <p class="pub-venue">Cleaner Environmental Systems, 100074</p>
+                        <div class="pub-links">
+                            <a href="https://doi.org/10.1016/j.cesys.2022.100074" class="pub-link" target="_blank">DOI</a>
+                        </div>
+                    </div>
+                </article>
+                <article class="publication-item" data-type="conference">
+                    <div class="pub-year">2022</div>
+                    <div class="pub-content">
+                        <h4 class="pub-title">CO2 emissions in urban water supply by topography and building structure</h4>
+                        <p class="pub-authors">Amane Fujita, Shun Nakayama, Wanglin Yan</p>
+                        <p class="pub-venue">International Association of Geo-informatics IAG'i 2022</p>
+                    </div>
+                </article>
+                <article class="publication-item" data-type="conference">
+                    <div class="pub-year">2022</div>
+                    <div class="pub-content">
+                        <h4 class="pub-title">Nexus Perspective in Assessing Transboundary Effects of Urban Decarbonization Projects</h4>
+                        <p class="pub-authors">Shun Nakayama, Wanglin Yan, Amane Fujita</p>
+                        <p class="pub-venue">International Association of Geo-informatics IAG'i 2022</p>
+                    </div>
+                </article>
+                <article class="publication-item" data-type="conference">
+                    <div class="pub-year">2022</div>
+                    <div class="pub-content">
+                        <h4 class="pub-title">都市の水道事業におけるCO2排出の空間分布の推計-東京都と神奈川県を対象に-</h4>
+                        <p class="pub-authors">藤田周, 中山俊, 厳網林</p>
+                        <p class="pub-venue">地理情報システム学会第31回学術研究発表大会</p>
+                    </div>
+                </article>
+                <article class="publication-item" data-type="conference">
+                    <div class="pub-year">2022</div>
+                    <div class="pub-content">
+                        <h4 class="pub-title">都市の空間パターンに応じたネクサス効果とその環境負荷に与える影響の評価</h4>
+                        <p class="pub-authors">中山俊, 厳網林, 藤田周</p>
+                        <p class="pub-venue">地理情報システム学会第31回学術研究発表大会</p>
+                    </div>
+                </article>
+                <article class="publication-item" data-type="conference">
+                    <div class="pub-year">2022</div>
+                    <div class="pub-content">
+                        <h4 class="pub-title">ソーシャルネットワーク分析によるリビングラボの機能評価</h4>
+                        <p class="pub-authors">與那嶺彩世, 中山俊, 厳網林</p>
+                        <p class="pub-venue">日本環境共生学会第25回学術大会</p>
+                    </div>
+                </article>
+                <article class="publication-item" data-type="conference">
+                    <div class="pub-year">2022</div>
+                    <div class="pub-content">
+                        <h4 class="pub-title">アーバンリビングラボの構築と住み続けられるまち(SDGs.11)への共創的取り組み</h4>
+                        <p class="pub-authors">厳網林, 金森貴洋, 中山俊</p>
+                        <p class="pub-venue">日本環境共生学会第25回学術大会</p>
+                    </div>
+                </article>
+                <article class="publication-item" data-type="conference">
+                    <div class="pub-year">2022</div>
+                    <div class="pub-content">
+                        <h4 class="pub-title">都心業務ビルにおける持続可能な脱炭素化の進展評価</h4>
+                        <p class="pub-authors">中山俊, 厳網林, 藤田周</p>
+                        <p class="pub-venue">日本環境共生学会第25回学術大会</p>
+                    </div>
+                </article>
+
+                <!-- 2021 -->
+                <article class="publication-item" data-type="book">
+                    <div class="pub-year">2021</div>
+                    <div class="pub-content">
+                        <h4 class="pub-title">Developing the eXtended Tangible User Interface as an Experimental Platform for Geo CPS</h4>
+                        <p class="pub-authors">Wanglin Yan, Yoshifumi Murakami, Akinobu Yasuda, Terukazu Makihara, Ryutaro Fujimoto, Shun Nakayama</p>
+                        <p class="pub-venue">Disaster Risk Reduction, Springer Singapore, pp. 11-32</p>
+                        <div class="pub-links">
+                            <a href="https://doi.org/10.1007/978-981-16-0360-0_2" class="pub-link" target="_blank">DOI</a>
+                        </div>
+                    </div>
+                </article>
+                <article class="publication-item" data-type="book">
+                    <div class="pub-year">2021</div>
+                    <div class="pub-content">
+                        <h4 class="pub-title">Redesigning the Urban Food Life Through the Participatory Living Lab Platform: Practices in Suburban Areas of the Tokyo Metropolitan Region</h4>
+                        <p class="pub-authors">Wanglin Yan, Shun Nakayama</p>
+                        <p class="pub-venue">Contemporary Urban Design Thinking, Springer International Publishing, pp. 209-234</p>
+                        <div class="pub-links">
+                            <a href="https://doi.org/10.1007/978-3-030-61977-0_10" class="pub-link" target="_blank">DOI</a>
+                        </div>
+                    </div>
+                </article>
+                <article class="publication-item" data-type="conference">
+                    <div class="pub-year">2021</div>
+                    <div class="pub-content">
+                        <h4 class="pub-title">低炭素なまちづくりに向けた両面受光型太陽光パネル導入による事業効果の検証-青森県の公共施設への導入を事例に-</h4>
+                        <p class="pub-authors">藤田周, 中山俊, 厳網林</p>
+                        <p class="pub-venue">日本環境共生学会第24回学術大会</p>
+                    </div>
+                </article>
+                <article class="publication-item" data-type="conference">
+                    <div class="pub-year">2021</div>
+                    <div class="pub-content">
+                        <h4 class="pub-title">Developing Design Baseline to Reduce Urban Environmental Load in Food-Energy-Water Demand</h4>
+                        <p class="pub-authors">Shun Nakayama, Wanglin Yan, Will Galloway</p>
+                        <p class="pub-venue">26th International Conference on Urban Planning and Regional Development in the Information Society, RealCORP2021</p>
+                    </div>
+                </article>
+                <article class="publication-item" data-type="conference">
+                    <div class="pub-year">2021</div>
+                    <div class="pub-content">
+                        <h4 class="pub-title">Assessing the Impact of Transitioning to a Compact City in a Large City on Food Supply and Demand</h4>
+                        <p class="pub-authors">Shun Nakayama, Wanglin Yan, Will Galloway</p>
+                        <p class="pub-venue">Computational Urban Planning and Urban Management CUPUM2021</p>
+                    </div>
+                </article>
+
+                <!-- 2020 -->
+                <article class="publication-item" data-type="conference">
+                    <div class="pub-year">2020</div>
+                    <div class="pub-content">
+                        <h4 class="pub-title">大都市郊外における集約型都市構造への移行に伴う食料需給のギャップ分析</h4>
+                        <p class="pub-authors">中山俊, 厳網林</p>
+                        <p class="pub-venue">地理情報システム学会第29回学術研究発表大会</p>
+                    </div>
+                </article>
+
+                <!-- 2019 -->
+                <article class="publication-item" data-type="journal">
+                    <div class="pub-year">2019</div>
+                    <div class="pub-content">
+                        <h4 class="pub-title">The package redelivery problem, convenience store solution, and the delivery desert: Case study in Aoba Ward, Yokohama</h4>
+                        <p class="pub-authors">Shun Nakayama, Wanglin Yan</p>
+                        <p class="pub-venue">Journal of Urban Management, Vol. 8, No. 3, pp. 355-363</p>
+                        <div class="pub-links">
+                            <a href="https://doi.org/10.1016/j.jum.2019.08.001" class="pub-link" target="_blank">DOI</a>
+                        </div>
+                    </div>
+                </article>
+                <article class="publication-item" data-type="journal">
+                    <div class="pub-year">2019</div>
+                    <div class="pub-content">
+                        <h4 class="pub-title">Measuring Spatial Accessibility to Pick-Up Service Considering Differentiated Supply and Demand: A Case in Hangzhou, China</h4>
+                        <p class="pub-authors">Liyun Lin, Haoying Han, Wanglin Yan, Shun Nakayama, Xianfan Shu</p>
+                        <p class="pub-venue">Sustainability, Vol. 11, No. 12, 3448</p>
+                        <div class="pub-links">
+                            <a href="https://doi.org/10.3390/su11123448" class="pub-link" target="_blank">DOI</a>
+                        </div>
+                    </div>
+                </article>
+                <article class="publication-item" data-type="conference">
+                    <div class="pub-year">2019</div>
+                    <div class="pub-content">
+                        <h4 class="pub-title">郊外住宅地の食料品店アクセシビリティと温室効果ガス排出の関連性評価</h4>
+                        <p class="pub-authors">中山俊, 厳網林</p>
+                        <p class="pub-venue">地理情報システム学会第28回学術研究発表大会</p>
+                    </div>
+                </article>
+                <article class="publication-item" data-type="conference">
+                    <div class="pub-year">2019</div>
+                    <div class="pub-content">
+                        <h4 class="pub-title">卸売市場の最適化による青果物流の環境負荷評価</h4>
+                        <p class="pub-authors">本間雅大, 中山俊, 厳網林</p>
+                        <p class="pub-venue">日本環境共生学会第22回学術大会</p>
+                    </div>
+                </article>
+                <article class="publication-item" data-type="conference">
+                    <div class="pub-year">2019</div>
+                    <div class="pub-content">
+                        <h4 class="pub-title">リビングラボにおける地域共創プラットフォームの構築と国際共同研究の展開</h4>
+                        <p class="pub-authors">厳網林, 中山俊</p>
+                        <p class="pub-venue">日本環境共生学会第22回学術大会</p>
+                    </div>
+                </article>
+                <article class="publication-item" data-type="conference">
+                    <div class="pub-year">2019</div>
+                    <div class="pub-content">
+                        <h4 class="pub-title">郊外住宅地の食料品店アクセスに伴う温室効果ガス排出評価</h4>
+                        <p class="pub-authors">中山俊, 厳網林</p>
+                        <p class="pub-venue">日本環境共生学会第22回学術大会</p>
+                    </div>
+                </article>
+                <article class="publication-item" data-type="conference">
+                    <div class="pub-year">2019</div>
+                    <div class="pub-content">
+                        <h4 class="pub-title">Analysis on Food Environmental Gaps among Residential Areas in Metropolitan Suburbs</h4>
+                        <p class="pub-authors">Shun Nakayama, Wanglin Yan</p>
+                        <p class="pub-venue">Inter University Symposium on Asian Megacities 2019</p>
+                    </div>
+                </article>
+
+                <!-- 2018 -->
+                <article class="publication-item" data-type="conference">
+                    <div class="pub-year">2018</div>
+                    <div class="pub-content">
+                        <h4 class="pub-title">郊外住宅地におけるマーケットでの供給の実態分析</h4>
+                        <p class="pub-authors">中山俊, 小沼佑香, 厳網林</p>
+                        <p class="pub-venue">日本環境共生学会第21回学術大会</p>
+                    </div>
+                </article>
+                <article class="publication-item" data-type="conference">
+                    <div class="pub-year">2018</div>
+                    <div class="pub-content">
+                        <h4 class="pub-title">Physical and virtual space combination and its impact on the people's livings recognized in convenience stores in Japan</h4>
+                        <p class="pub-authors">Shun Nakayama, Wanglin Yan</p>
+                        <p class="pub-venue">Inter University Symposium on Asian Megacities 2018</p>
+                    </div>
+                </article>
+
+                <!-- 2017 -->
+                <article class="publication-item" data-type="conference">
+                    <div class="pub-year">2017</div>
+                    <div class="pub-content">
+                        <h4 class="pub-title">Analysis of effect on population reproduction by tower apartment residencies in Tokyo</h4>
+                        <p class="pub-authors">Shun Nakayama, Wanglin Yan</p>
+                        <p class="pub-venue">Inter University Symposium on Asian Megacities 2017</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Awards Section -->
+    <section id="awards" class="section awards">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">05</span>
+                <h2 class="section-title">AWARDS</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="awards-list">
+                <article class="award-item">
+                    <div class="award-year">2025</div>
+                    <div class="award-content">
+                        <div class="award-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M12 15l-2 5-1-1-2 1 2-5"/>
+                                <path d="M12 15l2 5 1-1 2 1-2-5"/>
+                                <circle cx="12" cy="8" r="6"/>
+                                <path d="M12 5v2M9.5 8H12"/>
+                            </svg>
+                        </div>
+                        <div class="award-details">
+                            <h4 class="award-title">奨励賞</h4>
+                            <p class="award-org">日本環境共生学会</p>
+                            <p class="award-work">エネルギー・水・食料からみた都市の脱炭素化に向けた密度制御手法の検証</p>
+                            <p class="award-recipient">受賞者：中山 俊</p>
+                        </div>
+                    </div>
+                </article>
+                <article class="award-item">
+                    <div class="award-year">2024</div>
+                    <div class="award-content">
+                        <div class="award-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M12 15l-2 5-1-1-2 1 2-5"/>
+                                <path d="M12 15l2 5 1-1 2 1-2-5"/>
+                                <circle cx="12" cy="8" r="6"/>
+                                <path d="M12 5v2M9.5 8H12"/>
+                            </svg>
+                        </div>
+                        <div class="award-details">
+                            <h4 class="award-title">Best Paper Award Grand Prize</h4>
+                            <p class="award-org">Inter-University Symposium of Asian Megacities</p>
+                            <p class="award-work">Development of a Carbon Accounting Method for the Food Sector Considering the Relationship between Urban Form and Food Environment</p>
+                            <p class="award-recipient">受賞者：中山 俊</p>
+                        </div>
+                    </div>
+                </article>
+                <article class="award-item">
+                    <div class="award-year">2023</div>
+                    <div class="award-content">
+                        <div class="award-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M12 15l-2 5-1-1-2 1 2-5"/>
+                                <path d="M12 15l2 5 1-1 2 1-2-5"/>
+                                <circle cx="12" cy="8" r="6"/>
+                                <path d="M12 5v2M9.5 8H12"/>
+                            </svg>
+                        </div>
+                        <div class="award-details">
+                            <h4 class="award-title">優秀発表賞（学術大会口頭発表）</h4>
+                            <p class="award-org">日本環境共生学会</p>
+                            <p class="award-work">都心業務ビルにおける持続可能な脱炭素化の進展評価</p>
+                            <p class="award-recipient">受賞者：中山 俊</p>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            
+            <!-- Past Awards Link -->
+            <div class="awards-archive-section">
+                <a href="awards.html" class="awards-archive-link">
+                    <span>過去の受賞はこちら</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Members Section -->
+    <section id="members" class="section members">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">06</span>
+                <h2 class="section-title">MEMBERS</h2>
+                <div class="section-line"></div>
+            </div>
+            
+            <!-- Professor -->
+            <div class="member-category">
+                <h3 class="category-title">Project Professor</h3>
+                <div class="professor-card">
+                    <div class="professor-image">
+                        <img src="photo/正方形写真.jpg" alt="中山 俊">
+                    </div>
+                    <div class="professor-info">
+                        <h4 class="professor-name">中山 俊</h4>
+                        <span class="professor-title">Shun Nakayama, Ph.D.</span>
+                        <p class="professor-bio">
+                            専修大学ネットワーク情報学部 特任教授<br>
+                            慶應義塾大学大学院政策・メディア研究科 特任講師 / 明治大学大学院理工学研究科 兼任講師<br>
+                            専門分野：空間情報科学・都市環境工学<br>
+                            都市における理想の密度と配置を模索する研究に取り組んでいます。
+                        </p>
+                        <div class="professor-links">
+                            <a href="https://scholar.google.com/citations?user=CQ7L6kEAAAAJ&hl=ja" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                                    <path d="M2 17l10 5 10-5"/>
+                                    <path d="M2 12l10 5 10-5"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- B4 Students (卒業演習) -->
+            <div class="member-category">
+                <h3 class="category-title">B4 - 卒業演習</h3>
+                <div class="members-grid">
+                    <div class="member-card">
+                        <div class="member-image">
+                            <div class="image-placeholder member-placeholder">
+                                <svg viewBox="0 0 100 100" class="placeholder-icon">
+                                    <circle cx="50" cy="35" r="20" fill="none" stroke="currentColor" stroke-width="1"/>
+                                    <path d="M20 90 Q20 60 50 60 Q80 60 80 90" fill="none" stroke="currentColor" stroke-width="1"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="member-info">
+                            <h4 class="member-name">古川 万莉菜</h4>
+                            <span class="member-role">B4</span>
+                            <span class="member-research">研究テーマ：都市近郊における竹林の人為的・自然的拡大要因</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- B3 Students (プロジェクト) -->
+            <div class="member-category">
+                <h3 class="category-title">B3 - プロジェクト</h3>
+                <div class="b3-members-list">
+                    <span class="b3-member">芦田 輝</span>
+                    <span class="b3-member">石黒 希海</span>
+                    <span class="b3-member">榎本 桃香</span>
+                    <span class="b3-member">大津山 信</span>
+                    <span class="b3-member">瀬川 凌平</span>
+                    <span class="b3-member">田村 優哉</span>
+                    <span class="b3-member">中村 暢佑</span>
+                    <span class="b3-member">山田 樹里亜</span>
+                    <span class="b3-member">横山 綾音</span>
+                </div>
+            </div>
+
+            <!-- Alumni Link -->
+            <div class="alumni-section">
+                <a href="alumni.html" class="alumni-link">
+                    <span>卒業生はこちら</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">07</span>
+                <h2 class="section-title">CONTACT</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3 class="contact-heading">お問い合わせ</h3>
+                    <p class="contact-text">
+                        研究室への見学、共同研究のご相談、その他ご質問がございましたら、
+                        お気軽にお問い合わせください。
+                    </p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                            <div>
+                                <strong>Address</strong>
+                                <p>〒214-8580<br>神奈川県川崎市多摩区東三田2-1-1<br>専修大学 生田キャンパス</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                <polyline points="22,6 12,13 2,6"/>
+                            </svg>
+                            <div>
+                                <strong>Email</strong>
+                                <p>shunnkym[@]isc.senshu-u.ac.jp</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-map">
+                    <div class="map-placeholder">
+                        <svg viewBox="0 0 100 100" class="placeholder-icon">
+                            <rect x="5" y="5" width="90" height="90" rx="2" fill="none" stroke="currentColor" stroke-width="1"/>
+                            <path d="M50 25 L50 75 M25 50 L75 50" stroke="currentColor" stroke-width="0.5" opacity="0.3"/>
+                            <circle cx="50" cy="50" r="5" fill="currentColor"/>
+                            <path d="M50 35 L50 45 M50 55 L50 65 M35 50 L45 50 M55 50 L65 50" stroke="currentColor" stroke-width="1"/>
+                        </svg>
+                        <span>Map</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-text">NAKAYAMA</span>
+                    <span class="logo-sub">LABORATORY</span>
+                </div>
+                <div class="footer-links">
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#news">News</a>
+                    <a href="#research">Research</a>
+                    <a href="#publications">Publications</a>
+                    <a href="#awards">Awards</a>
+                    <a href="#members">Members</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="footer-social">
+                    <a href="#" class="social-link" aria-label="Twitter">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+                        </svg>
+                    </a>
+                    <a href="https://github.com/shunnkym" class="social-link" aria-label="GitHub">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Nakayama Laboratory. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
 </body>
 </html>

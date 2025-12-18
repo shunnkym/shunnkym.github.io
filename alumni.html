@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>卒業生 | 中山研究室</title>
+    <meta name="description" content="中山研究室の卒業生一覧です。研究テーマと進路を掲載しています。">
+    <!-- Using system Helvetica - no external fonts needed -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Particle Background -->
+    <canvas id="particle-canvas"></canvas>
+    
+    <!-- Navigation -->
+    <nav class="navbar scrolled">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-text">NAKAYAMA</span>
+                <span class="logo-sub">LABORATORY</span>
+            </a>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span class="hamburger"></span>
+            </button>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html#home" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="index.html#about" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="index.html#news" class="nav-link">News</a></li>
+                <li class="nav-item"><a href="index.html#research" class="nav-link">Research</a></li>
+                <li class="nav-item"><a href="index.html#publications" class="nav-link">Publications</a></li>
+                <li class="nav-item"><a href="index.html#awards" class="nav-link">Awards</a></li>
+                <li class="nav-item"><a href="index.html#members" class="nav-link active">Members</a></li>
+                <li class="nav-item"><a href="index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Alumni Content -->
+    <section class="section alumni-page">
+        <div class="container">
+            <a href="index.html#members" class="back-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                <span>Back to Members</span>
+            </a>
+            
+            <div class="section-header">
+                <span class="section-number">Alumni</span>
+                <h1 class="section-title">卒業生</h1>
+                <div class="section-line"></div>
+            </div>
+            
+            <p class="alumni-intro">
+                中山研究室を巣立った卒業生たちの研究テーマと進路を紹介します。
+            </p>
+
+            <!-- 2024年度卒業生 -->
+            <div class="alumni-year">
+                <h2 class="year-title">2024年度</h2>
+                <div class="alumni-list">
+                    <div class="alumni-card">
+                        <div class="alumni-info">
+                            <h3 class="alumni-name">卒業生 A</h3>
+                            <div class="alumni-details">
+                                <div class="alumni-detail-item">
+                                    <span class="detail-label">研究テーマ</span>
+                                    <p class="detail-content">〇〇〇〇に関する研究</p>
+                                </div>
+                                <div class="alumni-detail-item">
+                                    <span class="detail-label">進路</span>
+                                    <p class="detail-content">〇〇株式会社</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="alumni-card">
+                        <div class="alumni-info">
+                            <h3 class="alumni-name">卒業生 B</h3>
+                            <div class="alumni-details">
+                                <div class="alumni-detail-item">
+                                    <span class="detail-label">研究テーマ</span>
+                                    <p class="detail-content">〇〇〇〇に関する研究</p>
+                                </div>
+                                <div class="alumni-detail-item">
+                                    <span class="detail-label">進路</span>
+                                    <p class="detail-content">〇〇大学大学院</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="alumni-card">
+                        <div class="alumni-info">
+                            <h3 class="alumni-name">卒業生 C</h3>
+                            <div class="alumni-details">
+                                <div class="alumni-detail-item">
+                                    <span class="detail-label">研究テーマ</span>
+                                    <p class="detail-content">〇〇〇〇に関する研究</p>
+                                </div>
+                                <div class="alumni-detail-item">
+                                    <span class="detail-label">進路</span>
+                                    <p class="detail-content">〇〇株式会社</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2023年度卒業生 -->
+            <div class="alumni-year">
+                <h2 class="year-title">2023年度</h2>
+                <div class="alumni-list">
+                    <div class="alumni-card">
+                        <div class="alumni-info">
+                            <h3 class="alumni-name">卒業生 D</h3>
+                            <div class="alumni-details">
+                                <div class="alumni-detail-item">
+                                    <span class="detail-label">研究テーマ</span>
+                                    <p class="detail-content">〇〇〇〇に関する研究</p>
+                                </div>
+                                <div class="alumni-detail-item">
+                                    <span class="detail-label">進路</span>
+                                    <p class="detail-content">〇〇株式会社</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="alumni-card">
+                        <div class="alumni-info">
+                            <h3 class="alumni-name">卒業生 E</h3>
+                            <div class="alumni-details">
+                                <div class="alumni-detail-item">
+                                    <span class="detail-label">研究テーマ</span>
+                                    <p class="detail-content">〇〇〇〇に関する研究</p>
+                                </div>
+                                <div class="alumni-detail-item">
+                                    <span class="detail-label">進路</span>
+                                    <p class="detail-content">〇〇大学大学院</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2022年度卒業生 -->
+            <div class="alumni-year">
+                <h2 class="year-title">2022年度</h2>
+                <div class="alumni-list">
+                    <div class="alumni-card">
+                        <div class="alumni-info">
+                            <h3 class="alumni-name">卒業生 F</h3>
+                            <div class="alumni-details">
+                                <div class="alumni-detail-item">
+                                    <span class="detail-label">研究テーマ</span>
+                                    <p class="detail-content">〇〇〇〇に関する研究</p>
+                                </div>
+                                <div class="alumni-detail-item">
+                                    <span class="detail-label">進路</span>
+                                    <p class="detail-content">〇〇株式会社</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="alumni-card">
+                        <div class="alumni-info">
+                            <h3 class="alumni-name">卒業生 G</h3>
+                            <div class="alumni-details">
+                                <div class="alumni-detail-item">
+                                    <span class="detail-label">研究テーマ</span>
+                                    <p class="detail-content">〇〇〇〇に関する研究</p>
+                                </div>
+                                <div class="alumni-detail-item">
+                                    <span class="detail-label">進路</span>
+                                    <p class="detail-content">〇〇株式会社</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="alumni-card">
+                        <div class="alumni-info">
+                            <h3 class="alumni-name">卒業生 H</h3>
+                            <div class="alumni-details">
+                                <div class="alumni-detail-item">
+                                    <span class="detail-label">研究テーマ</span>
+                                    <p class="detail-content">〇〇〇〇に関する研究</p>
+                                </div>
+                                <div class="alumni-detail-item">
+                                    <span class="detail-label">進路</span>
+                                    <p class="detail-content">〇〇大学大学院</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-text">NAKAYAMA</span>
+                    <span class="logo-sub">LABORATORY</span>
+                </div>
+                <div class="footer-links">
+                    <a href="index.html#home">Home</a>
+                    <a href="index.html#about">About</a>
+                    <a href="index.html#news">News</a>
+                    <a href="index.html#research">Research</a>
+                    <a href="index.html#publications">Publications</a>
+                    <a href="index.html#awards">Awards</a>
+                    <a href="index.html#members">Members</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+                <div class="footer-social">
+                    <a href="#" class="social-link" aria-label="Twitter">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+                        </svg>
+                    </a>
+                    <a href="https://github.com/shunnkym" class="social-link" aria-label="GitHub">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Nakayama Laboratory. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
+

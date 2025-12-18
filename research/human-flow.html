@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>人流解析 | 中山研究室</title>
+    <meta name="description" content="GPSデータやセンサーデータを用いた人流解析の研究">
+    <!-- Using system Helvetica - no external fonts needed -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <!-- Particle Background -->
+    <canvas id="particle-canvas"></canvas>
+    
+    <!-- Navigation -->
+    <nav class="navbar scrolled">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">
+                <span class="logo-text">NAKAYAMA</span>
+                <span class="logo-sub">LABORATORY</span>
+            </a>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span class="hamburger"></span>
+            </button>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="../index.html#home" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="../index.html#about" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="../index.html#news" class="nav-link">News</a></li>
+                <li class="nav-item"><a href="../index.html#research" class="nav-link active">Research</a></li>
+                <li class="nav-item"><a href="../index.html#publications" class="nav-link">Publications</a></li>
+                <li class="nav-item"><a href="../index.html#awards" class="nav-link">Awards</a></li>
+                <li class="nav-item"><a href="../index.html#members" class="nav-link">Members</a></li>
+                <li class="nav-item"><a href="../index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Detail Content -->
+    <section class="section detail-page">
+        <div class="container">
+            <a href="../index.html#research" class="back-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                <span>Back to Research</span>
+            </a>
+            
+            <article class="detail-content">
+                <header class="detail-header">
+                    <span class="detail-category">Research</span>
+                    <h1 class="detail-title">人流解析</h1>
+                    <p class="detail-meta">Human Flow Analytics</p>
+                </header>
+                
+                <div class="detail-image-placeholder">
+                    <span>Research Image</span>
+                </div>
+                
+                <h2>研究概要</h2>
+                
+                <p>
+                    人流解析研究では、GPSデータ、携帯電話の位置情報、センサーデータなどを用いて、
+                    都市における人々の移動パターンを解明しています。「いつ、どこで、どのように」
+                    人が移動するかを理解することで、交通計画、都市計画、防災計画に貢献します。
+                </p>
+                
+                <h2>研究テーマ</h2>
+                
+                <h3>1. 都市内移動パターンの解析</h3>
+                <p>
+                    大規模な人流データを分析し、通勤・通学、買い物、レジャーなど
+                    目的別の移動パターンを明らかにしています。時間帯や曜日による
+                    変動も含めた詳細な分析を行い、都市の機能配置の最適化に活用します。
+                </p>
+                
+                <h3>2. 混雑予測・回避システム</h3>
+                <p>
+                    過去の人流データと気象・イベント情報を組み合わせ、
+                    将来の混雑状況を予測するモデルを開発しています。
+                    リアルタイムの混雑回避情報提供システムへの応用を目指しています。
+                </p>
+                
+                <h3>3. 歩行者行動シミュレーション</h3>
+                <p>
+                    マルチエージェントシミュレーションを用いて、
+                    歩行者の行動をモデル化しています。駅や商業施設などの
+                    空間設計の評価、避難計画の検証に活用されています。
+                </p>
+                
+                <h3>4. 滞留・回遊行動の分析</h3>
+                <p>
+                    人々がどこで立ち止まり、どのように回遊するかを分析しています。
+                    商業エリアの賑わい創出や、観光地の周遊促進策の検討に
+                    有用な知見を提供します。
+                </p>
+                
+                <h2>使用技術・データ</h2>
+                
+                <ul>
+                    <li>GPSトラッキングデータ</li>
+                    <li>携帯電話基地局データ</li>
+                    <li>Wi-Fi/Bluetoothセンサーデータ</li>
+                    <li>交通系ICカードデータ</li>
+                    <li>軌跡データマイニング</li>
+                    <li>時空間クラスタリング</li>
+                </ul>
+                
+                <h2>社会実装</h2>
+                
+                <p>
+                    本研究の成果は、自治体の交通計画や、商業施設の出店計画、
+                    イベント時の人流管理など、様々な場面で活用されています。
+                    産学連携プロジェクトも積極的に推進しています。
+                </p>
+            </article>
+            
+            <div class="related-section">
+                <h3 class="related-title">Other Research</h3>
+                <div class="research-grid">
+                    <article class="research-card">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <rect x="3" y="3" width="7" height="7"/>
+                                <rect x="14" y="3" width="7" height="7"/>
+                                <rect x="14" y="14" width="7" height="7"/>
+                                <rect x="3" y="14" width="7" height="7"/>
+                            </svg>
+                        </div>
+                        <h3 class="card-title">都市空間解析</h3>
+                        <p class="card-description">
+                            GISデータや3D都市モデルを活用した都市の空間特性の分析
+                        </p>
+                        <a href="urban-analytics.html" class="card-link">
+                            <span>詳細を見る</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </a>
+                    </article>
+                    <article class="research-card">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M12 2a2 2 0 012 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 017 7h1v3h-1a7 7 0 01-14 0H5v-3h1a7 7 0 017-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 012-2z"/>
+                            </svg>
+                        </div>
+                        <h3 class="card-title">AI・機械学習</h3>
+                        <p class="card-description">
+                            深層学習を活用した都市データからの知見抽出と予測モデル構築
+                        </p>
+                        <a href="ai-ml.html" class="card-link">
+                            <span>詳細を見る</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </a>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-text">NAKAYAMA</span>
+                    <span class="logo-sub">LABORATORY</span>
+                </div>
+                <div class="footer-links">
+                    <a href="../index.html#home">Home</a>
+                    <a href="../index.html#about">About</a>
+                    <a href="../index.html#news">News</a>
+                    <a href="../index.html#research">Research</a>
+                    <a href="../index.html#publications">Publications</a>
+                    <a href="../index.html#awards">Awards</a>
+                    <a href="../index.html#members">Members</a>
+                    <a href="../index.html#contact">Contact</a>
+                </div>
+                <div class="footer-social">
+                    <a href="#" class="social-link" aria-label="Twitter">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+                        </svg>
+                    </a>
+                    <a href="https://github.com/shunnkym" class="social-link" aria-label="GitHub">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Nakayama Laboratory. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>
+
