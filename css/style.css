@@ -17,7 +17,7 @@
     --gray-800: #262626;
     --gray-900: #171717;
     
-    /* Accent - Japan Red (蟾ｮ縺苓牡縺ｮ縺ｿ縲∬レ譎ｯ縺ｫ縺ｯ菴ｿ逕ｨ縺励↑縺�) */
+    /* Accent - Japan Red (差し色のみ、背景には使用しない) */
     --accent: #bc002d;
     
     /* Typography - Helvetica Stack */
@@ -1061,7 +1061,7 @@ a {
 }
 
 .news-link::after {
-    content: '竊�';
+    content: '→';
     transition: var(--transition-fast);
 }
 
