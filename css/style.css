@@ -54,16 +54,9 @@ body {
 }
 
 /* === Geometric Animation Background === */
+/* Hidden - only hero section has geometric animation */
 .geo-background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    pointer-events: none;
-    overflow: hidden;
-    background: #000000;
+    display: none;
 }
 
 #geo-canvas {
@@ -2467,6 +2460,18 @@ a {
         align-items: center;
         gap: 25px;
         transition: var(--transition-normal);
+        z-index: 1000;
+    }
+    
+    /* Mobile menu text color - black on white background */
+    .nav-menu .nav-link {
+        color: var(--black) !important;
+        font-size: 1.2rem;
+    }
+    
+    .nav-menu .nav-link:hover,
+    .nav-menu .nav-link.active {
+        color: var(--accent) !important;
     }
     
     .nav-menu.active {
@@ -2476,6 +2481,13 @@ a {
     .nav-toggle {
         display: block;
         z-index: 1001;
+    }
+    
+    /* Make hamburger black when menu is open */
+    .nav-toggle.active .hamburger,
+    .nav-toggle.active .hamburger::before,
+    .nav-toggle.active .hamburger::after {
+        background: var(--black);
     }
     
     .nav-toggle.active .hamburger {
