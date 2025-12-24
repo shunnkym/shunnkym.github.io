@@ -9,8 +9,10 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <!-- Particle Background -->
-    <canvas id="particle-canvas"></canvas>
+    <!-- Geometric Animation Background -->
+    <div class="geo-background">
+        <canvas id="geo-canvas"></canvas>
+    </div>
     
     <!-- Navigation -->
     <nav class="navbar">
@@ -40,11 +42,12 @@
         <div class="hero-content">
             <div class="hero-text">
                 <h1 class="hero-title">
-                    <span class="title-line" data-text="NAKAYAMA">NAKAYAMA</span>
-                    <span class="title-line accent" data-text="LABORATORY">LABORATORY</span>
+                    <span class="title-line">NAKAYAMA</span>
+                    <span class="title-line accent">LABORATORY</span>
                 </h1>
                 <p class="hero-subtitle">
                     <span class="typing-text">Urban Analytics × Human Flow × AI</span>
+                    <span class="cursor-blink">_</span>
                 </p>
                 <div class="hero-description">
                     <p>専修大学ネットワーク情報学部 中山研究室</p>
@@ -61,293 +64,9 @@
                 </div>
             </div>
             <div class="hero-visual">
-                <!-- GIS-Style Urban Analytics Visualization -->
-                <div class="city-visualization">
-                    <svg class="city-grid" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid meet">
-                        <defs>
-                            <!-- Heat map gradients -->
-                            <radialGradient id="heat1" cx="50%" cy="50%" r="50%">
-                                <stop offset="0%" stop-color="#bc002d" stop-opacity="0.7"/>
-                                <stop offset="40%" stop-color="#bc002d" stop-opacity="0.3"/>
-                                <stop offset="100%" stop-color="#bc002d" stop-opacity="0"/>
-                            </radialGradient>
-                            <radialGradient id="heat2" cx="50%" cy="50%" r="50%">
-                                <stop offset="0%" stop-color="#bc002d" stop-opacity="0.5"/>
-                                <stop offset="50%" stop-color="#bc002d" stop-opacity="0.2"/>
-                                <stop offset="100%" stop-color="#bc002d" stop-opacity="0"/>
-                            </radialGradient>
-                            <radialGradient id="heat3" cx="50%" cy="50%" r="50%">
-                                <stop offset="0%" stop-color="#bc002d" stop-opacity="0.35"/>
-                                <stop offset="60%" stop-color="#bc002d" stop-opacity="0.1"/>
-                                <stop offset="100%" stop-color="#bc002d" stop-opacity="0"/>
-                            </radialGradient>
-                            <!-- Flow glow -->
-                            <filter id="flowGlow" x="-50%" y="-50%" width="200%" height="200%">
-                                <feGaussianBlur stdDeviation="2" result="blur"/>
-                                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-                            </filter>
-                            <!-- Node pulse -->
-                            <radialGradient id="nodePulse" cx="50%" cy="50%" r="50%">
-                                <stop offset="0%" stop-color="#bc002d" stop-opacity="1"/>
-                                <stop offset="100%" stop-color="#bc002d" stop-opacity="0"/>
-                            </radialGradient>
-                        </defs>
-                        
-                        <!-- === BASE MAP LAYER === -->
-                        <!-- Coordinate Grid -->
-                        <g class="coord-grid" stroke="#000" stroke-width="0.3" opacity="0.08">
-                            <line x1="0" y1="40" x2="400" y2="40"/><line x1="0" y1="80" x2="400" y2="80"/>
-                            <line x1="0" y1="120" x2="400" y2="120"/><line x1="0" y1="160" x2="400" y2="160"/>
-                            <line x1="0" y1="200" x2="400" y2="200"/><line x1="0" y1="240" x2="400" y2="240"/>
-                            <line x1="0" y1="280" x2="400" y2="280"/><line x1="0" y1="320" x2="400" y2="320"/>
-                            <line x1="0" y1="360" x2="400" y2="360"/>
-                            <line x1="40" y1="0" x2="40" y2="400"/><line x1="80" y1="0" x2="80" y2="400"/>
-                            <line x1="120" y1="0" x2="120" y2="400"/><line x1="160" y1="0" x2="160" y2="400"/>
-                            <line x1="200" y1="0" x2="200" y2="400"/><line x1="240" y1="0" x2="240" y2="400"/>
-                            <line x1="280" y1="0" x2="280" y2="400"/><line x1="320" y1="0" x2="320" y2="400"/>
-                            <line x1="360" y1="0" x2="360" y2="400"/>
-                        </g>
-                        
-                        <!-- Street Network Layer -->
-                        <g class="streets" stroke="#000" fill="none" opacity="0.12">
-                            <!-- Major arterials -->
-                            <path d="M0,200 L400,200" stroke-width="3"/>
-                            <path d="M200,0 L200,400" stroke-width="3"/>
-                            <path d="M0,120 L400,120" stroke-width="2"/>
-                            <path d="M0,280 L400,280" stroke-width="2"/>
-                            <path d="M120,0 L120,400" stroke-width="2"/>
-                            <path d="M280,0 L280,400" stroke-width="2"/>
-                            <!-- Secondary roads -->
-                            <path d="M0,160 L400,160" stroke-width="1"/>
-                            <path d="M0,240 L400,240" stroke-width="1"/>
-                            <path d="M160,0 L160,400" stroke-width="1"/>
-                            <path d="M240,0 L240,400" stroke-width="1"/>
-                            <!-- Diagonal roads -->
-                            <path d="M0,0 L200,200 L400,400" stroke-width="1.5"/>
-                            <path d="M400,0 L200,200 L0,400" stroke-width="1.5"/>
-                            <!-- Ring road -->
-                            <ellipse cx="200" cy="200" rx="140" ry="130" stroke-width="2" stroke-dasharray="8,4"/>
-                        </g>
-                        
-                        <!-- Building Footprints Layer -->
-                        <g class="buildings" fill="#000" opacity="0.06">
-                            <!-- Central district -->
-                            <rect x="170" y="170" width="25" height="30"/>
-                            <rect x="200" y="165" width="35" height="35"/>
-                            <rect x="155" y="205" width="20" height="25"/>
-                            <rect x="180" y="210" width="30" height="20"/>
-                            <rect x="215" y="205" width="25" height="30"/>
-                            <!-- North district -->
-                            <rect x="180" y="90" width="40" height="25"/>
-                            <rect x="160" y="120" width="25" height="20"/>
-                            <rect x="195" y="125" width="30" height="25"/>
-                            <rect x="230" y="100" width="20" height="30"/>
-                            <!-- South district -->
-                            <rect x="170" y="280" width="30" height="25"/>
-                            <rect x="205" y="275" width="25" height="35"/>
-                            <rect x="150" y="310" width="35" height="20"/>
-                            <rect x="200" y="315" width="40" height="25"/>
-                            <!-- West district -->
-                            <rect x="60" y="180" width="30" height="40"/>
-                            <rect x="95" y="170" width="25" height="25"/>
-                            <rect x="70" y="225" width="35" height="30"/>
-                            <rect x="50" y="130" width="25" height="35"/>
-                            <!-- East district -->
-                            <rect x="290" y="175" width="35" height="30"/>
-                            <rect x="330" y="165" width="25" height="40"/>
-                            <rect x="300" y="210" width="30" height="25"/>
-                            <rect x="280" y="240" width="40" height="20"/>
-                            <!-- Scattered -->
-                            <rect x="100" y="80" width="20" height="25"/>
-                            <rect x="300" y="90" width="25" height="20"/>
-                            <rect x="80" y="300" width="30" height="25"/>
-                            <rect x="310" y="290" width="25" height="30"/>
-                        </g>
-                        
-                        <!-- === DENSITY HEAT MAP LAYER === -->
-                        <g class="heatmap">
-                            <!-- Primary hotspots -->
-                            <ellipse cx="200" cy="200" rx="80" ry="75" fill="url(#heat1)">
-                                <animate attributeName="rx" values="80;90;80" dur="4s" repeatCount="indefinite"/>
-                                <animate attributeName="ry" values="75;85;75" dur="4s" repeatCount="indefinite"/>
-                            </ellipse>
-                            <!-- Secondary hotspots -->
-                            <circle cx="120" cy="160" r="50" fill="url(#heat2)">
-                                <animate attributeName="r" values="50;58;50" dur="5s" repeatCount="indefinite"/>
-                            </circle>
-                            <circle cx="280" cy="180" r="45" fill="url(#heat2)">
-                                <animate attributeName="r" values="45;52;45" dur="4.5s" repeatCount="indefinite"/>
-                            </circle>
-                            <circle cx="180" cy="300" r="50" fill="url(#heat2)">
-                                <animate attributeName="r" values="50;55;50" dur="5.5s" repeatCount="indefinite"/>
-                            </circle>
-                            <circle cx="200" cy="100" r="40" fill="url(#heat2)">
-                                <animate attributeName="r" values="40;48;40" dur="4s" repeatCount="indefinite"/>
-                            </circle>
-                            <!-- Tertiary hotspots -->
-                            <circle cx="80" cy="240" r="35" fill="url(#heat3)"/>
-                            <circle cx="300" cy="280" r="30" fill="url(#heat3)"/>
-                            <circle cx="100" cy="100" r="28" fill="url(#heat3)"/>
-                            <circle cx="320" cy="120" r="30" fill="url(#heat3)"/>
-                        </g>
-                        
-                        <!-- === FLOW NETWORK LAYER === -->
-                        <g class="flow-network" filter="url(#flowGlow)">
-                            <!-- Major flow corridors -->
-                            <path class="flow-major" d="M0,200 Q100,195 200,200 Q300,205 400,200" stroke="#bc002d" stroke-width="3" fill="none" opacity="0.6"/>
-                            <path class="flow-major" d="M200,0 Q205,100 200,200 Q195,300 200,400" stroke="#bc002d" stroke-width="3" fill="none" opacity="0.6"/>
-                            
-                            <!-- Secondary flows - converging to center -->
-                            <path class="flow-secondary" d="M0,80 Q100,120 200,200" stroke="#bc002d" stroke-width="2" fill="none" opacity="0.5"/>
-                            <path class="flow-secondary" d="M400,80 Q300,120 200,200" stroke="#bc002d" stroke-width="2" fill="none" opacity="0.5"/>
-                            <path class="flow-secondary" d="M0,320 Q100,280 200,200" stroke="#bc002d" stroke-width="2" fill="none" opacity="0.5"/>
-                            <path class="flow-secondary" d="M400,320 Q300,280 200,200" stroke="#bc002d" stroke-width="2" fill="none" opacity="0.5"/>
-                            
-                            <!-- Orbital flows -->
-                            <path class="flow-orbital" d="M80,200 Q80,120 160,80 Q240,40 320,80 Q380,120 380,200" stroke="#bc002d" stroke-width="1.5" fill="none" opacity="0.4"/>
-                            <path class="flow-orbital" d="M80,200 Q80,280 160,320 Q240,360 320,320 Q380,280 380,200" stroke="#bc002d" stroke-width="1.5" fill="none" opacity="0.4"/>
-                            
-                            <!-- Micro flows between nodes -->
-                            <path class="flow-micro" d="M120,160 Q160,180 200,200" stroke="#bc002d" stroke-width="1" fill="none" opacity="0.3"/>
-                            <path class="flow-micro" d="M280,180 Q240,190 200,200" stroke="#bc002d" stroke-width="1" fill="none" opacity="0.3"/>
-                            <path class="flow-micro" d="M180,300 Q190,250 200,200" stroke="#bc002d" stroke-width="1" fill="none" opacity="0.3"/>
-                            <path class="flow-micro" d="M200,100 Q200,150 200,200" stroke="#bc002d" stroke-width="1" fill="none" opacity="0.3"/>
-                            <path class="flow-micro" d="M80,240 Q130,220 200,200" stroke="#bc002d" stroke-width="1" fill="none" opacity="0.3"/>
-                            <path class="flow-micro" d="M300,280 Q250,240 200,200" stroke="#bc002d" stroke-width="1" fill="none" opacity="0.3"/>
-                            
-                            <!-- Cross-city diagonal flows -->
-                            <path class="flow-diagonal" d="M50,50 Q125,125 200,200 Q275,275 350,350" stroke="#000" stroke-width="1" fill="none" opacity="0.15"/>
-                            <path class="flow-diagonal" d="M350,50 Q275,125 200,200 Q125,275 50,350" stroke="#000" stroke-width="1" fill="none" opacity="0.15"/>
-                        </g>
-                        
-                        <!-- === ANIMATED PARTICLES === -->
-                        <g class="particles">
-                            <!-- Major horizontal flow -->
-                            <circle r="4" fill="#bc002d"><animateMotion dur="5s" repeatCount="indefinite" path="M0,200 Q100,195 200,200 Q300,205 400,200"/></circle>
-                            <circle r="3" fill="#bc002d" opacity="0.7"><animateMotion dur="5s" repeatCount="indefinite" begin="1.7s" path="M0,200 Q100,195 200,200 Q300,205 400,200"/></circle>
-                            <circle r="2.5" fill="#bc002d" opacity="0.5"><animateMotion dur="5s" repeatCount="indefinite" begin="3.3s" path="M0,200 Q100,195 200,200 Q300,205 400,200"/></circle>
-                            <!-- Reverse flow -->
-                            <circle r="3" fill="#bc002d" opacity="0.6"><animateMotion dur="5.5s" repeatCount="indefinite" path="M400,200 Q300,205 200,200 Q100,195 0,200"/></circle>
-                            
-                            <!-- Major vertical flow -->
-                            <circle r="4" fill="#bc002d"><animateMotion dur="5s" repeatCount="indefinite" path="M200,0 Q205,100 200,200 Q195,300 200,400"/></circle>
-                            <circle r="3" fill="#bc002d" opacity="0.7"><animateMotion dur="5s" repeatCount="indefinite" begin="2.5s" path="M200,0 Q205,100 200,200 Q195,300 200,400"/></circle>
-                            <!-- Reverse -->
-                            <circle r="2.5" fill="#bc002d" opacity="0.5"><animateMotion dur="5.5s" repeatCount="indefinite" path="M200,400 Q195,300 200,200 Q205,100 200,0"/></circle>
-                            
-                            <!-- Diagonal flows -->
-                            <circle r="3.5" fill="#bc002d"><animateMotion dur="4s" repeatCount="indefinite" path="M0,80 Q100,120 200,200"/></circle>
-                            <circle r="3" fill="#bc002d" opacity="0.7"><animateMotion dur="4s" repeatCount="indefinite" begin="2s" path="M400,80 Q300,120 200,200"/></circle>
-                            <circle r="3.5" fill="#bc002d"><animateMotion dur="4.5s" repeatCount="indefinite" path="M0,320 Q100,280 200,200"/></circle>
-                            <circle r="3" fill="#bc002d" opacity="0.7"><animateMotion dur="4.5s" repeatCount="indefinite" begin="2.2s" path="M400,320 Q300,280 200,200"/></circle>
-                            
-                            <!-- Orbital particles -->
-                            <circle r="2.5" fill="#bc002d" opacity="0.6"><animateMotion dur="8s" repeatCount="indefinite" path="M80,200 Q80,120 160,80 Q240,40 320,80 Q380,120 380,200"/></circle>
-                            <circle r="2" fill="#bc002d" opacity="0.5"><animateMotion dur="8s" repeatCount="indefinite" begin="4s" path="M380,200 Q380,280 320,320 Q240,360 160,320 Q80,280 80,200"/></circle>
-                            
-                            <!-- Micro flow particles -->
-                            <circle r="2" fill="#bc002d" opacity="0.5"><animateMotion dur="3s" repeatCount="indefinite" path="M120,160 Q160,180 200,200"/></circle>
-                            <circle r="2" fill="#bc002d" opacity="0.5"><animateMotion dur="2.5s" repeatCount="indefinite" path="M280,180 Q240,190 200,200"/></circle>
-                            <circle r="2" fill="#bc002d" opacity="0.5"><animateMotion dur="3.5s" repeatCount="indefinite" path="M180,300 Q190,250 200,200"/></circle>
-                            <circle r="2" fill="#bc002d" opacity="0.5"><animateMotion dur="3s" repeatCount="indefinite" path="M200,100 Q200,150 200,200"/></circle>
-                            <circle r="1.5" fill="#bc002d" opacity="0.4"><animateMotion dur="4s" repeatCount="indefinite" path="M80,240 Q130,220 200,200"/></circle>
-                            <circle r="1.5" fill="#bc002d" opacity="0.4"><animateMotion dur="3.5s" repeatCount="indefinite" path="M300,280 Q250,240 200,200"/></circle>
-                            
-                            <!-- Cross-city particles (data/resources) -->
-                            <rect width="4" height="2" fill="#000" opacity="0.4"><animateMotion dur="7s" repeatCount="indefinite" rotate="auto" path="M50,50 Q125,125 200,200 Q275,275 350,350"/></rect>
-                            <rect width="4" height="2" fill="#000" opacity="0.4"><animateMotion dur="7s" repeatCount="indefinite" begin="3.5s" rotate="auto" path="M350,50 Q275,125 200,200 Q125,275 50,350"/></rect>
-                        </g>
-                        
-                        <!-- === DATA NODES LAYER === -->
-                        <g class="nodes">
-                            <!-- Central hub -->
-                            <g class="node-central" transform="translate(200, 200)">
-                                <circle r="20" fill="url(#nodePulse)" opacity="0.5">
-                                    <animate attributeName="r" values="20;30;20" dur="3s" repeatCount="indefinite"/>
-                                    <animate attributeName="opacity" values="0.5;0.2;0.5" dur="3s" repeatCount="indefinite"/>
-                                </circle>
-                                <circle r="8" fill="none" stroke="#bc002d" stroke-width="2"/>
-                                <circle r="4" fill="#bc002d"/>
-                            </g>
-                            
-                            <!-- Secondary nodes -->
-                            <g class="node-secondary">
-                                <circle cx="120" cy="160" r="5" fill="none" stroke="#bc002d" stroke-width="1.5"/>
-                                <circle cx="120" cy="160" r="2" fill="#bc002d"/>
-                            </g>
-                            <g class="node-secondary">
-                                <circle cx="280" cy="180" r="5" fill="none" stroke="#bc002d" stroke-width="1.5"/>
-                                <circle cx="280" cy="180" r="2" fill="#bc002d"/>
-                            </g>
-                            <g class="node-secondary">
-                                <circle cx="180" cy="300" r="5" fill="none" stroke="#bc002d" stroke-width="1.5"/>
-                                <circle cx="180" cy="300" r="2" fill="#bc002d"/>
-                            </g>
-                            <g class="node-secondary">
-                                <circle cx="200" cy="100" r="5" fill="none" stroke="#bc002d" stroke-width="1.5"/>
-                                <circle cx="200" cy="100" r="2" fill="#bc002d"/>
-                            </g>
-                            
-                            <!-- Tertiary nodes -->
-                            <circle cx="80" cy="240" r="3" fill="none" stroke="#000" stroke-width="1" opacity="0.4"/>
-                            <circle cx="300" cy="280" r="3" fill="none" stroke="#000" stroke-width="1" opacity="0.4"/>
-                            <circle cx="100" cy="100" r="3" fill="none" stroke="#000" stroke-width="1" opacity="0.4"/>
-                            <circle cx="320" cy="120" r="3" fill="none" stroke="#000" stroke-width="1" opacity="0.4"/>
-                            <circle cx="60" cy="180" r="3" fill="none" stroke="#000" stroke-width="1" opacity="0.4"/>
-                            <circle cx="340" cy="200" r="3" fill="none" stroke="#000" stroke-width="1" opacity="0.4"/>
-                        </g>
-                        
-                        <!-- === UI OVERLAY === -->
-                        <g class="ui-layer" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
-                            <!-- Coordinates -->
-                            <g class="coordinates" fill="#000" font-size="6" opacity="0.3">
-                                <text x="5" y="12">35.70°N</text>
-                                <text x="5" y="395">35.65°N</text>
-                                <text x="355" y="395">139.75°E</text>
-                                <text x="355" y="12">139.70°E</text>
-                            </g>
-                            
-                            <!-- Scale bar -->
-                            <g class="scale-bar" transform="translate(300, 375)">
-                                <line x1="0" y1="0" x2="60" y2="0" stroke="#000" stroke-width="1" opacity="0.4"/>
-                                <line x1="0" y1="-3" x2="0" y2="3" stroke="#000" stroke-width="1" opacity="0.4"/>
-                                <line x1="60" y1="-3" x2="60" y2="3" stroke="#000" stroke-width="1" opacity="0.4"/>
-                                <text x="30" y="12" font-size="6" fill="#000" opacity="0.4" text-anchor="middle">1 km</text>
-                            </g>
-                            
-                            <!-- Layer indicator -->
-                            <g class="layer-info" transform="translate(10, 340)">
-                                <rect width="75" height="50" rx="2" fill="#fff" stroke="#000" stroke-width="0.3" opacity="0.85"/>
-                                <text x="5" y="12" font-size="6" fill="#000" opacity="0.6">LAYERS</text>
-                                <g transform="translate(5, 18)">
-                                    <rect width="8" height="8" fill="#bc002d" opacity="0.5"/>
-                                    <text x="12" y="7" font-size="5" fill="#000" opacity="0.5">Density</text>
-                                </g>
-                                <g transform="translate(5, 28)">
-                                    <line x1="0" y1="4" x2="8" y2="4" stroke="#bc002d" stroke-width="2"/>
-                                    <text x="12" y="7" font-size="5" fill="#000" opacity="0.5">Flow</text>
-                                </g>
-                                <g transform="translate(5, 38)">
-                                    <circle cx="4" cy="4" r="3" fill="none" stroke="#bc002d" stroke-width="1"/>
-                                    <text x="12" y="7" font-size="5" fill="#000" opacity="0.5">Nodes</text>
-                                </g>
-                            </g>
-                            
-                            <!-- Live badge -->
-                            <g class="live-badge" transform="translate(340, 10)">
-                                <rect width="50" height="18" rx="2" fill="#fff" stroke="#000" stroke-width="0.5" opacity="0.9"/>
-                                <circle cx="12" cy="9" r="4" fill="#bc002d">
-                                    <animate attributeName="opacity" values="1;0.3;1" dur="1s" repeatCount="indefinite"/>
-                                </circle>
-                                <text x="20" y="13" font-size="9" fill="#000" font-weight="bold">LIVE</text>
-                            </g>
-                            
-                            <!-- Data readout -->
-                            <g class="data-readout" transform="translate(10, 10)">
-                                <text font-size="7" fill="#000" opacity="0.4" letter-spacing="1">URBAN ANALYTICS</text>
-                            </g>
-                        </g>
-                    </svg>
+                <!-- Geometric Animation Canvas -->
+                <div class="geo-visual-container">
+                    <canvas id="hero-geo-canvas"></canvas>
                 </div>
             </div>
         </div>
