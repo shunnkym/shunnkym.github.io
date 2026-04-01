@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0K9E8NRED8"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-0K9E8NRED8');
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Artifi-City Intelligence Lab</title>
+    <meta name="description" content="Artifi-City Intelligence Lab（中山研究室）について。GeoAIと空間情報科学で都市の見えない構造を明らかにする。">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .lab-about-hero {
+            position: relative;
+            height: 60vh;
+            display: flex;
+            align-items: flex-end;
+            overflow: hidden;
+        }
+        
+        .lab-about-hero-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.5) grayscale(20%);
+        }
+        
+        .lab-about-hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 60px;
+            max-width: 800px;
+        }
+        
+        .lab-about-category {
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 15px;
+        }
+        
+        .lab-about-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+        
+        .lab-about-subtitle {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.7);
+        }
+        
+        .lab-about-content {
+            padding: 60px;
+            max-width: 900px;
+        }
+        
+        .lab-about-section {
+            margin-bottom: 50px;
+        }
+        
+        .lab-about-section h2 {
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.4);
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #222;
+        }
+        
+        .lab-about-section p {
+            font-size: 1rem;
+            line-height: 2;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 20px;
+        }
+        
+        .lab-about-stats {
+            display: flex;
+            gap: 60px;
+        }
+        
+        .lab-about-stat-item {
+            text-align: left;
+        }
+        
+        .lab-about-stat-number {
+            display: block;
+            font-size: 3rem;
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1;
+        }
+        
+        .lab-about-stat-label {
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.4);
+            margin-top: 5px;
+        }
+        
+        @media (max-width: 768px) {
+            .lab-about-hero {
+                height: 50vh;
+            }
+            
+            .lab-about-hero-content {
+                padding: 30px;
+            }
+            
+            .lab-about-title {
+                font-size: 2rem;
+            }
+            
+            .lab-about-content {
+                padding: 40px 30px;
+            }
+            
+            .lab-about-stats {
+                flex-direction: column;
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+<body class="dark-theme">
+    
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <a href="index.html" class="sidebar-logo">
+                <span class="logo-main">SG</span>
+                <span class="logo-full" data-text="Senshu GeoAI Lab">Senshu GeoAI Lab</span>
+            </a>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="index.html" class="sidebar-link" title="News">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M19 20H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v1m2 13a2 2 0 0 1-2-2V7m2 13a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-2"/>
+                </svg>
+                <span>News</span>
+            </a>
+            <a href="about.html" class="sidebar-link active" title="About">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <circle cx="12" cy="12" r="10"/>
+                    <path d="M12 16v-4M12 8h.01"/>
+                </svg>
+                <span>About</span>
+            </a>
+            <a href="research.html" class="sidebar-link" title="Projects">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <rect x="3" y="3" width="7" height="7"/>
+                    <rect x="14" y="3" width="7" height="7"/>
+                    <rect x="14" y="14" width="7" height="7"/>
+                    <rect x="3" y="14" width="7" height="7"/>
+                </svg>
+                <span>Projects</span>
+            </a>
+            <a href="publications.html" class="sidebar-link" title="Publications">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                </svg>
+                <span>Publications</span>
+            </a>
+            <a href="awards.html" class="sidebar-link" title="Awards">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <circle cx="12" cy="8" r="6"/>
+                    <path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/>
+                </svg>
+                <span>Awards</span>
+            </a>
+            <a href="members.html" class="sidebar-link" title="Members">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                    <circle cx="9" cy="7" r="4"/>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+                </svg>
+                <span>Members</span>
+            </a>
+            <a href="contact.html" class="sidebar-link" title="Contact">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                    <circle cx="12" cy="10" r="3"/>
+                </svg>
+                <span>Contact</span>
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero with Group Photo -->
+        <div class="lab-about-hero">
+            <img src="photo/DSC00639.jpg" alt="Artifi-City Intelligence Lab 集合写真" class="lab-about-hero-image">
+            <div class="lab-about-hero-content">
+                <p class="lab-about-category">Senshu University</p>
+                <h1 class="lab-about-title">GeoAI Lab</h1>
+                <p class="lab-about-subtitle">Geo Artificity Intelligence Lab</p>
+            </div>
+        </div>
+        
+        <!-- Content -->
+        <div class="lab-about-content">
+            <div class="lab-about-section">
+                <h2>Stats</h2>
+                <div class="lab-about-stats">
+                    <div class="lab-about-stat-item">
+                        <span class="lab-about-stat-number" data-count="17">0</span>
+                        <span class="lab-about-stat-label">Members</span>
+                    </div>
+                    <div class="lab-about-stat-item">
+                        <span class="lab-about-stat-number" data-count="46">0</span>
+                        <span class="lab-about-stat-label">Publications</span>
+                    </div>
+                    <div class="lab-about-stat-item">
+                        <span class="lab-about-stat-number" data-count="6">0</span>
+                        <span class="lab-about-stat-label">Awards</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="lab-about-section">
+                <h2>Philosophy</h2>
+                <p>
+                    Artifi-City Intelligence——それは「人工知能（Artificial Intelligence）」と「都市（City）」を融合させた、私たちの造語です。
+                </p>
+                <p>
+                    しかしこの言葉には、もうひとつの意味が重なっています。「Artificity」とは、人新世（Anthropocene）の時代において、人間によって構造化・管理された環境の性質を指す概念です。もはや純粋な「自然」が存在しないと言われる地球において、都市はまさにArtificityの最も濃密な現れ——人間の意図と行為が幾重にも堆積した空間です。
+                </p>
+                <p>
+                    この研究室では、地理空間情報に特化した人工知能「GeoAI」と空間情報科学を駆使して、都市に潜む「見えない構造」を明らかにします。たとえば、建物密度と炭素排出量の関係、GPSデータに刻まれた歩行者の回遊パターン、駅周辺における商業施設の立地と歩行行動の相互作用。人がつくり、人が住み、しかし人の直感だけでは捉えきれない都市の複雑さに、データと現地調査の両面から迫ります。
+                </p>
+                <p>
+                    同時に、私たちはデータを「伝わるかたち」に変えることを大切にしています。都市の未来は、専門家だけで決められるものではありません。仮想空間と物理空間を融合したTangible GIS——3Dモデルに手で触れながらシミュレーション結果を体感できる仕組み——は、専門家と市民が同じテーブルで都市の未来を議論するための道具です。
+                </p>
+                <p>
+                    人工の知能で、人工の都市を読み解き、人間の対話へとつなぐ。分析と対話、エビデンスと想像力。その両輪で、持続可能な都市の姿を描き出すこと。それがArtifi-City Intelligenceの実践です。
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Counter animation for lab about stats
+        document.addEventListener('DOMContentLoaded', () => {
+            const statNumbers = document.querySelectorAll('.lab-about-stat-number[data-count]');
+            
+            if (statNumbers.length === 0) return;
+            
+            const animateCounter = (element) => {
+                const target = parseInt(element.getAttribute('data-count'));
+                const duration = 1500;
+                const startTime = Date.now();
+                
+                function easeOutQuart(t) {
+                    return 1 - Math.pow(1 - t, 4);
+                }
+                
+                function update() {
+                    const elapsed = Date.now() - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    const easedProgress = easeOutQuart(progress);
+                    const currentValue = Math.floor(target * easedProgress);
+                    
+                    element.textContent = currentValue;
+                    
+                    if (progress < 1) {
+                        requestAnimationFrame(update);
+                    } else {
+                        element.textContent = target;
+                    }
+                }
+                
+                update();
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounter(entry.target);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            statNumbers.forEach(stat => {
+                observer.observe(stat);
+            });
+        });
+    </script>
+</body>
+</html>

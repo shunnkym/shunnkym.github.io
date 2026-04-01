@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0K9E8NRED8"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-0K9E8NRED8');
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tangible GIS | Shun Nakayama</title>
+    <meta name="description" content="触れるGIS - 物理模型とデジタル技術の融合による新しい空間情報プラットフォーム">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .project-page {
+            background: #0a0a0a;
+            color: #fff;
+            min-height: 100vh;
+        }
+        
+        .project-hero {
+            position: relative;
+            height: 70vh;
+            display: flex;
+            align-items: flex-end;
+            overflow: hidden;
+        }
+        
+        .project-hero-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.5);
+        }
+        
+        .project-hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 60px;
+            max-width: 800px;
+        }
+        
+        .project-category {
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 15px;
+        }
+        
+        .project-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 15px;
+        }
+        
+        .project-subtitle {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.7);
+        }
+        
+        .project-content {
+            padding: 80px 60px;
+            max-width: 900px;
+        }
+        
+        .project-section {
+            margin-bottom: 60px;
+        }
+        
+        .project-section h2 {
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.4);
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #222;
+        }
+        
+        .project-section p {
+            font-size: 1rem;
+            line-height: 2;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 20px;
+        }
+        
+        .project-images {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 40px 0;
+        }
+        
+        .project-images img {
+            width: 100%;
+            height: auto;
+            filter: grayscale(20%);
+        }
+        
+        .project-images.single img {
+            grid-column: span 2;
+            max-width: 100%;
+        }
+        
+        .project-meta-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .meta-item h4 {
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.4);
+            margin-bottom: 10px;
+        }
+        
+        .meta-item p {
+            font-size: 0.9rem;
+            color: #fff;
+            margin: 0 0 5px 0;
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 30px;
+            margin-top: 40px;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.6);
+            border: 1px solid #333;
+            transition: all 0.3s ease;
+        }
+        
+        .back-link:hover {
+            color: #fff;
+            border-color: #fff;
+        }
+        
+        .related-publications {
+            margin-top: 40px;
+        }
+        
+        .related-pub-item {
+            padding: 20px 0;
+            border-bottom: 1px solid #1a1a1a;
+        }
+        
+        .related-pub-item h4 {
+            font-size: 0.95rem;
+            color: #fff;
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+        
+        .related-pub-item p {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.5);
+            margin: 0;
+        }
+        
+        .personal-note {
+            margin: 30px 0;
+        }
+        
+        .personal-note p {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.8);
+            margin: 0 0 20px 0;
+            line-height: 2;
+        }
+        
+        .personal-note p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .lineage-section {
+            margin-top: 40px;
+            position: relative;
+            padding: 40px 0;
+            overflow: visible;
+        }
+        
+        .lineage-timeline {
+            position: relative;
+            padding-left: 100px;
+        }
+        
+        .lineage-item {
+            position: relative;
+            padding: 30px 0 30px 70px;
+            margin-bottom: 40px;
+            opacity: 0;
+            transform: translateX(-50px) rotateY(90deg);
+            animation: itemReveal 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            perspective: 1000px;
+        }
+        
+        .lineage-item:hover {
+            transform: translateX(15px) rotateY(0deg);
+        }
+        
+        .lineage-item:nth-child(1) { animation-delay: 0.2s; }
+        .lineage-item:nth-child(2) { animation-delay: 0.4s; }
+        .lineage-item:nth-child(3) { animation-delay: 0.6s; }
+        .lineage-item:nth-child(4) { animation-delay: 0.8s; }
+        .lineage-item:nth-child(5) { animation-delay: 1.0s; }
+        
+        @keyframes itemReveal {
+            from {
+                opacity: 0;
+                transform: translateX(-50px) rotateY(90deg) scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0) rotateY(0deg) scale(1);
+            }
+        }
+        
+        .lineage-item::before {
+            content: '';
+            position: absolute;
+            left: 40px;
+            top: 35px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            border: 2px solid #0a0a0a;
+            box-shadow: 
+                0 0 0 2px rgba(255,255,255,0.1),
+                0 0 0 4px rgba(255,255,255,0.05),
+                0 0 30px rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+            z-index: 2;
+        }
+        
+        .lineage-item:hover::before {
+            background: rgba(255,255,255,0.4);
+            box-shadow: 
+                0 0 0 3px rgba(255,255,255,0.2),
+                0 0 0 6px rgba(255,255,255,0.1),
+                0 0 40px rgba(255,255,255,0.4);
+            transform: scale(1.2);
+        }
+        
+        .red-ball-mover {
+            position: absolute;
+            left: 140px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #2dd4bf;
+            box-shadow: 
+                0 0 10px rgba(45,212,191,0.6),
+                0 0 20px rgba(45,212,191,0.4),
+                0 0 30px rgba(45,212,191,0.2);
+            transition: top 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease, transform 0.3s ease;
+            z-index: 10;
+            opacity: 0;
+            transform: scale(0);
+            pointer-events: none;
+        }
+        
+        .lineage-item::after {
+            content: '';
+            position: absolute;
+            left: 48px;
+            top: 51px;
+            width: 1px;
+            height: calc(100% + 40px);
+            background: rgba(255,255,255,0.15);
+            transform-origin: top;
+            transform: scaleY(0);
+            animation: lineExtend 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+        
+        .lineage-item:not(:last-child)::after {
+            animation-delay: 0.3s;
+        }
+        
+        @keyframes lineExtend {
+            to {
+                transform: scaleY(1);
+            }
+        }
+        
+        .lineage-branch {
+            position: relative;
+            margin-left: 70px;
+            padding-left: 50px;
+            border-left: 1px dashed rgba(255,255,255,0.15);
+            margin-top: 20px;
+            opacity: 0;
+            transform: translateX(-20px);
+            animation: branchAppear 0.8s ease-out forwards;
+        }
+        
+        .lineage-item:hover .lineage-branch {
+            opacity: 1;
+            border-left-color: rgba(255,255,255,0.3);
+        }
+        
+        @keyframes branchAppear {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .lineage-branch::before {
+            content: '';
+            position: absolute;
+            left: -1px;
+            top: 0;
+            width: 1px;
+            height: 30px;
+            background: rgba(255,255,255,0.2);
+        }
+        
+        .lineage-item a,
+        .lineage-item .lineage-current {
+            color: #fff;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-block;
+            margin-bottom: 10px;
+            position: relative;
+            text-shadow: 0 0 15px rgba(255,255,255,0.4);
+            transform-style: preserve-3d;
+        }
+        
+        .lineage-item a:hover {
+            color: rgba(255,255,255,1);
+            transform: translateX(10px) scale(1.05);
+            text-shadow: 0 0 25px rgba(255,255,255,0.7), 0 5px 15px rgba(255,255,255,0.3);
+        }
+        
+        .shuffle-container {
+            display: inline-block;
+            position: relative;
+        }
+        
+        .shuffle-text {
+            display: inline-block;
+            position: relative;
+        }
+        
+        
+        .lineage-item a::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, rgba(255,255,255,1), rgba(255,255,255,0.5), transparent);
+            transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 0 15px rgba(255,255,255,0.5);
+        }
+        
+        .lineage-item a:hover::after {
+            width: 100%;
+        }
+        
+        .lineage-item span {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.95rem;
+            display: block;
+            margin-top: 8px;
+            line-height: 1.8;
+            transition: all 0.4s ease;
+            transform: translateX(0);
+        }
+        
+        .lineage-item:hover span {
+            color: rgba(255,255,255,0.9);
+            transform: translateX(5px);
+        }
+        
+        .lineage-item .lineage-current {
+            cursor: default;
+            position: relative;
+        }
+        
+        .lineage-item .lineage-current::after {
+            content: '→';
+            position: absolute;
+            right: -25px;
+            top: 50%;
+            transform: translateY(-50%) rotate(0deg);
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.5);
+            animation: arrowPulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes arrowPulse {
+            0%, 100% {
+                opacity: 0.5;
+                transform: translateY(-50%) translateX(0) rotate(0deg);
+            }
+            50% {
+                opacity: 1;
+                transform: translateY(-50%) translateX(5px) rotate(0deg);
+            }
+        }
+        
+        .lineage-year {
+            position: absolute;
+            left: -90px;
+            top: 35px;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.4);
+            font-weight: 600;
+            white-space: nowrap;
+            letter-spacing: 0.1em;
+            transition: all 0.3s ease;
+            opacity: 0.7;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+        
+        .lineage-item:hover .lineage-year {
+            color: rgba(255,255,255,0.9);
+            opacity: 1;
+        }
+        
+        .lineage-timeline {
+            position: relative;
+        }
+        
+        .red-ball {
+            position: absolute;
+            left: 32px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #2dd4bf;
+            box-shadow: 
+                0 0 10px rgba(45,212,191,0.6),
+                0 0 20px rgba(45,212,191,0.4),
+                0 0 30px rgba(45,212,191,0.2);
+            transition: top 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 10;
+            opacity: 0;
+            transform: scale(0);
+        }
+        
+        .lineage-timeline:hover .red-ball {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        .lineage-item:nth-child(1):hover ~ .red-ball,
+        .lineage-item:nth-child(1):hover ~ .lineage-item .red-ball {
+            top: 35px;
+        }
+        
+        .lineage-item:nth-child(2):hover ~ .red-ball,
+        .lineage-item:nth-child(2):hover ~ .lineage-item .red-ball {
+            top: 105px;
+        }
+        
+        .lineage-item:nth-child(3):hover ~ .red-ball,
+        .lineage-item:nth-child(3):hover ~ .lineage-item .red-ball {
+            top: 175px;
+        }
+        
+        .lineage-item:hover .red-ball {
+            top: 35px;
+        }
+        
+        .lineage-item a,
+        .lineage-item .lineage-current {
+            position: relative;
+            overflow: visible;
+        }
+        
+        .lineage-item a .shuffle-text {
+            display: inline-block;
+            position: relative;
+        }
+        
+        .lineage-item a .shuffle-text::before {
+            content: attr(data-shuffle);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            animation: textShuffle 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+        
+        @keyframes textShuffle {
+            0% {
+                opacity: 1;
+                transform: translateY(0);
+                filter: blur(0);
+            }
+            25% {
+                opacity: 0.8;
+                transform: translateY(-5px);
+                filter: blur(1px);
+            }
+            50% {
+                opacity: 0.6;
+                transform: translateY(5px);
+                filter: blur(2px);
+            }
+            75% {
+                opacity: 0.8;
+                transform: translateY(-3px);
+                filter: blur(1px);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(0);
+                filter: blur(0);
+            }
+        }
+        
+        .lineage-item a:hover .shuffle-text {
+            animation: textShuffleHover 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+        
+        @keyframes textShuffleHover {
+            0% {
+                transform: translateX(0);
+            }
+            10% {
+                transform: translateX(-2px);
+            }
+            20% {
+                transform: translateX(2px);
+            }
+            30% {
+                transform: translateX(-1px);
+            }
+            40% {
+                transform: translateX(1px);
+            }
+            50% {
+                transform: translateX(-1px);
+            }
+            60% {
+                transform: translateX(1px);
+            }
+            70% {
+                transform: translateX(-0.5px);
+            }
+            80% {
+                transform: translateX(0.5px);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
+        
+        .lineage-branch-item {
+            position: relative;
+            padding: 20px 0 20px 50px;
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateX(-30px) rotateY(45deg);
+            animation: branchItemReveal 0.7s ease-out forwards;
+        }
+        
+        .lineage-branch-item:nth-child(1) { animation-delay: 0.4s; }
+        .lineage-branch-item:nth-child(2) { animation-delay: 0.6s; }
+        
+        @keyframes branchItemReveal {
+            to {
+                opacity: 1;
+                transform: translateX(0) rotateY(0deg);
+            }
+        }
+        
+        .lineage-branch-item::before {
+            content: '';
+            position: absolute;
+            left: -15px;
+            top: 28px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            border: 2px solid #0a0a0a;
+            box-shadow: 0 0 0 2px rgba(255,255,255,0.1), 0 0 20px rgba(255,255,255,0.2);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .lineage-branch-item:hover::before {
+            background: rgba(255,255,255,0.5);
+            box-shadow: 0 0 0 4px rgba(255,255,255,0.2), 0 0 30px rgba(255,255,255,0.4);
+            transform: scale(1.3) rotate(180deg);
+        }
+        
+        .lineage-branch-item a {
+            color: #fff;
+            font-size: 1.05rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-block;
+            margin-bottom: 6px;
+            position: relative;
+            text-shadow: 0 0 10px rgba(255,255,255,0.3);
+            transform-style: preserve-3d;
+        }
+        
+        .lineage-branch-item a:hover {
+            color: rgba(255,255,255,1);
+            transform: translateX(8px) rotateY(-5deg) scale(1.03);
+            text-shadow: 0 0 20px rgba(255,255,255,0.6);
+        }
+        
+        .lineage-branch-item a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1.5px;
+            background: linear-gradient(90deg, rgba(255,255,255,0.8), transparent);
+            transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .lineage-branch-item a:hover::after {
+            width: 100%;
+        }
+        
+        .lineage-branch-item span {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.9rem;
+            display: block;
+            margin-top: 5px;
+            line-height: 1.7;
+            transition: all 0.3s ease;
+        }
+        
+        .lineage-branch-item:hover span {
+            color: rgba(255,255,255,0.8);
+            transform: translateX(3px);
+        }
+        
+        @media (max-width: 768px) {
+            .project-hero {
+                height: 50vh;
+            }
+            
+            .project-hero-content {
+                padding: 30px;
+            }
+            
+            .project-title {
+                font-size: 2rem;
+            }
+            
+            .project-content {
+                padding: 50px 30px;
+            }
+            
+            .project-images {
+                grid-template-columns: 1fr;
+            }
+            
+            .project-meta-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body class="project-page">
+    
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <a href="../index.html" class="sidebar-logo">
+                <span class="logo-main">AC</span>
+                <span class="logo-full" data-text="Artifi-City">Artifi-City</span>
+            </a>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="../index.html" class="sidebar-link" title="News">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M19 20H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v1m2 13a2 2 0 0 1-2-2V7m2 13a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-2"/>
+                </svg>
+                <span>News</span>
+            </a>
+            <a href="../about.html" class="sidebar-link" title="About">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <circle cx="12" cy="12" r="10"/>
+                    <path d="M12 16v-4M12 8h.01"/>
+                </svg>
+                <span>About</span>
+            </a>
+            <a href="../research.html" class="sidebar-link active" title="Projects">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <rect x="3" y="3" width="7" height="7"/>
+                    <rect x="14" y="3" width="7" height="7"/>
+                    <rect x="14" y="14" width="7" height="7"/>
+                    <rect x="3" y="14" width="7" height="7"/>
+                </svg>
+                <span>Projects</span>
+            </a>
+            <a href="../publications.html" class="sidebar-link" title="Publications">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                </svg>
+                <span>Publications</span>
+            </a>
+            <a href="../awards.html" class="sidebar-link" title="Awards">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <circle cx="12" cy="8" r="6"/>
+                    <path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/>
+                </svg>
+                <span>Awards</span>
+            </a>
+            <a href="../members.html" class="sidebar-link" title="Members">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                    <circle cx="9" cy="7" r="4"/>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+                </svg>
+                <span>Members</span>
+            </a>
+            <a href="../contact.html" class="sidebar-link" title="Contact">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                    <circle cx="12" cy="10" r="3"/>
+                </svg>
+                <span>Contact</span>
+            </a>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <!-- Hero -->
+        <div class="project-hero">
+            <img src="../photo/DSC00548.jpg" alt="Tangible GIS" class="project-hero-image">
+            <div class="project-hero-content">
+                <p class="project-category">Research Project</p>
+                <h1 class="project-title">Tangible GIS</h1>
+                <p class="project-subtitle">触れるGIS — 物理模型×仮想空間の融合</p>
+            </div>
+        </div>
+        
+        <!-- Content -->
+        <div class="project-content">
+            
+            <!-- Project Info -->
+            <div class="project-section">
+                <h2>Project Info</h2>
+                <div class="project-meta-grid">
+                    <div class="meta-item">
+                        <h4>Period</h4>
+                        <p>2025 - Present</p>
+                    </div>
+                    <div class="meta-item">
+                        <h4>Principal Investigator</h4>
+                        <p>中山 俊</p>
+                        <p>専修大学 ネットワーク情報学部</p>
+                    </div>
+                    <div class="meta-item">
+                        <h4>Location</h4>
+                        <p>向ヶ丘遊園</p>
+                    </div>
+                    <div class="meta-item">
+                        <h4>Collaboration</h4>
+                        <p>慶應義塾大学 厳研究室</p>
+                        <p>アドソル日進株式会社</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Overview -->
+            <div class="project-section">
+                <h2>Overview</h2>
+                <p>
+                    Tangible GIS（触れるGIS）は、物理的な模型とデジタル地理情報システムを融合した
+                    新しい空間情報プラットフォームです。従来のGISはディスプレイ上での操作が主でしたが、
+                    本プロジェクトでは実際に手で触れる物理模型を介して、直感的に空間データを操作・可視化することを可能にします。
+                </p>
+            </div>
+            
+            <div class="project-images">
+                <img src="../photo/DSC00572.jpg" alt="ワークショップの様子">
+                <img src="../photo/DSC00613.jpg" alt="操作する様子">
+            </div>
+            
+            <!-- Technical Approach -->
+            <div class="project-section">
+                <h2>Technical Approach</h2>
+                <p>
+                    本システムは、Three.jsによる3D描画エンジン、ARマーカー認識による位置トラッキング、
+                    RFIDによる複数レイヤの同時取得という3つの技術基盤から構成されています。
+                    物理模型上での操作がリアルタイムでデジタル空間に反映され、
+                    シミュレーション結果が即座にフィードバックされます。
+                </p>
+            </div>
+            
+            <!-- Research Lineage -->
+            <div class="project-section">
+                <h2>Research Lineage</h2>
+                <p>
+                    アドソル日進との共同研究で培った物理空間と情報空間の融合技術を発展させたプロジェクトです。
+                    ぜひ他の研究もご覧ください。
+                </p>
+                <div class="lineage-section">
+                    <div class="lineage-timeline">
+                        <div class="lineage-item" data-year="2018">
+                            <span class="lineage-year">2018</span>
+                            <a href="adsol.html"><span class="shuffle-text">[共同研究] アドソル日進</span></a>
+                            <span>物理空間と情報空間の融合</span>
+                        </div>
+                        <div class="lineage-item" data-year="2025">
+                            <span class="lineage-year">2025</span>
+                            <span class="lineage-current">[研究プロジェクト] Tangible GIS (ver2)</span>
+                            <span>専修大学での新展開、Webベース3D可視化</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Related Publications -->
+            <div class="project-section">
+                <h2>Related Publications</h2>
+                <div class="related-publications">
+                    <article class="related-pub-item">
+                        <h4>Three.jsとARマーカーを用いた物理模型操作の即時反映を可能にするWebベース触れるGISプラットフォームの開発</h4>
+                        <p>石黒希海, 中村暢佑, 中山俊 | 第34回地理情報システム学会学術研究発表大会, 2025</p>
+                    </article>
+                    <article class="related-pub-item">
+                        <h4>RFIDを用いた複数レイヤ同時取得のための触れるGIS基盤に関する研究</h4>
+                        <p>中村暢佑, 石黒希海, 中山俊 | 第34回地理情報システム学会学術研究発表大会, 2025</p>
+                    </article>
+                    <article class="related-pub-item">
+                        <h4>Developing the eXtended Tangible User Interface as an Experimental Platform for Geo CPS</h4>
+                        <p>Wanglin Yan et al. | Disaster Risk Reduction, Springer, 2021</p>
+                    </article>
+                </div>
+            </div>
+            
+            <!-- Awards -->
+            <div class="project-section">
+                <h2>Awards</h2>
+                <div class="related-publications">
+                    <article class="related-pub-item">
+                        <h4>ビジネス・プロフェッショナル部門 優秀賞</h4>
+                        <p>触れる暑熱環境シミュレーション | 土木学会アーバンデータチャレンジ, 2021</p>
+                    </article>
+                    <article class="related-pub-item">
+                        <h4>最優秀賞</h4>
+                        <p>触れる暑熱環境シミュレーター | KDDI協賛 Leafony応用コンテスト, 2021</p>
+                    </article>
+                </div>
+            </div>
+            
+            <a href="../research.html" class="back-link">
+                ← Back to Projects
+            </a>
+        </div>
+    </main>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>
