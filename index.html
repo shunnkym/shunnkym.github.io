@@ -12,8 +12,8 @@
 </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Artificity Intelligence Lab | 中山研究室</title>
-    <meta name="description" content="専修大学ネットワーク情報学部 中山研究室（Artificity Intelligence Lab）。都市空間解析・人流解析・GISの研究を行っています。">
+    <title>Senshu GeoAI Lab | 中山研究室</title>
+    <meta name="description" content="専修大学ネットワーク情報学部 中山研究室（Senshu GeoAI Lab）。都市空間解析・人流解析・GISの研究を行っています。">
     <link rel="stylesheet" href="css/style.css">
     <style>
         .splash-screen {
@@ -171,7 +171,7 @@
         <div class="splash-content">
             <h1 class="splash-title" id="splashTitle"></h1>
             <p class="splash-subtitle" id="splashSubtitle">
-                <span>Geo Artificity Intelligence Lab</span>
+                <span>Senshu GeoAI Lab</span>
                 <span>中山研究室</span>
                 <span>専修大学</span>
             </p>
@@ -356,13 +356,12 @@
                 sessionStorage.setItem('splashShown', 'true');
             };
 
-            // Map: which chars in phase1 correspond to which index in phase2
             // Phase 1 "GeoAI": G(0) e(1) o(2) A(3) I(4)
-            // Phase 2 "Geo Artificity Intelligence":
-            //   G(0) e(1) o(2) ' '(3) A(4) r(5) t(6) i(7) f(8) i(9) c(10) i(11) t(12) y(13) ' '(14) I(15) n(16)...e(26)
+            // Phase 2 "Senshu GeoAI Lab":
+            //   S(0) e(1) n(2) s(3) h(4) u(5) ' '(6) G(7) e(8) o(9) A(10) I(11) ' '(12) L(13) a(14) b(15)
             const phase1 = 'GeoAI';
-            const phase2 = 'Geo Artificity Intelligence';
-            const charMap = { 0: 0, 1: 1, 2: 2, 3: 4, 4: 15 }; // phase1 idx → phase2 idx
+            const phase2 = 'Senshu GeoAI Lab';
+            const charMap = { 0: 7, 1: 8, 2: 9, 3: 10, 4: 11 }; // phase1 idx → phase2 idx
 
             const makeSpan = (ch) => {
                 const span = document.createElement('span');

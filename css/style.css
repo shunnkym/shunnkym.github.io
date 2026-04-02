@@ -270,6 +270,7 @@ a {
 }
 
 .nav-logo .logo-text {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 1.1rem;
     font-weight: 700;
     color: var(--black);
@@ -278,6 +279,7 @@ a {
 }
 
 .nav-logo .logo-sub {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 0.6rem;
     color: var(--gray-500);
     letter-spacing: 0.1em;
@@ -2812,6 +2814,7 @@ a {
 }
 
 .sidebar-logo .logo-main {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 1.2rem;
     font-weight: 700;
     color: #fff;
@@ -2823,7 +2826,8 @@ a {
     position: absolute;
     left: 0;
     top: 0;
-    font-size: 1.2rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 0.85rem;
     font-weight: 700;
     color: #fff;
     letter-spacing: 0.05em;
