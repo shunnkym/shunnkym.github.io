@@ -424,14 +424,14 @@
                 }
 
                 // Fade in new characters with stagger
-                const groupA = [5, 6, 7, 8, 9, 10, 11, 12, 13];
-                const groupI = [3, 14, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26];
-                const maxLen = Math.max(groupA.length, groupI.length);
+                // New chars: S(0) e(1) n(2) s(3) h(4) u(5) ' '(6) ' '(12) L(13) a(14) b(15)
+                const groupSenshu = [0, 1, 2, 3, 4, 5, 6];
+                const groupLab = [12, 13, 14, 15];
+                const allNew = groupSenshu.concat(groupLab);
 
-                for (let step = 0; step < maxLen; step++) {
+                for (let step = 0; step < allNew.length; step++) {
                     setTimeout(() => {
-                        if (step < groupA.length) newSpans[groupA[step]].classList.add('visible');
-                        if (step < groupI.length) newSpans[groupI[step]].classList.add('visible');
+                        newSpans[allNew[step]].classList.add('visible');
                     }, 300 + step * 80);
                 }
 
