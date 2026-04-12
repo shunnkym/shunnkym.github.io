@@ -357,11 +357,13 @@
             };
 
             // Phase 1 "GeoAI": G(0) e(1) o(2) A(3) I(4)
-            // Phase 2 "Senshu GeoAI Lab":
-            //   S(0) e(1) n(2) s(3) h(4) u(5) ' '(6) G(7) e(8) o(9) A(10) I(11) ' '(12) L(13) a(14) b(15)
+            // Phase 2 "Geo Artificity Intelligence Lab":
+            //   G(0) e(1) o(2) ' '(3) A(4) r(5) t(6) i(7) f(8) i(9) c(10) i(11) t(12) y(13)
+            //   ' '(14) I(15) n(16) t(17) e(18) l(19) l(20) i(21) g(22) e(23) n(24) c(25) e(26)
+            //   ' '(27) L(28) a(29) b(30)
             const phase1 = 'GeoAI';
-            const phase2 = 'Senshu GeoAI Lab';
-            const charMap = { 0: 7, 1: 8, 2: 9, 3: 10, 4: 11 }; // phase1 idx → phase2 idx
+            const phase2 = 'Geo Artificity Intelligence Lab';
+            const charMap = { 0: 0, 1: 1, 2: 2, 3: 4, 4: 15 }; // phase1 idx → phase2 idx
 
             const makeSpan = (ch) => {
                 const span = document.createElement('span');
@@ -424,14 +426,14 @@
                 }
 
                 // Fade in new characters with stagger
-                // New chars: S(0) e(1) n(2) s(3) h(4) u(5) ' '(6) ' '(12) L(13) a(14) b(15)
-                const groupSenshu = [0, 1, 2, 3, 4, 5, 6];
-                const groupLab = [12, 13, 14, 15];
-                const allNew = groupSenshu.concat(groupLab);
+                const groupA = [5, 6, 7, 8, 9, 10, 11, 12, 13];
+                const groupI = [3, 14, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30];
+                const maxLen = Math.max(groupA.length, groupI.length);
 
-                for (let step = 0; step < allNew.length; step++) {
+                for (let step = 0; step < maxLen; step++) {
                     setTimeout(() => {
-                        newSpans[allNew[step]].classList.add('visible');
+                        if (step < groupA.length) newSpans[groupA[step]].classList.add('visible');
+                        if (step < groupI.length) newSpans[groupI[step]].classList.add('visible');
                     }, 300 + step * 80);
                 }
 
