@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>演習6 空間補完 – 空間分析 | SPATIAL ANALYSIS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-top">
+    <div class="container header-top-inner">
+      <div class="site-branding">
+        <h1 class="site-title"><a href="index.html">空間分析 <span>SPATIAL ANALYSIS</span></a></h1>
+        <p class="site-description">慶應義塾大学SFC「空間分析」 ｜ 専修大学「空間情報分析」 ｜ 明治大学「都市解析特論」</p>
+      </div>
+    </div>
+  </div>
+  <div class="header-nav">
+    <div class="container">
+      <button class="menu-toggle" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰ メニュー</button>
+      <nav class="main-nav">
+        <ul>
+        <li><a href="演習1-gpsデータを扱う.html" title="演習1 GPSデータを扱う">演習1<span class="chick">🐣</span></a></li>
+        <li><a href="演習2-qgisで地図を作る.html" title="演習2 QGISで地図を作る">演習2<span class="chick">🐣</span></a></li>
+        <li><a href="演習3-空間検索を使ってみる.html" title="演習3 空間検索を使ってみる">演習3<span class="chick">🐣</span></a></li>
+        <li><a href="演習4-衛星データから-緑-を探す.html" title="演習4 衛星データから「緑」を探す">演習4<span class="chick">🐣</span></a></li>
+        <li><a href="演習5-空間分布の表示.html" title="演習5 空間分布の表示">演習5<span class="chick">🐣</span></a></li>
+        <li class="current"><a href="演習6-空間補完.html" title="演習6 空間補完">演習6<span class="chick">🐣</span></a></li>
+        <li><a href="演習-x-dmデータの取り扱い.html" title="演習-X DMデータの取り扱い">演習-X<span class="chick">🐣</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <main class="site-main">
+
+    <article>
+      <div class="entry-header">
+        <h1 class="entry-title">演習6 空間補完</h1>
+      </div>
+      <div class="entry-content">
+        <p>前々回からマンションの価格に周辺環境がどのように影響を及ぼしているか、明らかにしています。今回はいよいよ最終回。周辺の「地価」に着目します。</p>
+<h5 class="wp-block-heading">1. データの準備　&nbsp;</h5>
+<p>(1)まずデータをダウンロードしましょう。</p>
+<p>(2)今までデータをお配りしてきていましたが、今度は皆さん自力で取りに行ってみましょう。</p>
+<p>(3)国土交通省がGISのデータを整備した<a href="https://nlftp.mlit.go.jp/ksj/">国土数値情報ダウンロード</a>というサイトがあります。このリンクに飛び、「1.国土(水・土地)」→「地価公示(ポイント)」に進みましょう。</p>
+<p>(4)サイトの下の方がに都道府県別に時系列にデータが整備されています。ここから一都三県の<strong>令和2年</strong>のデータをダウンロードしてみましょう。</p>
+<p>(5)データをいつもの場所に移動させ、解凍します。</p>
+<h5 class="wp-block-heading">2. データの表示　&nbsp;</h5>
+<h5 class="wp-block-heading">2.1 背景の表示</h5>
+<p>ただ点やポリゴンをプロットしても、それがどこなのかわかりません。そこで背景に地図を導入します。</p>
+<p>(1) QGISを開きます。</p>
+<p>(2) メニューバーから「プロジェクト」→「新規作成」を選びます。</p>
+<p>(3) ブラウザウインドウの「XYZ Tiles」から「OpenStreetMap」を選択し、東京を拡大します。そうするとGoogle Mapのような背景が見えてきます。</p>
+<figure class="wp-block-image"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/QGISuse102-1024x639.png" alt="" class="wp-image-210"/></figure>
+<p>(4) 右下の「レンダ」の右に「EPSG: ????」と書かれている場所があります。まずこれをクリックしましょう。そうすると「プロジェクトのプロパティ」が開きます。開いたら最近使用したCRSにEPSG:2451があれば、これを選択します。なければ検索欄に2451と入力し、あらかじめ定義されたCRSに出てきたEPSG2451をクリックして、右下のOKをクリックしましょう。。</p>
+<figure class="wp-block-image"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/11/%E5%9B%B31-1024x649.png" alt="" class="wp-image-250"/></figure>
+<h5 class="wp-block-heading">2.2 皆さんが作成した住宅データの表示</h5>
+<p>みなさんが集めたデータや前回作ったデータをプロットしていきます。データソースマネージャを開き、前回ダウンロードしたデータの中からsuumo1k.shpを開きましょう。</p>
+<figure class="wp-block-image"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/11/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88-2020-11-02-10.52.13-1024x640.png" alt="" class="wp-image-251"></figure>
+<p>ここまでできたら準備は終わりです。</p>
+<h5 class="wp-block-heading">3. 空間補正をやってみよう</h5>
+<p>1でダウンロードしたデータをまず整形して分析できる形にし、ポイントとポイントの間の値を予想してみます。</p>
+<h5 class="wp-block-heading">3.1 一都三県のデータをマージする</h5>
+<p>(1) 1でダウンロードしたデータを全て追加してみましょう。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/11/スクリーンショット-2020-11-11-21.13.18-1024x640.png" alt="" class="wp-image-298"/></figure>
+<p>(2)次に一つのshpファイルにまとめてみましょう。メニューバーから「ベクタ」→「データ管理ツール」→「ベクタレイヤのマージ」に進みます。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/11/スクリーンショット-2020-11-11-21.15.30-1024x640.png" alt="" class="wp-image-299"/></figure>
+<p>(3)「ベクタレイヤのマージ」パネルが開いたら、入力レイヤの右にある「…」を開きます。マージしたいデータの左にチェックを入れます。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/11/スクリーンショット-2020-11-11-21.19.54.png" alt="" class="wp-image-301"/></figure>
+<p>(4)変換先の座標参照形はEPSG2451にし、いつもの場所にmerge.shpという名前で出力します。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/11/スクリーンショット-2020-11-11-21.21.06-1024x625.png" alt="" class="wp-image-302"/></figure>
+<p>(5)下図のように、一つの色で描画されていればOKです。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/11/スクリーンショット-2020-11-11-21.21.35-1024x640.png" alt="" class="wp-image-303"/></figure>
+<p>(6) mergeしたものの属性テーブルをみてみましょう。いっぱい数字がありますね。それぞれはどう意味でしょうか。</p>
+<p>(7)もう一度<a href="https://nlftp.mlit.go.jp/ksj/">国土数値情報ダウンロード</a>に行って確認します。</p>
+<p>(8)L01_006が地価を表す列だということがおわかりいただけたかと思います</p>
+<p>(9)しかし、L01_006の列は数字が左に寄っていますね。これは数字ではなく、テキストとして認識されているということです。これは困りますので、数字形式直します。左上に見える「ぺんマーク」をクリックし、編集モードにします。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/11/図1-2-1024x633.png" alt="" class="wp-image-339"/></figure>
+<p>(10)編集モードになったら、画面上部のアイコンのうち「新規フィールドアイコン」をクリックします(下図①を参照)。そうするとフィールドの追加画面が出てきますので、下図②のように設定します。そして③の計算式を「Chika=L01_006」となるよう設定・入力しましたら、④の全部更新ボタンをクリックします。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/11/図2-3-1024x639.png" alt="" class="wp-image-342"/></figure>
+<p>(11)無事できていることを確認したら、ぺんマークをもう一度クリックし、編集を保存しましょう。</p>
+<h5 class="wp-block-heading">3.2 いよいよ空間補正に</h5>
+<p>空間補正、つまり点と点の間の空白地帯の値を推測しようとするものです。いろいろな推計方法がありますが、ここではIDWという方法を用います。ここでこのQGISファイルを一旦保存しましょう。必ずです。</p>
+<p>(1)プロセシング&gt;ツールボックス&gt;内挿&gt;逆距離荷重法(IDW)補間を開きます。</p>
+<p>(2)ベクタレイヤにMerge(Chikaじゃないよ！ごめんね！)、内挿対象の属性をChikaにしましょう。これができたら画面真ん中右の「+」をクリックします。そして、距離係数はそのまま、内挿する領域は右の「…」から「レイヤの領域を使う」(ない場合は「レイヤから計算」)を選びます。そして出力ラスタサイズをピクセルサイズをXY共に1000にしましょう。そして出力レイヤ名「idw.tif」を設定したら、実行を押します。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/11/図4-1024x704.png" alt="" class="wp-image-317"/></figure>
+<p>(3)こんなふうになれば一旦OKです。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/11/スクリーンショット-2020-11-11-22.35.35-1024x640.png" alt="" class="wp-image-307"/></figure>
+<p>(4)しかし、先ほどセルサイズを1000に設定したので、1000m×1000mが1ピクセルになるような超低解像度でしか表示されていません(下図は透明度を上げて見やすくしています)。もちろん100mや10mくらいでやりたいのは山々なのですが、皆さんのPCでできるレベルを超えてしまいます。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/11/スクリーンショット-2020-11-11-22.36.35-1024x640.png" alt="" class="wp-image-308"/></figure>
+<p>(5)もしハイスペックなPCでやると、このような結果が得られます。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/11/スクリーンショット-2020-11-18-20.42.22-1024x640.png" alt="" class="wp-image-313"/></figure>
+<p>(6)そこで今週も3分クッキング方式で皆さんにお配りします。ファイルサイズが大きいのでSOLから落としてください(idwdata.tiff)。なお、皆さんのPCに入れてもバグらないように解像度は少し落としています。</p>
+<p>(7)データをQGISに読み込んだら、プロパティを開きます。そして左のメニューから「シンボロジ」を選び、レンダリングタイプをマルチバンドカラーにします。そしてその下にあるカラーレンダリングの中の「色相」の横にある着色をクリックします。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/11/図1-1-1024x1006.png" alt="" class="wp-image-314"/></figure>
+<p>(8)できたら、そのまま左のメニューから透過性を選び、グローバルな不透明度を50%にします。そして「OK」をクリックして閉じます。そうすると、上と同じように表示されたはずです。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/11/図2-1-1024x1006.png" alt="" class="wp-image-315"/></figure>
+<h5 class="wp-block-heading">4. ポイント別のラスタの値を抽出してみよう</h5>
+<p>では、いよいよ各物件の予想される地価を抽出していきます。</p>
+<p>(1)ジオプロセシングツールボックス(出てない人はメニューバーから「プロセシング」→「ツールボックス」と進むことで表示することができます)から、「ラスタ解析」→「ベクタレイヤにラスタ値を付加」を選びます。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/11/スクリーンショット-2020-11-18-21.06.34-1024x640.png" alt="" class="wp-image-320"/></figure>
+<p>(2)「ベクタレイヤにラスタ値を付加」の画面が開いたら入力レイヤにsuumo1k、参照するラスタレイヤにidwdataを選びます。そして出力レイヤに保存先と保存名(result3.shpにしています)を入力したら、右下の「実行」ボタンをクリックしましょう。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/11/図3-1024x704.png" alt="" class="wp-image-321"/></figure>
+<p>(3)できたら、さっそく属性テーブルを開きます。文字化けしていますので、プロパティにいき、「ソース」からエンコーディングをShift_JISにしましょう。そしてもう一度属性テーブルを開けば、このように表示されているのではないでしょうか。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/11/スクリーンショット-2020-11-18-21.04.37-1024x640.png" alt="" class="wp-image-323"/></figure>
+<p>(4)ここまでできたら、演習4や演習5の成果と連結させてみたいと思います。テーブル結合は先週もやりましたが、覚えていますか？もう一度やってみましょう。</p>
+<p>(5) result.csvとresult2.csvをインポートしましょう。インポートしたら、文字化けがあるので、プロパティのソースからエンコーディングをShift_JISに設定します。もし見つからない人は、下記のデータをダウンロードして使ってみてください。</p>
+<p><div class="download-box">
+  <div class="download-icon">📦</div>
+  <div class="download-info">
+    <h4>GIS data No6.1</h4>
+    <span class="download-meta">1 ファイル &nbsp; 59.73 KB</span>
+  </div>
+  <a href="downloads/アーカイブ.zip" class="download-btn" download>ダウンロード</a>
+</div></p>
+<p>(6)result3のプロパティを開き、左のメニューからテーブル結合を選びます。左下から「+」をクリックし、結合レイヤにresult、結合基準の属性にID、ターゲント属性もIDを選びます。そして動的フォームにチェックを入れましょう。結合する属性にチェックを入れたら緑被率のみ、チェックを入れます。他のデータでもPriceやAreaの列はあるので、必要なデータだけくっつけちゃおう、という考えです。さらに結合する属性の接頭辞にもチェックを入れ、文字を消します。ここまで設定したら、OKをクリックします。同様に、result2も設定します。result2の場合はNUMPOINTSとDistanceにチェックを入れましょう。2つとも設定し終わったら、画面下の適用を押して、OKをクリックしましょう。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/11/図5-970x1024.png" alt="" class="wp-image-326"/></figure>
+<p>(7)無事できたら属性テーブルを開いて確認してみましょう。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/11/スクリーンショット-2020-11-18-21.48.22-1024x640.png" alt="" class="wp-image-327"/></figure>
+<p>(8)確認できたら、csvに書き出します。形式がcsvになっていることを確認し、ファイルをいつもの場所に適当な名前(finalresult.csvなど)をつけて保存しましょう。エンコーディングはShift_JISです。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/11/スクリーンショット-2020-11-18-21.48.46-940x1024.png" alt="" class="wp-image-328"/></figure>
+<p>ここまでできたら、QGISを保存して閉じます。</p>
+<h5 class="wp-block-heading">レポート課題</h5>
+<p>最後に出力したファイル(finalresult.csv)を使って、分析をしてみてください。そしてそこから読み取れたことを400字程度にまとめて、記述してください。また、全7回の演習を終えた感想と、演習の改善案(演習内容や進め方など、なんでも結構です)について、記述してください。お疲れさまでした。</p>
+<p>2020.11.18 QGIS版 初版（政策・メディア研究科 博士課程 1年 中山俊）</p>
+<p>2023.10.1 QGIS版 第二版（政策・メディア研究科 特任助教 中山俊） </p>
+<p>2024.10.1 QGIS版 第三版（政策・メディア研究科 特任助教 中山俊） </p>
+      </div>
+      <div class="page-nav">
+        <a href="演習5-空間分布の表示.html">← 演習5 空間分布の表示</a><a href="演習-x-dmデータの取り扱い.html">演習-X DMデータの取り扱い →</a>
+      </div>
+    </article>
+  </main>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <p class="site-info">&copy; 2026 Shun Nakayama</p>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,446 @@
+
+/* 空間分析 site — WordPress default-like theme */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Inter', 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #333;
+  background: #fff;
+}
+
+a { color: #111; text-decoration: none; }
+a:hover { color: #555; }
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Header */
+.site-header {
+  background: #000;
+}
+
+.header-top {
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.header-top-inner {
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+}
+
+.site-branding {
+  margin: 0;
+}
+
+.site-title {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1;
+  margin: 0;
+  letter-spacing: -0.3px;
+}
+
+.site-title a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.site-title a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+.site-title span {
+  font-weight: 400;
+  opacity: 0.4;
+  margin-left: 8px;
+  font-size: 13px;
+}
+
+.site-description {
+  font-size: 11px;
+  color: rgba(255,255,255,0.35);
+  margin: 0;
+}
+
+/* Navigation bar */
+.header-nav {
+  background: #000;
+}
+
+.main-nav ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+}
+
+.main-nav ul li a {
+  display: block;
+  padding: 10px 18px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: rgba(255,255,255,0.6);
+  text-align: center;
+  text-decoration: none;
+  position: relative;
+  transition: color 0.2s;
+}
+
+.main-nav ul li a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: #fff;
+  transition: width 0.3s ease, left 0.3s ease;
+}
+
+.main-nav ul li a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+.main-nav ul li a:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+.main-nav ul li.current a {
+  color: #fff;
+}
+
+.main-nav ul li.current a::after {
+  width: 100%;
+  left: 0;
+}
+
+/* Chick that follows your cursor on hover */
+.main-nav ul li a .chick {
+  display: inline-block;
+  font-size: 0;
+  width: 0;
+  overflow: hidden;
+  vertical-align: middle;
+  transition: width 0.3s ease, font-size 0.3s ease, margin 0.3s ease;
+}
+
+.main-nav ul li a:hover .chick {
+  font-size: 11px;
+  width: 16px;
+  margin-left: 4px;
+}
+
+.menu-toggle {
+  display: none;
+  width: 100%;
+  padding: 10px 20px;
+  font-size: 13px;
+  font-weight: 600;
+  background: #111;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+}
+
+/* Main */
+.site-main {
+  background: #fff;
+  padding: 40px 0;
+  margin: 0;
+}
+
+/* Entry content */
+.entry-header {
+  margin-bottom: 30px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.entry-title {
+  font-size: 22px;
+  font-weight: 600;
+  color: #111;
+  line-height: 1.4;
+  letter-spacing: -0.3px;
+}
+
+.entry-meta {
+  font-size: 12px;
+  color: #999;
+  margin-top: 6px;
+}
+
+.entry-content h1 { font-size: 20px; font-weight: 600; margin: 28px 0 12px; color: #111; }
+.entry-content h2 { font-size: 18px; font-weight: 600; margin: 24px 0 10px; color: #111; }
+.entry-content h3 { font-size: 16px; font-weight: 600; margin: 20px 0 8px; color: #111; }
+.entry-content h4 { font-size: 15px; font-weight: 600; margin: 18px 0 8px; color: #222; }
+.entry-content h5 { font-size: 14px; margin: 15px 0 8px; font-weight: 600; color: #222; }
+
+.entry-content p {
+  margin-bottom: 16px;
+  color: #444;
+}
+
+.entry-content ul, .entry-content ol {
+  margin: 0 0 18px 30px;
+}
+
+.entry-content ul { list-style: disc; }
+.entry-content ol { list-style: decimal; }
+
+.entry-content li {
+  margin-bottom: 5px;
+}
+
+.entry-content img {
+  max-width: 100%;
+  height: auto;
+  margin: 12px 0;
+}
+
+.entry-content figure {
+  margin: 20px 0;
+}
+
+.entry-content figcaption {
+  font-size: 13px;
+  color: #777;
+  margin-top: 5px;
+  font-style: italic;
+}
+
+.entry-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 15px 0;
+}
+
+.entry-content table th,
+.entry-content table td {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.entry-content table th {
+  background: #f5f5f5;
+  font-weight: 700;
+}
+
+.entry-content blockquote {
+  border-left: 3px solid #ddd;
+  padding: 8px 16px;
+  margin: 15px 0;
+  color: #666;
+}
+
+.entry-content strong { font-weight: 700; }
+.entry-content em { font-style: italic; }
+
+.entry-content .wp-block-columns {
+  display: flex;
+  gap: 20px;
+  margin: 15px 0;
+}
+
+.entry-content .wp-block-column { flex: 1; }
+.entry-content .has-text-align-center { text-align: center; }
+
+.entry-content .wp-block-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 25px 0;
+}
+
+/* Download box */
+.entry-content .wp-block-file {
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin: 15px 0;
+  border-radius: 4px;
+}
+
+.download-box {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 18px 20px;
+  margin: 20px 0;
+}
+
+.download-icon {
+  font-size: 32px;
+  flex-shrink: 0;
+}
+
+.download-info {
+  flex: 1;
+}
+
+.download-info h4 {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0 0 4px;
+  color: #333;
+}
+
+.download-meta {
+  font-size: 12px;
+  color: #888;
+}
+
+.download-btn {
+  display: inline-block;
+  background: #111;
+  color: #fff !important;
+  padding: 7px 18px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none !important;
+  transition: background 0.15s;
+  flex-shrink: 0;
+}
+
+.download-btn:hover {
+  background: #444;
+}
+
+/* TablePress tables */
+table.tablepress {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 14px;
+}
+
+table.tablepress th,
+table.tablepress td {
+  padding: 10px 14px;
+  border: 1px solid #ddd;
+  text-align: left;
+  vertical-align: top;
+  line-height: 1.5;
+}
+
+table.tablepress thead th {
+  background: #111;
+  color: #fff;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+table.tablepress tbody tr:nth-child(even) {
+  background: #f9f9f9;
+}
+
+table.tablepress tbody tr:hover {
+  background: #e9f5fb;
+}
+
+/* Page navigation */
+.page-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #ddd;
+}
+
+.page-nav a {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+/* Index page cards */
+.exercise-list {
+  list-style: none;
+}
+
+.exercise-list li {
+  border-bottom: 1px solid #eee;
+}
+
+.exercise-list li a {
+  display: block;
+  padding: 14px 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: #111;
+}
+
+.exercise-list li a:hover {
+  color: #555;
+  text-decoration: none;
+}
+
+.exercise-list li:last-child {
+  border-bottom: none;
+}
+
+/* Footer */
+.site-footer {
+  background: #000;
+  color: rgba(255,255,255,0.5);
+  padding: 24px 0;
+  margin-top: 40px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.footer-nav ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-bottom: 15px;
+}
+
+.footer-nav ul li a {
+  color: #fff;
+  font-size: 13px;
+  padding: 4px 10px;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 3px;
+}
+
+.footer-nav ul li a:hover {
+  background: rgba(255,255,255,0.1);
+  text-decoration: none;
+}
+
+.site-info {
+  font-size: 13px;
+  color: #999;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .menu-toggle { display: block; }
+  .main-nav { display: none; }
+  .main-nav.open { display: block; background: #111; }
+  .main-nav ul { flex-direction: column; }
+  .main-nav ul li a { text-align: left; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); padding: 10px 20px; }
+  .main-nav ul li:last-child a { border-bottom: none; }
+  .site-main { padding: 20px; }
+  .entry-content .wp-block-columns { flex-direction: column; }
+  .footer-nav ul { flex-direction: column; }
+  .header-top { padding: 16px 0; }
+  .site-title { font-size: 20px; }
+  .download-box { flex-direction: column; text-align: center; }
+}

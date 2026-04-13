@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>演習1 GPSデータを扱う – 空間分析 | SPATIAL ANALYSIS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-top">
+    <div class="container header-top-inner">
+      <div class="site-branding">
+        <h1 class="site-title"><a href="index.html">空間分析 <span>SPATIAL ANALYSIS</span></a></h1>
+        <p class="site-description">慶應義塾大学SFC「空間分析」 ｜ 専修大学「空間情報分析」 ｜ 明治大学「都市解析特論」</p>
+      </div>
+    </div>
+  </div>
+  <div class="header-nav">
+    <div class="container">
+      <button class="menu-toggle" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰ メニュー</button>
+      <nav class="main-nav">
+        <ul>
+        <li class="current"><a href="演習1-gpsデータを扱う.html" title="演習1 GPSデータを扱う">演習1<span class="chick">🐣</span></a></li>
+        <li><a href="演習2-qgisで地図を作る.html" title="演習2 QGISで地図を作る">演習2<span class="chick">🐣</span></a></li>
+        <li><a href="演習3-空間検索を使ってみる.html" title="演習3 空間検索を使ってみる">演習3<span class="chick">🐣</span></a></li>
+        <li><a href="演習4-衛星データから-緑-を探す.html" title="演習4 衛星データから「緑」を探す">演習4<span class="chick">🐣</span></a></li>
+        <li><a href="演習5-空間分布の表示.html" title="演習5 空間分布の表示">演習5<span class="chick">🐣</span></a></li>
+        <li><a href="演習6-空間補完.html" title="演習6 空間補完">演習6<span class="chick">🐣</span></a></li>
+        <li><a href="演習-x-dmデータの取り扱い.html" title="演習-X DMデータの取り扱い">演習-X<span class="chick">🐣</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <main class="site-main">
+
+    <article>
+      <div class="entry-header">
+        <h1 class="entry-title">演習1 GPSデータを扱う</h1>
+      </div>
+      <div class="entry-content">
+        <h5 class="wp-block-heading">1. GPSデータの取り込み　&nbsp;</h5>
+<p>GPSを使って、現在地の座標を調べてみましょう。GPSで、ある地点の座標を調べるには、４つ以上の人工衛星と交信できる必要があります。そのため本来であれば、周りに高い建物や木がない地点に行ったほうがいいですが、屋内でまずは試してみましょう。なお、座標はiPhoneであれば「ZweiteGPS」、Androidであれば「<a href="https://play.google.com/store/apps/details?id=com.exatools.gpsdata" data-type="link" data-id="https://play.google.com/store/apps/details?id=com.exatools.gpsdata">GPS Data</a>」などで調べられます。</p>
+<h5 class="wp-block-heading">1.1「ZweiteGPS」を使う場合</h5>
+<p>アプリを開き、右上のボタンを押すと現在地にフォーカスされた画面になります。ここで「<em>i</em>」と書かれた画面上部のボタンを押してみましょう。そうすると、2枚目のような画面が出てきます。住所の上に数字が並んでいますね。この「35.38906」までが緯度、「139.42593」が経度になっています。とりあえずメモしておきましょう。</p>
+<figure class="wp-block-gallery has-nested-images columns-default is-cropped"><figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/wordpress/wp-content/uploads/2019/09/IMG_3580-473x1024.png" alt="" class="wp-image-273"/></figure>
+<figure class="wp-block-image size-full"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2024/10/IMG_3581-1-473x1024-1.png" alt="" class="wp-image-409"/></figure>
+</figure>
+<h5 class="wp-block-heading">1.2 Google Earthで座標データを確認・取得</h5>
+<p>次に、GPSで調べた地点の座標を、Google Earthで確認してみましょう。</p>
+<h5 class="wp-block-heading"><strong>1.2.1 Google Earthをインストール(まだの人向け)</strong></h5>
+<p>まだGoogle Earthをダウンロードしていない人はこちらの<a href="https://support.google.com/earth/answer/21955?hl=ja">リンク</a>からダウンロードしてください。</p>
+<h5 class="wp-block-heading"><strong>1.2.2 GPSで調べた座標をGoogle Earthで確認</strong></h5>
+<p>(1)Google Earth Proを起動します。</p>
+<p>(2)左上の「検索」ウインドウに、GPSで調べた座標を、「（東経）E,（北緯）N」（例「139.427000E,35.388300N」）のように入力し、Enterを押してください。GPSで調べた（はず）の地点が中心にきていますか。</p>
+<figure class="wp-block-image"><img src="https://ecogislab.sfc.keio.ac.jp/wordpress/wp-content/uploads/2019/09/Screen-Shot-2019-09-26-at-13.58.02-1024x640.png" alt="" class="wp-image-296"/><figcaption class="wp-element-caption">左上に検索窓がある</figcaption></figure>
+<figure class="wp-block-image"><img src="https://ecogislab.sfc.keio.ac.jp/wordpress/wp-content/uploads/2019/09/Screen-Shot-2019-09-26-at-13.58.40-1024x640.png" alt="" class="wp-image-297"/><figcaption class="wp-element-caption">拡大すると諭吉像前にピンが立ったことがわかる</figcaption></figure>
+<h5 class="wp-block-heading"><strong>1.2.3 本当の座標は？</strong></h5>
+<p>(1)左下の「レイヤ」ウインドウの「道路」「境界」「スポットー交通」をチェックしてください。</p>
+<figure class="wp-block-gallery has-nested-images columns-default is-cropped"><figure class="wp-block-image size-full"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2024/10/Screen-Shot-2019-09-26-at-13.59.37.png" alt="" class="wp-image-411"/><figcaption class="wp-element-caption">英語だとこんな感じですが...</figcaption></figure>
+</figure>
+<p>(2) 画面をダブルクリックすると、そこを中心に拡大されます。ドラッグすると、上下左右（東西南北）に移動できます。マウスがある地点の座標が、画面右下の「ポインタ緯度・経度」に表示されます。（ポインタ緯度・経度が十進法でない場合、「ツール－オプション」の、「緯度／経度の表示」を「度（10進法）にしてください。</p>
+<figure class="wp-block-image"><img src="https://ecogislab.sfc.keio.ac.jp/wordpress/wp-content/uploads/2019/09/Screen-Shot-2019-09-26-at-14.02.44.png" alt="" class="wp-image-300"/><figcaption class="wp-element-caption">Macだと上のタブのGoogle Earth Pro→Preference</figcaption></figure>
+<figure class="wp-block-image"><img src="https://ecogislab.sfc.keio.ac.jp/wordpress/wp-content/uploads/2019/09/Screen-Shot-2019-09-26-at-14.01.55-1-1024x761.png" alt="" class="wp-image-302"/><figcaption class="wp-element-caption">画面2段目左端にある</figcaption></figure>
+<figure class="wp-block-image"><img src="https://ecogislab.sfc.keio.ac.jp/wordpress/wp-content/uploads/2019/09/Screen-Shot-2019-09-26-at-14.03.05-1.png" alt="" class="wp-image-303"/><figcaption class="wp-element-caption">画面右下の数字の書き方がこれであればOK</figcaption></figure>
+<p>(3)&nbsp;画面右上の縦のバーを上下にドラッグすると、拡大縮小できます。</p>
+<p>(4) 左上の「検索」ウインドウには、座標の代わりに、地名も入れられます。SFCと試しに打つとこのようになります。</p>
+<figure class="wp-block-gallery has-nested-images columns-default is-cropped"><figure class="wp-block-image size-full"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2025/10/Screen-Shot-2019-09-26-at-14.04.07.png" alt="" class="wp-image-432"/></figure>
+</figure>
+<p>どうでしたか、少しずれていたと思います。ミクロに分析をするか、マクロに分析をするかで、この誤差の持つ意味は異なってきます。</p>
+<h5 class="wp-block-heading">2. mydatabaseの作成<br></h5>
+<h5 class="wp-block-heading"><strong>2.1 作業フォルダの作成</strong></h5>
+<p>この授業で使うためのフォルダを作りましょう。場所はどこでも構いませんが、ダウンロードやデスクトップに置くことはあまりオススメではありません。WindowsユーザーでもMacユーザーでもドキュメント（書類）に置くのが一般的ではないでしょうか。Dropboxの中に入れておくのもいいかもしれません。</p>
+<h5 class="wp-block-heading"><strong>2.2 マンションデータベースの作成</strong></h5>
+<p>一都三県にあるマンション(1K)の属性と位置情報およびその周辺情報を組み合わせたデータベースを作成しましょう。</p>
+<p>(1)<a href="https://suumo.jp/chintai/kanto/">SUUMO</a>を開いて各自がフィールドワークしやすい任意の場所を沿線やエリアから絞り込み、対象とする20件の物件を決めましょう。同一建物内にある部屋は同じものとします。必ず別々の建物にしてください。コツは物件名が固有名詞になっているものを選びましょう。そうすると場所がGoogleMapを使って大体特定できます。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/SUUMO-855x1024.png" alt="" class="wp-image-28"/><figcaption class="wp-element-caption">駅は一箇所でOK、１Kにチェックを入れるのを忘れずに。</figcaption></figure>
+<p>(2)Excelデータをダウンロードし、先ほど作ったファイルの中に保存します。</p>
+<p><div class="download-box">
+  <div class="download-icon">📦</div>
+  <div class="download-info">
+    <h4>database</h4>
+    <span class="download-meta">1 ファイル &nbsp; 8.69 KB</span>
+  </div>
+  <a href="downloads/No1_XXXXXXXX.xlsx" class="download-btn" download>ダウンロード</a>
+</div></p>
+<p><div class="download-box">
+  <div class="download-icon">📦</div>
+  <div class="download-info">
+    <h4>database example</h4>
+    <span class="download-meta">1 ファイル &nbsp; 9.13 KB</span>
+  </div>
+  <a href="downloads/1696486079wpdm_No1_XXXXXXXX.xlsx" class="download-btn" download>ダウンロード</a>
+</div></p>
+<p>(3)ID欄には学籍番号の後に01,02という具合で記載してください(例: 7150638701、7150638702)。Name欄には物件名を、Price欄には家賃(管理費含まず)を、Area欄には面積(m2)を、Age欄には築年数(例: 10年、22年)をそれぞれ記入してください。<strong>単位は記入しないでください。</strong></p>
+<p>(4)次いで、これら地理的情報を収集するためにフィールドワークを行いましょう。物件の場所は物件名をGoogleMapで検索すれば出てくるはずです。GPSアプリを使って位置情報を収集して経度をX欄に、緯度をY欄に保存してください。逆にすると大変なことになります。気をつけて作業をしましょう。また、その周辺環境についてNote欄に記載してください。</p>
+<h5 class="wp-block-heading">3. QGISのダウンロード</h5>
+<p>GPSデータを扱うにはGISが適しています。来週以降の授業に向けて、QGISをダウンロードしましょう。MacかWindowsかでダウンロードするものは異なります。注意しましょう。また「最新リリース」と「長期リリース」がありますが、必ず長期リリースのものをダウンロードしてください。バグ祭になります。なお、2020年9月現在の長期リリース版はver.3.10です。2023年10月現在の長期リリース版は<strong>ver.3.28です(ver3.32ではありません！)</strong>．</p>
+<p>また、Macの方は事前にmacOS High Sierra (10.13) 以上にしておくことを強くオススメします。インストールできなくはありませんが、大変面倒です。ちなみに10.10以下ですと問答無用でできません。</p>
+<p>MacユーザーとWindowsユーザーで方法が少し異なります。以下それぞれのインストール方法です。</p>
+<h5 class="wp-block-heading">3.1 Macユーザー向け</h5>
+<p>(1)まずQGISの<a href="https://qgis.org/ja/site/forusers/download.html">ダウンロードサイト</a>に移動します。</p>
+<p>(2)長期リリース版をダウンロードします。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2024/10/S1_空間分析_演習1-3.1.2-1-1024x494.png" alt="" class="wp-image-405"/><figcaption class="wp-element-caption">ダチョウ倶楽部的なフリではありません</figcaption></figure>
+<p>(3)こんな画面が出てきますのでAgreeをクリックします。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/スクリーンショット-2020-09-13-16.08.44-1024x752.png" alt="" class="wp-image-61"/></figure>
+<p>(4)Agreeをクリックして暫く待っていると次のような画面が出てきます。この画面が出てきたらQGISのアイコンをApplicationにドラッグ&amp;ドロップしましょう。(おそらく今はQGIS3.34)</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/スクリーンショット-2020-09-13-16.10.14-1024x534.png" alt="" class="wp-image-63"/></figure>
+<p>(5)「"QGIS3.10"を"アプリケーション"にコピー中」という画面が出てき、そのうち消えます。そうしましたらLaunchpad(グレーのロケットのアイコン)の中にQGISのアイコンが表示されているはずです。このアイコンをクリックすると次のようなポップアップが表示されますので、「開く」をクリックしましょう。(おそらく今はQGIS3.34)</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/スクリーンショット-2020-09-13-16.18.22-1024x445.png" alt="" class="wp-image-65"/></figure>
+<p>(6)無事QGISが起動したらインストール完了です。うまくいかない場合は(7)の問題を抱えているかもしれません。</p>
+<p>(7)初めて起動したとき、「開発元が未確認のため開けません」というメッセージが出る場合があります。その場合の手順は次の通りです。</p>
+<p>①OKをクリックしてメッセージを閉じます。</p>
+<p>②システム環境設定→セキュリティとプライバシー→◯◯は開発元を確認できないため，開けませんでした。→「このまま開く」をクリック</p>
+<p>③その後は，メッセージに従うと，インストールが進みます。</p>
+<p>(8)稀に(5)や(7)の問題で躓くケースがあると聞いています。その場合、「システム環境設定」の「セキュリティとプライバシー」の「プライバシー」でQGISを許可してあげると良いようです。もしわからなければTAやSAに質問してください。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/スクリーンショット-2020-09-13-16.18.45-1024x686.png" alt="" class="wp-image-66"/><figcaption class="wp-element-caption">無事QGISが起動したらこんな感じです。黒ではなく白がベースの画面になる人もいるかもしれません。</figcaption></figure>
+<h5 class="wp-block-heading">3.2 Windowsユーザー向け</h5>
+<p>(1) まずまずQGISの<a href="https://qgis.org/ja/site/forusers/download.html">ダウンロードサイト</a>に移動します。</p>
+<p>(2) 長期リリース版をダウンロードします。64ビットか32ビットかについてはご自身のパソコン次第です。調べ方はこちらの<a href="https://pc-karuma.net/windows10-32bit-64bit-check/#:~:text=%E3%80%8C%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E3%81%A8%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E3%80%8D%E3%82%92%E3%82%AF%E3%83%AA%E3%83%83%E3%82%AF,%E3%81%99%E3%82%8B%E3%81%93%E3%81%A8%E3%81%8C%E3%81%A7%E3%81%8D%E3%81%BE%E3%81%99%E3%80%82">サイト</a>が参考になります。(多分画面は今もっとおしゃれなやつになっています。とにかく長期リリース版をダウンロードしてください！)</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/QGISwin1-1024x929.png" alt="" class="wp-image-60"/></figure>
+<p>(3) ダウンロードした「QGIS-OSGeo4W-3.10.9-1-Setup-x86_64.exe」を開きます(少し名前が変わっている場合があります)。開いたら「次へ(N)」をクリックします。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/キャプチャ1.png" alt="" class="wp-image-216"/></figure>
+<p>(4) 「同意する(A)」をクリックします。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/キャプチャ2.png" alt="" class="wp-image-217"/></figure>
+<p>(5)  「次へ(N)」をクリックします。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/キャプチャ3.png" alt="" class="wp-image-218"/></figure>
+<p>(6)  真ん中のチェックボックスは空白のままで構いません。そのまま「インストール」をクリックします。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/キャプチャ4.png" alt="" class="wp-image-219"/></figure>
+<p>(7) インストールが始まりますので、待ちましょう。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/キャプチャ5.png" alt="" class="wp-image-220"/></figure>
+<p>(8) 問題なく進めば下図のような画面が表示されます。表示されたら「完了(F)」をクリックして画面を閉じます。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/キャプチャ6.png" alt="" class="wp-image-221"/></figure>
+<p>2020.9.25 QGIS版 初版（政策・メディア研究科 博士課程 1年 中山俊）</p>
+<p>2023.10.1 QGIS版 第二版（政策・メディア研究科 特任助教 中山俊）</p>
+<p>2024.10.1 QGIS版 第三版（政策・メディア研究科 特任助教 中山俊）</p>
+      </div>
+      <div class="page-nav">
+        <span></span><a href="演習2-qgisで地図を作る.html">演習2 QGISで地図を作る →</a>
+      </div>
+    </article>
+  </main>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <p class="site-info">&copy; 2026 Shun Nakayama</p>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>演習-X DMデータの取り扱い – 空間分析 | SPATIAL ANALYSIS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-top">
+    <div class="container header-top-inner">
+      <div class="site-branding">
+        <h1 class="site-title"><a href="index.html">空間分析 <span>SPATIAL ANALYSIS</span></a></h1>
+        <p class="site-description">慶應義塾大学SFC「空間分析」 ｜ 専修大学「空間情報分析」 ｜ 明治大学「都市解析特論」</p>
+      </div>
+    </div>
+  </div>
+  <div class="header-nav">
+    <div class="container">
+      <button class="menu-toggle" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰ メニュー</button>
+      <nav class="main-nav">
+        <ul>
+        <li><a href="演習1-gpsデータを扱う.html" title="演習1 GPSデータを扱う">演習1<span class="chick">🐣</span></a></li>
+        <li><a href="演習2-qgisで地図を作る.html" title="演習2 QGISで地図を作る">演習2<span class="chick">🐣</span></a></li>
+        <li><a href="演習3-空間検索を使ってみる.html" title="演習3 空間検索を使ってみる">演習3<span class="chick">🐣</span></a></li>
+        <li><a href="演習4-衛星データから-緑-を探す.html" title="演習4 衛星データから「緑」を探す">演習4<span class="chick">🐣</span></a></li>
+        <li><a href="演習5-空間分布の表示.html" title="演習5 空間分布の表示">演習5<span class="chick">🐣</span></a></li>
+        <li><a href="演習6-空間補完.html" title="演習6 空間補完">演習6<span class="chick">🐣</span></a></li>
+        <li class="current"><a href="演習-x-dmデータの取り扱い.html" title="演習-X DMデータの取り扱い">演習-X<span class="chick">🐣</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <main class="site-main">
+
+    <article>
+      <div class="entry-header">
+        <h1 class="entry-title">演習-X DMデータの取り扱い</h1>
+      </div>
+      <div class="entry-content">
+        <p><strong>DM</strong>とは、Digital Mappingの略で、地形や地物などが記載された数値地形図のデジタルデータです。一般に、「ディーエム」と呼び、GISやCADで開くことが可能です。このデータは様々な都市計画の基盤となるもので、都市計画基本図と呼ばれることもあります。</p>
+<p>DMをGISで扱うには、専用のソフトウェアやプラグインなどが必要です。もっとも簡便な方法の一つにArcGIS Proを用いた方法があります。今回は、この方法でDMデータを取り扱う方法を学びます。なお、ArcMapを用いた方法もありますが、その場合、様々な情報が欠落するため、推奨しません。</p>
+<h2>1. データのダウンロード</h2>
+<p>まずはじめに、 研究室の共有フォルダからデータをダウンロードしましょう。</p>
+<p>続いて、作業フォルダをローカルに作成し、ダウンロードしたデータをそこに解凍します。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2022/06/image-1024x515.png" alt="" class="wp-image-359"/><figcaption>フォルダ名のコツは「日付_作業名」</figcaption></figure>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2022/06/image-1-1024x515.png" alt="" class="wp-image-360"/><figcaption>フォルダの中はこのようにする</figcaption></figure>
+<h2>2. ArcGIS Proを立ち上げる</h2>
+<p>Windowsのマークをクリックし、ArcGIS Proを立ち上げましょう。</p>
+<p>立ち上げたら次のような画面が表示されるので、画面中央の「新規」の下にある「マップ」をクリックします。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2022/06/image-5-1024x544.png" alt="" class="wp-image-364"/></figure>
+<p>次のような画面が表示されましたか？表示されていれば、「名前」を先ほど作成したフォルダ名にします。「場所」は右の黄色いファイルマークをクリックし、先ほど作成したフォルダを選びます。最後に「このプロジェクトのための新しいフォルダーを作成」のチェックを<strong>外します</strong>。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2022/06/image-4.png" alt="" class="wp-image-363"/></figure>
+<p>上記のように設定出来たらOKをクリックしましょう。そうするとArcGISが開きます。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2022/06/image-6-1024x544.png" alt="" class="wp-image-365"/></figure>
+<h2>3. DMデータを読み込む</h2>
+<p>画面上部のタブから「国内データ」を選択します。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2022/06/画像1-1024x544.png" alt="" class="wp-image-366"/><figcaption>国内データのタブは赤枠にある。ない場合は、<a href="https://doc.esrij.com/pro/get-started/setup/user/addin_tool/">こちら</a>からArcGIS Proのバージョンに対応したアドインをダウンロードし、インストールする必要がある。</figcaption></figure>
+<p>左上の「DM」をクリックします。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2022/06/画像2-1024x544.png" alt="" class="wp-image-367"/></figure>
+<p>3つの選択肢が表示されます。2番目の「DM→ジオデータベース」を選びましょう。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2022/06/画像3-1024x544.png" alt="" class="wp-image-368"/></figure>
+<p>右に「DM→ジオデータベース」というタブが表示されたはずです。まず入力ファイルを選択してみましょう。①の黄色いフォルダーをクリックしてみましょう。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2022/06/画像4-1024x543.png" alt="" class="wp-image-371"/></figure>
+<p>このような画面が表示されますので、DMデータを保存した場所へ移動し、「品川区」→「数値地形図データファイル」と進みます。拡張子が.dmのファイルがずらーっと表示されたら、shiftキーを使ってすべてのデータを選択し、右下の開くボタンをクリックします。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2022/06/image-7-1024x669.png" alt="" class="wp-image-369"/></figure>
+<p>次に出力ジオデータベースを設定します。②の黄色いフォルダをクリックしてみましょう。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2022/06/画像5-1024x543.png" alt="" class="wp-image-373"/></figure>
+<p>そうすると、先ほど見たような画面が再び表示されます。右側のプロジェクトの下にフォルダがありますね。これをクリックしてみましょう。「20220613_DM取り扱いレク」という名前のフォルダが表示されるはずです。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2022/06/image-9-1024x503.png" alt="" class="wp-image-374"/></figure>
+<p>これをクリックして、右側の白いエリアで右クリックしてみましょう。そうすると小さな画面が表示されますので「フォルダ」を選び、「01_品川区」というフォルダを作ります。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2022/06/image-11-1024x503.png" alt="" class="wp-image-376"/></figure>
+<p>「01_品川区」を選択し、先ほどと同じ要領で、今度は「ファイル ジオデータベース」を選びます。「shinagawa.gdb」という名前にし、これを選択して画面右下のOKをクリックします</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2022/06/image-8-1024x503.png" alt="" class="wp-image-370"/></figure>
+<p>最後に、③と④の欄を埋めます。測地系はJGD2011、平面直角座標系の系番は9、文字コードはSHIFT_JIS、出力データ名はshinagawaにします。また④のチェックボックスは二つともチェックします。なお、測地系などについて知りたいのであれば、こちらの<a href="https://www.esrij.com/gis-guide/coordinate-and-spatial/coordinate-system/">サイト</a>が参考になります。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2022/06/画像6-1024x543.png" alt="" class="wp-image-377"/></figure>
+<p>ここまでできたら右下の実行をクリックしましょう。まあまあ時間がかかります。λ11からローソンに行って帰ってこられるくらいです。もしかすると下のセブンにも行けそうです。</p>
+<h2>4. DMデータを可視化する</h2>
+<p>3.でやった時と同じように画面左上のDMをクリックしてみましょう。</p>
+<p>今回は「シンボルを適用してマップに追加」を選択します。すると、画面右にこのような画面が表示されます。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2022/06/image-13-1024x544.png" alt="" class="wp-image-382"/></figure>
+<p>まず「入力フィーチャデータセット」は右の黄色いフォルダをクリックし、先ほど作成したジオデータベース「shinagawa」を選択します。選択したらOKをクリック。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2022/06/image-12-1024x503.png" alt="" class="wp-image-381"/><figcaption>shinagawa.gdbの下にshinagawaがある。こちらを選ぶ。</figcaption></figure>
+<p>図形区分99にシンボルを適用というチェックボックスにチェックを入れたら、画面右下の実行をクリックしましょう。今度はすぐに処理が完了するはずです。</p>
+<p>右のコンテンツテーブルのshinagawaの下にはたくさんの階層と凡例が自動で生成されています。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2022/06/image-14-1024x544.png" alt="" class="wp-image-383"/></figure>
+<p>画面を拡大すると、地図記号などが反映されていることもわかります。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2022/06/image-15-1024x544.png" alt="" class="wp-image-384"/></figure>
+<h2>5. 最後に</h2>
+<p>ここまでDMデータの操作をみてきましたが、いかがだったでしょうか。GISの最も重要な部分は、可視化することではなく、データとデータを重ね合わせて分析していくことにあります。今回のDMデータも何かほかの面白いデータとあわせて分析すると何か見えてくるかもしれません。</p>
+<p> 2022.6.13 初版（政策・メディア研究科 博士課程 2年 中山俊） </p>
+      </div>
+      <div class="page-nav">
+        <a href="演習6-空間補完.html">← 演習6 空間補完</a><span></span>
+      </div>
+    </article>
+  </main>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <p class="site-info">&copy; 2026 Shun Nakayama</p>
+  </div>
+</footer>
+
+</body>
+</html>

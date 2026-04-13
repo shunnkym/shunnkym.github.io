@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>演習3 空間検索を使ってみる – 空間分析 | SPATIAL ANALYSIS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-top">
+    <div class="container header-top-inner">
+      <div class="site-branding">
+        <h1 class="site-title"><a href="index.html">空間分析 <span>SPATIAL ANALYSIS</span></a></h1>
+        <p class="site-description">慶應義塾大学SFC「空間分析」 ｜ 専修大学「空間情報分析」 ｜ 明治大学「都市解析特論」</p>
+      </div>
+    </div>
+  </div>
+  <div class="header-nav">
+    <div class="container">
+      <button class="menu-toggle" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰ メニュー</button>
+      <nav class="main-nav">
+        <ul>
+        <li><a href="演習1-gpsデータを扱う.html" title="演習1 GPSデータを扱う">演習1<span class="chick">🐣</span></a></li>
+        <li><a href="演習2-qgisで地図を作る.html" title="演習2 QGISで地図を作る">演習2<span class="chick">🐣</span></a></li>
+        <li class="current"><a href="演習3-空間検索を使ってみる.html" title="演習3 空間検索を使ってみる">演習3<span class="chick">🐣</span></a></li>
+        <li><a href="演習4-衛星データから-緑-を探す.html" title="演習4 衛星データから「緑」を探す">演習4<span class="chick">🐣</span></a></li>
+        <li><a href="演習5-空間分布の表示.html" title="演習5 空間分布の表示">演習5<span class="chick">🐣</span></a></li>
+        <li><a href="演習6-空間補完.html" title="演習6 空間補完">演習6<span class="chick">🐣</span></a></li>
+        <li><a href="演習-x-dmデータの取り扱い.html" title="演習-X DMデータの取り扱い">演習-X<span class="chick">🐣</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <main class="site-main">
+
+    <article>
+      <div class="entry-header">
+        <h1 class="entry-title">演習3 空間検索を使ってみる</h1>
+      </div>
+      <div class="entry-content">
+        <p>マンションのデータを扱って行くために必要な基本的なスキルを身につけていきましょう。今回は後編です。今日は日本地図のデータから東京都と神奈川県を選び、この2都県を対象に土地利用と都心からの距離の関係性をみていくことにしましょう。この演習を通して、空間検索やバッファの作成などを学びます。</p>
+<h5 class="wp-block-heading">1. データの準備　&nbsp;</h5>
+<p>(1)まずデータをダウンロードしましょう。</p>
+<p><div class="download-box">
+  <div class="download-icon">📦</div>
+  <div class="download-info">
+    <h4>GIS data No2</h4>
+    <span class="download-meta">1 ファイル &nbsp; 17.76 MB</span>
+  </div>
+  <a href="downloads/lu1994.zip" class="download-btn" download>ダウンロード</a>
+</div></p>
+<p><div class="download-box">
+  <div class="download-icon">📦</div>
+  <div class="download-info">
+    <h4>GIS data No3</h4>
+    <span class="download-meta">1 ファイル &nbsp; 1.15 KB</span>
+  </div>
+  <a href="downloads/tokyocenter.zip" class="download-btn" download>ダウンロード</a>
+</div></p>
+<p>(2)ダウンロードしたzip ファイルを解凍します。解凍できない場合は、<a href="https://www.7-zip.org/">7-Zip</a>や<a href="http://www.vector.co.jp/soft/win95/util/se026842.html">Lhasa32</a>などのファイル圧縮・解凍ソフトウェアをインストールします。解凍したデータは演習1で作ったspatialanalysisというフォルダに格納します。</p>
+<p>以下データ一覧です。</p>
+<p><table class="tablepress">
+<thead><tr><th>データ項目名</th><th>データセット名</th><th>データ形式</th><th>ファイル名</th><th>備考</th></tr></thead>
+<tbody>
+<tr><td>土地利用データ</td><td>lu1994gc</td><td>Img形式</td><td>lu1994gc.img<br>lu1994gc.rrd</td><td>1994年細密数値情報<br>(出典)国土地理院(有償)</td></tr>
+</tbody>
+</table></p>
+<p><table class="tablepress">
+<thead><tr><th>データ項目名</th><th>データセット名</th><th>データ形式</th><th>ファイル名</th><th>備考</th></tr></thead>
+<tbody>
+<tr><td>東京中心点</td><td>東京中心点</td><td>shp形式</td><td>東京中心点.shp<br>東京中心点.dbf<br>東京中心点.prj<br>東京中心点.shx<br>東京中心点.sbn<br>東京中心点.sbx</td><td>なし</td></tr>
+</tbody>
+</table></p>
+<h5 class="wp-block-heading">2. 前回の演習データを開く　&nbsp;</h5>
+<p>(1)spatialanalysis(演習1で作成したフォルダ)の中に保存しておいた、no2.qgsをクリックして開きます。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/スクリーンショット-2020-09-20-17.31.23-1024x636.png" alt="" class="wp-image-121"/><figcaption class="wp-element-caption">no2.qgs~ではなくno2.qgs</figcaption></figure>
+<p>(2)下図のように表示されましたか。表示されたらOKです。表示されてなければ(3)に進んでください。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/スクリーンショット-2020-09-20-17.33.42-1024x640.png" alt="" class="wp-image-122"/></figure>
+<p>(3)レイヤウインドウの中にあるjapanを右クリックし、「レイヤの領域にズーム(Z)」をクリックします。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/スクリーンショット-2020-09-20-17.34.10.png" alt="" class="wp-image-123"/></figure>
+<h5 class="wp-block-heading">3. 属性選択　&nbsp;</h5>
+<p>早速、今回のメインテーマです。GISデータを必要なエリアだけに絞るには、「必要なエリアを選択」し、「選択されたGISデータをエクスポート」します。ではどのように「必要なエリアを選択」すればいいでしょうか。ここではこの方法を習得していきます。</p>
+<p>(1) 今回は、日本地図のうち東京都と神奈川県のデータだけに絞ります。japanを右クリックし、「属性テーブルを開く」をクリックします。開けたら属性テーブルのメニューにある「式を使った地物を選択」をクリックしてみましょう。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/QGISuse20-1024x279.png" alt="" class="wp-image-125"/></figure>
+<p>(2) 下図のような画面が開いたはずです。この赤枠のところに条件式を書くことで、属性に基づいて選択します。難しそうと思うかもしれませんが、四則演算(足し算とか引き算とか)できれば問題ありません。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/QGISuse21-1024x714.png" alt="" class="wp-image-126"/></figure>
+<p>(3) 条件式は、全てタイピングして入力することも可能です。しかし、ミスタイピングのリスクがあります。そこで真ん中のウインドウと右のウインドウを使って、入力していきましょう。まず、真ん中のウインドウから「フィールドと値」を選びましょう。そうすると、下に属性のフィールド名(列の名前のこと)が出てきます。今回は都道府県の分類から東京都と神奈川県を選ぶので、KENをダブルクリックします。そうすると左のウインドウに「"KEN"」と入力されているはずです。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/QGISuse23-1024x714.png" alt="" class="wp-image-127"/></figure>
+<p>(4) 「"KEN"」が東京都と神奈川県を選択したいので、まずは左のウインドウの上にある記号のうち「=」をクリックします。そうすると「"KEN" =」となっているのではないでしょうか。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/QGISuse24-1024x714.png" alt="" class="wp-image-128"/><figcaption class="wp-element-caption">左下に式が不正ですと出てくるが無視して構わない</figcaption></figure>
+<p>(5) 次に真ん中のウインドウで「KEN」が選択されている状態で、右中央にある「全てのユニーク」をクリックしましょう。そうすると右下にKENにある値の一覧が出てきます。そこから東京都をクリックすると、左のウインドウは「"KEN" = '東京都'」になっているのではずです。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/QGISuse25-1024x714.png" alt="" class="wp-image-129"/></figure>
+<p>(6) 続いて神奈川県を選択する条件文を書いていきます。このとき「OR」という演算子を使います。ORにするのは「都道府県の中で東京都『もしくは』都道府県の中で神奈川県」という意味にするためです。「ANDはダメですか」という質問もあるでしょう。こうした質問をする人の頭の中には「都道府県の中で東京都『と』神奈川県」という捉え方があるのだと思います。実はORやANDなどの演算子の前後では、条件式が単独で成立する形にしなければなりません。つまり、「都道府県の中で東京都『と』神奈川県」を条件式にした「"KEN" = '東京都' AND '神奈川県'」はエラーになってしまいます。なぜなら、ANDの左側は「"KEN" = '東京都'」となっており条件式が成立していますが、右側は「'神奈川県'」だけですので条件式が成立していないからです。そのため、「都道府県の中で東京都『もしくは』都道府県の中で神奈川県」を条件式にした「"KEN" = '東京都' OR "KEN" = '神奈川県'」と書かなければなりません。</p>
+<p>(7) では演算子「OR」を入力しましょう。真ん中のウインドウで一旦「フィールドと値」を閉じて、「演算子」を開き「OR」を選択します(「OR」は一番下にあります)。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/QGISuse26-1024x714.png" alt="" class="wp-image-133"/><figcaption class="wp-element-caption"><em>左下に式が不正ですと出てくるが無視して構わない</em></figcaption></figure>
+<p>(8) 「OR」の後ろに「"KEN" = '神奈川県'」を入力してみましょう。要領は先ほどと同じです。</p>
+<p>(9) 入力が終わったら、右下の「地物の選択」をクリックします。クリックしても画面は変わりませんが右の「閉じる」を押してこの画面を閉じます。また、属性テーブルも閉じます。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/QGISuse27-1024x714.png" alt="" class="wp-image-134"/></figure>
+<p>(10) そうすると、地図上で東京都と神奈川県が選択されていることが確認できます。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/スクリーンショット-2020-09-20-21.04.45-1024x640.png" alt="" class="wp-image-135"/><figcaption class="wp-element-caption">黄色くなっている</figcaption></figure>
+<p>(11) 東京都と神奈川県が選択できることを確認したら、新規ファイルとしてエクスポートしましょう。「japan」を右クリックし、「エクスポート」→「選択地物の保存」を選びましょう。あとは前回同様に形式(ESRI Shapefile)やファイル場所(japan.shpと同じ場所に)と名前(本教材ではtokyo)を指定し、書き出せば選択したエリアのデータが出来上がります。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/スクリーンショット-2020-09-20-21.16.31-1024x730.png" alt="" class="wp-image-137"/></figure>
+<h5 class="wp-block-heading">4. バッファを作ってみよう　&nbsp;</h5>
+<p>バッファとは、任意の点やポリゴンから等距離のエリアのことです。ここでは東京の中心点（旧東京都庁を指すことが多い）からの距離を可視化してみましょう。</p>
+<p>(1)はじめにダウンロードしたデータのうち「東京中心点.shp」をQGISで開きます。開き方は演習2の通りです。</p>
+<p>(2) メニューバーから「ベクタ」→「空間演算ツール」→「バッファ」を選択します。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/スクリーンショット-2020-09-20-22.20.41-1024x229.png" alt="" class="wp-image-147"/></figure>
+<p>(3) 開いた画面では距離の単位が「度」になっています。なぜでしょうか。これは座標系と関係しています。今の座標系はWGS84[EPSG:4326]という地理座標系です。これを聞いてピンと来なければ一コマめの授業資料やこの<a href="https://www.esrij.com/gis-guide/coordinate-and-spatial/coordinate-system/">サイト</a>をみてみましょう。理解できたら、地理座標系から投影座標系に変換します。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/スクリーンショット-2020-09-20-22.26.58-1024x841.png" alt="" class="wp-image-148"/></figure>
+<p>(4) 地理座標系から投影座標系への変換をしましょう。レイヤプロパティから東京中心点を右クリックして、「エクスポート」→「地物の保存」と進みます。まず、ファイルの保存場所(東京中心点.shpと同じ場所)や保存名(このデモでは東京中心点9)を設定します。次にCRS(座標系のこと)を設定します。下図で赤く囲った枠をクリックしてみましょう。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/QGISuse28-941x1024.png" alt="" class="wp-image-151"/></figure>
+<p>(5) フィルター欄にJGD2000と打ってみましょう。そうすると「あらかじめ定義されたCRS」の「投影された座標系」の下に「JGD2000 / Japan Plane Rectangular CS IX」が出てくるので、これを選択して右下のOKをクリックしましょう。なお右下に地図が出ていますが、「JGD2000 / Japan Plane Rectangular CS IX」の対応するエリアが可視化されたものです。JGD2000の投影座標系には18種類あり、解析の対象とするエリアに合わせて選択しましょう。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/QGISuse29-1-1024x995.png" alt="" class="wp-image-153"/></figure>
+<p>(6) 先ほどのエクスポートの画面に戻ったら、右下のOKをクリックします。</p>
+<p>(7) そしてもう一度上のメニューバーから「ベクタ」→「空間演算ツール」→「バッファ」を選択します。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/スクリーンショット-2020-09-20-22.20.41-1-1024x229.png" alt="" class="wp-image-155"/><figcaption class="wp-element-caption">さっきと同じ</figcaption></figure>
+<p>(8) 入力レイヤを「東京中心点9」にすると、距離の単位が選択できるようになります。そこで単位を「キロメートル」に設定します。距離は10のまま実行をクリックしましょう。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/スクリーンショット-2020-09-20-23.00.14-1024x841.png" alt="" class="wp-image-156"/></figure>
+<p>(9) そうすると10km圏にバッファが描かれた地図が出てきます。では、ドーナツ状に10kmごとのバッファを作成したい時どうすればいいでしょうか。10km, 20km, 30km, 40km, 50kmとバッファを作成して、それぞれ内側のバッファを消すという方法もあります。しかし、やや面倒です。</p>
+<p>(10) こうした時に使えるのが多重リングバッファというものです。このツールはデフォルトではありません。QGISはデフォルトの機能は必要最低限であり、プラグインを用いて機能を拡張することができます。メニューバーから「プラグイン」→「プラグインの管理とインストール」を選択します。</p>
+<p>(11) 検索ウインドウに下図のように「Multi-distance buffer」と入力すると、下のウインドウに「Multi-distance buffer」が出てきます。これを選択し、右下に出てきたインストールボタンをクリックします。インストールが終わったら、右下の閉じるをクリックしましょう。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/QGISuse30-1024x627.png" alt="" class="wp-image-158"/></figure>
+<p>(12) メニューバーから「ベクタ」→「Multiple Distance Buffer」→「MultiDistanceBuffer」を選択します。Input layerを「東京中心点9」に設定し、Buffer distancesからAdd multipleを選択して、下図の通り設定したら「Add」をクリックします。Distancesのウインドウに反映されたことを確認したら、右下のOKをクリックしてCloseをクリックします。これによって10km, 20km, 30km, 40km, 50kmとバッファを作成することができます。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/スクリーンショット-2020-09-20-23.24.22-1024x923.png" alt="" class="wp-image-161"/></figure>
+<p>(13) ちゃんとドーナツ状にリングができたか確認してみましょう。下図のように「シングルクリックによる地物選択」をクリックしたら、できたバッファをクリックしてみましょう。下図のようにドーナツ型に表示されれば成功です。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/QGISuse31-1024x640.png" alt="" class="wp-image-162"/><figcaption class="wp-element-caption">潰れているのは座標系のせい</figcaption></figure>
+<p>(14) バッファが塗り潰された状態だと見づらいので、色を変えてみましょう。レイヤプロパティの「buffer」を右クリックし、プロパティを開きます。左のメニューからシンポロジを選択し、お気に入りの中から「outline red」を選び、右下のOKをクリックします。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/スクリーンショット-2020-09-20-23.37.51-969x1024.png" alt="" class="wp-image-164"/></figure>
+<p>(15) 下図のようになり、下のデータが見えるようになりました。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/スクリーンショット-2020-09-20-23.38.08-1024x640.png" alt="" class="wp-image-163"/></figure>
+<h5 class="wp-block-heading">5. クリップによる対象地域の抽出</h5>
+<p>バッファポリゴンは範囲が東京都と神奈川県以外に及んでいるため，対象地域のみ抽出します。</p>
+<p>(1) メニューバーから「ベクタ」→「空間演算ツール」→「切り抜き(clip)」を選択します。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/QGISuse37-1024x177.png" alt="" class="wp-image-188"/></figure>
+<p>(2) 入力レイヤに「buffer」、オーバーレイレイヤに「tokyo」を選択し、右下の実行をクリックします。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/スクリーンショット-2020-09-21-15.58.42-1-1024x841.png" alt="" class="wp-image-190"/></figure>
+<p>(3) できたデータは一時レイヤとして「ベクタレイヤ」という名前でレイヤウインドウに追加されています。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/スクリーンショット-2020-09-21-16.07.15-1024x640.png" alt="" class="wp-image-191"/></figure>
+<h5 class="wp-block-heading">6. ラスターデータの取り込み</h5>
+<p>次に、ダウンロードしたもう一つのデータを扱っていきます。このデータは今までのデータ(ベクターデータ)と異なり、ラスターデータです。この違いがわからない場合は、もう一度一コマ目の授業資料を確認してみましょう。</p>
+<p>(1)「データソースマネージャを開く」をクリックし、データソースマネージャを開きます。開いたら左側のメニューから「ラスタ」を選択しましょう。そして、ソースの右側にある「...」から「lu1994gc.img」を選択し、右下の「追加」をクリックします。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/スクリーンショット-2020-09-20-23.53.55-1024x676.png" alt="" class="wp-image-166"/></figure>
+<p>(2) このように表示されたでしょうか。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/スクリーンショット-2020-09-20-23.54.23-1024x640.png" alt="" class="wp-image-167"/></figure>
+<p>(3) ところで、このデータの名称は「土地利用細分メッシュデータ」といいます。つまり、どの土地利用(例えば、田、工業用地など)か判別されたデータです。この分類は下の表に示す通りですが、今回の分析に用いるには詳しすぎるので、もう少しざっくりしたデータに変えたいと思います。この作業を「再分類」と言います。</p>
+<p><table class="tablepress">
+<thead><tr><th>初期値(土地利用小分類)</th><th>意味(土地利用小分類)</th><th>新規値(土地利用大分類)</th><th>意味(土地利用大分類)</th></tr></thead>
+<tbody>
+<tr><td>0</td><td>対象地域外(沖合、首都圏外)</td><td>7</td><td>対象地域外</td></tr>
+<tr><td>1</td><td>山林・荒地等</td><td>1</td><td>山林・農地等</td></tr>
+<tr><td>2</td><td>田</td><td>1</td><td>山林・農地等</td></tr>
+<tr><td>3</td><td>畑・その他農地</td><td>1</td><td>山林・農地等</td></tr>
+<tr><td>4</td><td>造成中地</td><td>2</td><td>造成地</td></tr>
+<tr><td>5</td><td>空地</td><td>2</td><td>造成地</td></tr>
+<tr><td>6</td><td>工業用地</td><td>3</td><td>宅地</td></tr>
+<tr><td>7</td><td>一般低層住宅地</td><td>3</td><td>宅地</td></tr>
+<tr><td>8</td><td>密集低層住宅地</td><td>3</td><td>宅地</td></tr>
+<tr><td>9</td><td>中高層住宅地</td><td>3</td><td>宅地</td></tr>
+<tr><td>10</td><td>商業・業務用地</td><td>3</td><td>宅地</td></tr>
+<tr><td>11</td><td>道路用地</td><td>4</td><td>公共公益施設用地</td></tr>
+<tr><td>12</td><td>公園・緑地等</td><td>4</td><td>公共公益施設用地</td></tr>
+<tr><td>13</td><td>その他の公共公益施設用地</td><td>4</td><td>公共公益施設用地</td></tr>
+<tr><td>14</td><td>河川・湖沼等</td><td>5</td><td>河川・湖沼等</td></tr>
+<tr><td>15</td><td>その他(防衛施設・皇居等)</td><td>6</td><td>その他</td></tr>
+<tr><td>16</td><td>海(海岸線付近)</td><td>7</td><td>対象地域外</td></tr>
+<tr><td>17</td><td>対象地域外(対象地域　境界付近)</td><td>7</td><td>対象地域外</td></tr>
+<tr><td>255</td><td>対象地域外</td><td>7</td><td>対象地域外</td></tr>
+</tbody>
+</table></p>
+<p>(4) メニューバーから「プロセシング」→「ツールボックス」を選択すると画面右に「プロセシングツールボックス」が開きます。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/QGISuse32-1024x639.png" alt="" class="wp-image-172"/></figure>
+<p>(5) そして検索ウインドウに再分類を意味する「reclass」と入力してみましょう。そうすると、下に出てきた「ラスタ解析」→「テーブルによる再分類」(現在は「区分表で再分類」に名前が変わっています)をクリックします。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/QGISuse35-1024x840.png" alt="" class="wp-image-186"/></figure>
+<p>(6) テーブルによる再分類が開いたら、下図の赤枠で囲ったボタン「...」をクリックします。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/QGISuse34-1024x840.png" alt="" class="wp-image-182"/></figure>
+<p>(7) 右下の「行の追加」ボタンをクリックして8行分追加したら、下図のように表を埋めます。この値は先ほどの土地利用細分表に対応しています。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/スクリーンショット-2020-09-21-14.13.43-1024x836.png" alt="" class="wp-image-175"/><figcaption class="wp-element-caption">これは正解</figcaption></figure>
+<p>(7)' しかし、なぜ下図のように記載しないのでしょうか。その理由は(9)でご説明することにしましょう。とにかくOKをクリックして画面を閉じます。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/スクリーンショット-2020-09-21-14.10.56-1-1024x874.png" alt="" class="wp-image-183"/><figcaption class="wp-element-caption">これは間違い</figcaption></figure>
+<p>(8) この画面に戻ったら、右下の実行をクリックします。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/スクリーンショット-2020-09-21-14.11.07-1024x841.png" alt="" class="wp-image-176"/></figure>
+<p>(9) 下図のような画面に遷移します。ここで左のウインドウを見てみましょう。最小値のほうは「&lt;」が使われており、最大値の方は「≦」が使われています。つまり最小値に入力した値そのものは再分類に使われていないのです。これで(7)と(7)'での疑問が解決したのではないでしょうか。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/スクリーンショット-2020-09-21-14.14.27-1024x830.png" alt="" class="wp-image-177"/></figure>
+<p>(10) 再分類した結果は「レイヤプロパティ」に「出力ラスタ」という名前で追加されています。コレを右クリックし、プロパティを開きます。プロパティを開いたら左のメニューで「シンポロジ」を選択し、レンダリングタイプを「カテゴリ値パレット」を選びましょう。次いで分類をクリックすると値に応じて色が振り分けられます。ここで設定された色は適当なので、先ほどの土地利用細分表を見て色を設定してみましょう。終わったら右下の「OK」をクリックします。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/QGISuse36-1024x1005.png" alt="" class="wp-image-185"/></figure>
+<p>(11) 下図のように表示されていればOKです。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/スクリーンショット-2020-09-21-14.18.39-1024x640.png" alt="" class="wp-image-179"/></figure>
+<h5 class="wp-block-heading">7. バッファによる距離帯別集計</h5>
+<p>10km毎の圏域について，土地利用別の面積を集計します。</p>
+<p>(1) メニューバーから「プロセシング」→「ツールボックス」を選びます。</p>
+<p>(2) 画面右に出てきた「プロセシングツールボックス」から「ラスタ解析」→「ゾーンヒストグラム」を開きます。</p>
+<p>(3) 入力ラスタで「出力ラスタ」、ゾーンのベクタレイヤで「出力レイヤ」をそれぞれ選びます。次に、出力レイヤの欄でファイルの保存場所と保存名を選びましょう。このデモでは、「spatialanalysis」→「lu1994」のフォルダの下に「lu_result.shp」という名前で保存しています。全て設定し終えたら、右下の実行ボタンをクリックしましょう。そして実行が終わったら、「閉じる」をクリックします。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/スクリーンショット-2020-09-21-16.22.21-1024x841.png" alt="" class="wp-image-194"/></figure>
+<p>(4) レイヤプロパティの中の「lu_result」を右クリックし、属性テーブルを開きます。そうすると距離がdistance列に確認でき、再分類した7までの結果が「HISTO_?」という形で列名になっていることがわかります。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/QGISuse38-1024x177.png" alt="" class="wp-image-195"/></figure>
+<p>(5) ところで、この「HISTO_?」の下にある数字はなんでしょうか。「lu1994_gc」か「出力ラスタ」を表示した上で地図を拡大してみてください。そうすると下図のように見えることでしょう。このようにラスタデータは「セル」というものの集合でできています。この「セル」がいくつかるかというデータが「HISTO_?」の各欄に記載されています。</p>
+<figure class="wp-block-gallery has-nested-images columns-default is-cropped"><figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/スクリーンショット-2020-09-21-16.47.17-1024x640.png" alt="" class="wp-image-196"/></figure>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/スクリーンショット-2020-09-21-16.47.46-1024x640.png" alt="" class="wp-image-197"/></figure>
+</figure>
+<p>(6) 今回のデータは、10mメッシュと呼ばれるものです。つまり一つのセルは100m2です。ここから面積を割り出すこともできます。</p>
+<p>(7) ではこの属性データを書き出してみましょう。レイヤプロパティからlu_resultを右クリックし、「エクスポート」→「地物の保存」と進みます。「ベクタレイヤを名前をつけて保存」ウインドウが開いたら形式を「カンマで区切られた値[CSV]」を選択し、ファイル名でlu_result.shpと同じ場所にlu_result.csvとして保存します。また、このデータはQGISで必要ないので、一番下の「保存されたファイルを地図に追加する」というチェックボックスは外して構いません。以上完了したら、右下の「OK」をクリックします。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/QGISuse39-941x1024.png" alt="" class="wp-image-199"/></figure>
+<p>(8) 保存したフォルダからlu_result.csvを開きます。「distance」列と「HISTO_1」から「HISTO_4」までの列以外は削除します。そして「distance」の文字は削除し、値をそれぞれ「10km」「20km」「30km」「40km」「50km」としましょう。また「HISTO_?」の列の名前はそれぞれ、「山林・農地等」「造成地」「宅地」「公共施設用地」に変えてみましょう。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/QGISuse41-1024x660.png" alt="" class="wp-image-202"/></figure>
+<p>(9) 「挿入」タブをクリックし、データを選択します。そして棒グラフの中から積み上げ棒グラフを選択します。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/QGISuse40-1024x660.png" alt="" class="wp-image-203"/></figure>
+<p>(10) 出てきたグラフの横軸が距離になっていれば成功です。もし横軸が土地利用になっていれば、「グラフのデザイン」タブから行/列の切り替えを行います。</p>
+<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/QGISuse42-1024x660.png" alt="" class="wp-image-204"/></figure>
+<p>生成されたグラフを見ると、都市部から離れるに従って、山林・農地等の割合が大きくなるという典型的な地域構造が読み取られます。この分析結果のみではこれ以上に何かを読み取ることは難しいですが、他の統計データとの関連性を見てみたり、駅や線路のバッファを生成してみたりすることで、興味深い考察を得られることでしょう。さらに他のGISデータを導入することで、解析手順は多岐に渡り、分析や考察も多面的に得られると思います。今回の分析手順を参考として、各自興味のある分野について、様々な分析を試みてみてください。</p>
+<p>2020.9.25 QGIS版 初版（政策・メディア研究科 博士課程 1年 中山俊）</p>
+<p>2024.10.22 第二版 （政策・メディア研究科 特任助教 中山俊）</p>
+      </div>
+      <div class="page-nav">
+        <a href="演習2-qgisで地図を作る.html">← 演習2 QGISで地図を作る</a><a href="演習4-衛星データから-緑-を探す.html">演習4 衛星データから「緑」を探す →</a>
+      </div>
+    </article>
+  </main>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <p class="site-info">&copy; 2026 Shun Nakayama</p>
+  </div>
+</footer>
+
+</body>
+</html>
