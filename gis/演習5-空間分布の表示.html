@@ -64,22 +64,22 @@
 <p>(1) QGISを開きます。</p>
 <p>(2) メニューバーから「プロジェクト」→「新規作成」を選びます。</p>
 <p>(3) ブラウザウインドウの「XYZ Tiles」から「OpenStreetMap」を選択し、東京を拡大します。そうするとGoogle Mapのような背景が見えてきます。</p>
-<figure class="wp-block-image"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/QGISuse102-1024x639.png" alt="" class="wp-image-210"/></figure>
+<figure class="wp-block-image"><img src="assets/uploads/2020/09/QGISuse102-1024x639.png" alt="" class="wp-image-210"/></figure>
 <p>(4) 左下の「レンダ」の右に「EPSG: ????」と書かれている場所があります。まずこれをクリックしましょう。そうすると「プロジェクトのプロパティ」が開きます。開いたら最近使用したCRSにEPSG:2451があれば、これを選択します。なければ検索欄に2451と入力し、あらかじめ定義されたCRSに出てきたEPSG2451をクリックして、右下のOKをクリックしましょう。。</p>
-<figure class="wp-block-image"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/11/%E5%9B%B31-1024x649.png" alt="" class="wp-image-250"/></figure>
+<figure class="wp-block-image"><img src="assets/uploads/2020/11/図1-1024x649.png" alt="" class="wp-image-250"></figure>
 <h5>2.2 皆さんが作成した住宅データとそのバッファの表示</h5>
 <p>みなさんが集めたデータや前回作ったデータをプロットしていきます。データソースマネージャを開き、前回ダウンロードしたデータの中からsuumo1k.shpとwalkablearea.shpを開きましょう。</p>
-<figure class="wp-block-gallery columns-2 is-cropped"><ul class="blocks-gallery-grid"><li class="blocks-gallery-item"><figure><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/11/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88-2020-11-02-10.52.13-1024x640.png" alt="" data-id="251" class="wp-image-251"/></figure></li><li class="blocks-gallery-item"><figure><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/11/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88-2020-11-02-11.12.14-1024x640.png" alt="" data-id="254" class="wp-image-254"/></figure></li></ul></figure>
+<figure class="wp-block-gallery columns-2 is-cropped"><ul class="blocks-gallery-grid"><li class="blocks-gallery-item"><figure><img src="assets/uploads/2020/11/スクリーンショット-2020-11-02-10.52.13-1024x640.png" alt="" data-id="251" class="wp-image-251"/></figure></li><li class="blocks-gallery-item"><figure><img src="assets/uploads/2020/11/スクリーンショット-2020-11-02-11.12.14-1024x640.png" alt="" data-id="254" class="wp-image-254"></figure></li></ul></figure>
 <p>ここまでできれば、準備はおしまいです</p>
 <h5>3. アドレスマッチング</h5>
 <p>お配りしたcsvはある施設の住所リストです。これをみただけでは、「ある施設」がどこに建っているのかわかりにくいでしょう。そこでこれをQGISに表示できる形にします。QGISで表示するには、座標データが必要です。ここでは住所から座標データに変換する方法について、練習しましょう。</p>
 <h5>3.1 住所を座標データに変換</h5>
 <p>(1) convenience.csvを開いてみましょう。</p>
-<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/11/スクリーンショット-2020-11-11-19.42.49-1024x660.png" alt="" class="wp-image-277"/></figure>
+<figure class="wp-block-image size-large"><img src="assets/uploads/2020/11/スクリーンショット-2020-11-11-19.42.49-1024x660.png" alt="" class="wp-image-277"></figure>
 <p>(2)開いたら住所が何列目にあるか覚えてください。今回はE列が住所なので5列目ですね。</p>
 <p>(3)東京大学の<a href="http://newspat.csis.u-tokyo.ac.jp/geocode-cgi/geocode.cgi?action=start">アドレスマッチングCSV Geocoding Service</a>を開いてください。</p>
 <p>(4)このように入力できたら、送信を押します。入力するのは「住所を含むカラム番号」だけのはずです(ファイル登録はお忘れなく！)。</p>
-<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/11/スクリーンショット-2020-11-11-19.43.59-1024x781.png" alt="" class="wp-image-278"/></figure>
+<figure class="wp-block-image size-large"><img src="assets/uploads/2020/11/スクリーンショット-2020-11-11-19.43.59-1024x781.png" alt="" class="wp-image-278"></figure>
 <p>(5)ダウンロードされたデータを開き、緯度と経度のカラム名を確認して、自分の作業フォルダに「cvs.csv」として保存しましょう。</p>
 <h5>3.2  コンビニの表示</h5>
 <p>(6)10000件を超えるデータを緯度経度に変換するのは、結構時間がかかります。なので先に用意しておきました。3分クッキングと同じですね！</p>
@@ -92,30 +92,30 @@
   <a href="downloads/cvs.zip" class="download-btn" download>ダウンロード</a>
 </div></p>
 <p>(7)cvs.csvを開いてみましょう。もしちゃんとやっていれば、できていたはずのデータです。おそらく15分くらいかかるかな、と思います。見てみると、fXとfYという列ができていますね。これが緯度経度です。もう一つ注目して欲しいのがiLvl。ここでジオコーディングの精度がわかります。7ならいいですが...</p>
-<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/11/スクリーンショット-2020-11-11-19.59.55-1024x660.png" alt="" class="wp-image-279"/></figure>
+<figure class="wp-block-image size-large"><img src="assets/uploads/2020/11/スクリーンショット-2020-11-11-19.59.55-1024x660.png" alt="" class="wp-image-279"></figure>
 <p>(8)今回はせっかくなので精度の高いデータを使います。データソースマネージャを開き、左側のメニューから「CSVテキスト」を選びます。先ほどのダウンロードしたデータから「csvXY.csv」を選び、エンコーディングをUTF-8にして、「追加(A)」をクリックします。(ジオメトリ定義でポイント座標になっているか、確認しましょう)</p>
-<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/11/スクリーンショット-2020-11-11-20.09.07-1024x676.png" alt="" class="wp-image-280"/></figure>
+<figure class="wp-block-image size-large"><img src="assets/uploads/2020/11/スクリーンショット-2020-11-11-20.09.07-1024x676.png" alt="" class="wp-image-280"></figure>
 <p>(9)下図のように表示されていればOKです。</p>
-<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/11/スクリーンショット-2020-11-11-20.09.28-1024x640.png" alt="" class="wp-image-281"/></figure>
+<figure class="wp-block-image size-large"><img src="assets/uploads/2020/11/スクリーンショット-2020-11-11-20.09.28-1024x640.png" alt="" class="wp-image-281"></figure>
 <p>(10)今まであまり気にしてきませんでしたが、本来座標系は揃えておく必要があります。cvsXYの座標系はEPSG4326にしていますね。しかしsuumo1kなどはEPSG2451です。レイヤーパネルで「cvsXY」を右クリックし、地物の保存に進みます。そこでファイル名をいつもの場所に「cvs.shp」都市、CRS(座標系)をEPSG2451とします。そしてOKをクリックします。</p>
 <h5>4. スーパーまでの距離の計測</h5>
 <p>では、各物件ごとに最寄のコンビニまでの距離を計算してみましょう。</p>
 <p>(1)メニューバーから「ベクタ」→「解析ツール」→「距離行列」を選びます。</p>
 <p>(2)入力点レイヤを「suumo1k」にし、入力点のIDを示す属性はIDにします。ターゲット点のレイヤは作ったばかりの「cvs」にします。計算する近傍点の個数を1に設定し、いつものファイルに「nearest.shp」という名前で保存してみましょう。</p>
-<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/11/スクリーンショット-2020-11-11-20.20.12-1024x625.png" alt="" class="wp-image-283"/></figure>
+<figure class="wp-block-image size-large"><img src="assets/uploads/2020/11/スクリーンショット-2020-11-11-20.20.12-1024x625.png" alt="" class="wp-image-283"></figure>
 <p>(3)nearestの属性テーブルを開いてみましょう。無事Distance列が生成されていますね。</p>
-<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/11/スクリーンショット-2020-11-11-20.29.58-1024x640.png" alt="" class="wp-image-285"/></figure>
+<figure class="wp-block-image size-large"><img src="assets/uploads/2020/11/スクリーンショット-2020-11-11-20.29.58-1024x640.png" alt="" class="wp-image-285"></figure>
 <h5>5. 徒歩圏内の施設数</h5>
 <p>次に徒歩圏(400m)内のコンビニの店舗数を数えてみましょう。</p>
 <p>(1)メニューバーから「ベクタ」→「解析ツール」→「ポリゴン内の点の数」を選びます。</p>
 <p>(2)ポリゴンレイヤにwalkablearea、点レイヤにcvsを設定します。出力レイヤとして、いつものフォルダにnumber.shpを設定し、実行します。</p>
-<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/11/スクリーンショット-2020-11-11-20.35.07-1024x625.png" alt="" class="wp-image-286"/></figure>
+<figure class="wp-block-image size-large"><img src="assets/uploads/2020/11/スクリーンショット-2020-11-11-20.35.07-1024x625.png" alt="" class="wp-image-286"></figure>
 <p>(3)numberの属性テーブルを開いてみましょう。文字化けしていますので、プロパティから修正してあげましょう。エンコーディングをshift-JISにします。そしてもう一度属性テーブルを開いてみてください。そうすると、無事にできていることがわかります。</p>
-<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/11/スクリーンショット-2020-11-11-20.35.07-1-1024x625.png" alt="" class="wp-image-287"/></figure>
+<figure class="wp-block-image size-large"><img src="assets/uploads/2020/11/スクリーンショット-2020-11-11-20.35.07-1-1024x625.png" alt="" class="wp-image-287"></figure>
 <p>(4)numberとnearestのデータを一つにしましょう。そんな時はテーブル結合ですね。覚えていますか？</p>
 <p>(5)今回は情報の多いnumberにnearestをつなげることにします。「number」を右クリックしてプロパティを開きます。</p>
 <p>(6)左側のメニューからテーブル結合を選択し、左下にある[+]ボタンをクリックします。そうすると「ベクタ結合の追加」というポップアップが表示されるはずです。結合レイヤが「nearest」になっていることを確認したら、統合基準の属性とターゲット属性を入力します。結合基準とは後から繋げる側(nearest)のことで、ターゲットとは元になる方(number)のことです。それぞれキーとなる属性(InputIDとID)を入力しましょう。さらに「結合する属性の接頭辞」にチェックを入れ、「nearest_」といった文字が出てきますが、これを消し、「OK」をクリックします。そしてもう一度OKをクリックします。</p>
-<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/11/スクリーンショット-2020-11-11-20.43.15-1024x640.png" alt="" class="wp-image-289"/></figure>
+<figure class="wp-block-image size-large"><img src="assets/uploads/2020/11/スクリーンショット-2020-11-11-20.43.15-1024x640.png" alt="" class="wp-image-289"></figure>
 <p>(7)numberの属性テーブルを開いてみましょう。無事結合されていることがわかります。このデータを結果として保存しましょう。</p>
 <p>(8)レイヤプロパティからnumberを右クリックし、「エクスポート」→「地物の保存」へ進みます。形式を「カンマで区切られた値[csv]」にし、いつもの場所にresult2.csvとして保存します。エンコーディングをShift_JISにするのをお忘れなく！</p>
 <p>(9)前回と同様、excelでresult2.csvを開きいじってみてください。</p>

@@ -58,27 +58,27 @@
 <p>(1) QGISを開きます。</p>
 <p>(2) メニューバーから「プロジェクト」→「新規作成」を選びます。</p>
 <p>(3) ブラウザウインドウの「XYZ Tiles」に「OpenStreetMap」があります。これをダブルクリックし、東京を拡大します。そうするとGoogle Mapのような背景が見えてきます。</p>
-<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/QGISuse102-1024x639.png" alt="" class="wp-image-210"/></figure>
+<figure class="wp-block-image size-large"><img src="assets/uploads/2020/09/QGISuse102-1024x639.png" alt="" class="wp-image-210"/></figure>
 <p>(4) 右下の「レンダ」の右に「EPSG: ????」と書かれている場所があります。まずこれをクリックしましょう。そうすると「プロジェクトのプロパティ」が開きます。開いたら最近使用したCRSにEPSG:2451があれば、これを選択します。なければ検索欄に2451と入力し、あらかじめ定義されたCRSに出てきたEPSG2451をクリックして、右下のOKをクリックしましょう。。</p>
-<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/11/図1-1024x649.png" alt="" class="wp-image-250"/></figure>
+<figure class="wp-block-image size-large"><img src="assets/uploads/2020/11/図1-1024x649.png" alt="" class="wp-image-250"></figure>
 <h5 class="wp-block-heading">2.2 皆さんが作成した住宅データの表示</h5>
 <p>いよいよみなさんが集めたデータをプロットしていきます。データソースマネージャを開き、先ほどダウンロードしたデータの中からsuumo1k.shpを開きましょう。</p>
-<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/11/スクリーンショット-2020-11-02-10.52.13-1024x640.png" alt="" class="wp-image-251"/></figure>
+<figure class="wp-block-image size-large"><img src="assets/uploads/2020/11/スクリーンショット-2020-11-02-10.52.13-1024x640.png" alt="" class="wp-image-251"/></figure>
 <h5 class="wp-block-heading">3. バッファの作成　&nbsp;</h5>
 <p>緑と家賃の間にはどんな関係があるでしょうか。ここからは各物件の徒歩圏(5分)内の緑被率を調べていきたいと思います。まずは、徒歩圏のデータを作ります。</p>
 <p>(1)メニューバーから「ベクタ」→「空間演算ツール」→「バッファ」を選択します。</p>
-<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/11/スクリーンショット-2020-11-02-10.54.55-1024x640.png" alt="" class="wp-image-252"/></figure>
+<figure class="wp-block-image size-large"><img src="assets/uploads/2020/11/スクリーンショット-2020-11-02-10.54.55-1024x640.png" alt="" class="wp-image-252"></figure>
 <p>(2) 距離を400m(だいたい徒歩速度80m/分で5分歩いたことを想定しています)に設定します。保存先は「出力レイヤ」の「…」から作業フォルダを選び、「walkablearea.shp」として保存します。</p>
-<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/11/スクリーンショット-2020-11-02-11.00.37-1024x932.png" alt="" class="wp-image-253"/></figure>
+<figure class="wp-block-image size-large"><img src="assets/uploads/2020/11/スクリーンショット-2020-11-02-11.00.37-1024x932.png" alt="" class="wp-image-253"></figure>
 <p>(3)こんなになっていればOKです。</p>
-<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/11/スクリーンショット-2020-11-02-11.12.14-1024x640.png" alt="" class="wp-image-254"/></figure>
+<figure class="wp-block-image size-large"><img src="assets/uploads/2020/11/スクリーンショット-2020-11-02-11.12.14-1024x640.png" alt="" class="wp-image-254"></figure>
 <h5 class="wp-block-heading">4. 衛星画像データを表示　&nbsp;</h5>
 <p>広瀬先生の授業で学んだ<strong>衛星画像</strong>を実際に扱ってみましょう。</p>
 <p>(1) データソースマネージャを開き、左側のメニューからブラウザを選びます。先ほどダウンロードしたデータを保存した場所から「LC08_L1TP_107035_20181001_20181010_01_T1_B4.tiff」「LC08_L1TP_107035_20181001_20181010_01_T1_B5.tiff」をダブルクリックして追加します。</p>
 <p>(2) 下図のように表示されていればOKです。</p>
-<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/11/スクリーンショット-2020-11-02-11.16.18-1024x640.png" alt="" class="wp-image-255"/></figure>
+<figure class="wp-block-image size-large"><img src="assets/uploads/2020/11/スクリーンショット-2020-11-02-11.16.18-1024x640.png" alt="" class="wp-image-255"></figure>
 <p>(3) しかし、見づらいので表示を消しておきます。</p>
-<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/11/スクリーンショット-2020-11-02-11.17.14-1024x640.png" alt="" class="wp-image-256"/></figure>
+<figure class="wp-block-image size-large"><img src="assets/uploads/2020/11/スクリーンショット-2020-11-02-11.17.14-1024x640.png" alt="" class="wp-image-256"></figure>
 <h5 class="wp-block-heading">5. NDVIによる緑被地の抽出　&nbsp;</h5>
 <p>NDVIとか小難しい名前が出てきましたが、心配する必要はありません。NDVI(Normalized Differential Vegetation Index: 正規化植生指標)という指標で、平たく言えば衛星画像の「色」から木や草を抽出しよう、というものです。　では衛星画像の「色」とはなんでしょうか。</p>
 <p>そのためには衛星画像と航空写真の違いを知るところから始めると、わかりやすいでしょう。衛星画像は、光学センサーを用いて撮影されています。光学センサーは光を波長ごとに感知でき、赤色の波長、緑色の波長、非可視光の近赤外線など波長ごとに別々の画像として保存されます。</p>
@@ -92,34 +92,34 @@
 <p>とできます。これがNDVIの算出方法です。</p>
 <h5 class="wp-block-heading">5.1 NDVIの計算</h5>
 <p>(1) メニューバーから「ラスタ」→「ラスタ計算機」を選びます。</p>
-<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/11/スクリーンショット-2020-11-02-11.49.18-1024x640.png" alt="" class="wp-image-257"/></figure>
+<figure class="wp-block-image size-large"><img src="assets/uploads/2020/11/スクリーンショット-2020-11-02-11.49.18-1024x640.png" alt="" class="wp-image-257"></figure>
 <p>(2) 「ラスタ計算機」の画面が表示されたら、まず保存先をいつもの場所にします(ファイル名はndvi、出力形式はGeoTIFFにしています)。保存に関する設定が終わったら、AとBを使って、NDVIの式を入力します。全部入力が終わったら右下のOKをクリックします。</p>
-<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/11/図2-1024x919.png" alt="" class="wp-image-258"/></figure>
+<figure class="wp-block-image size-large"><img src="assets/uploads/2020/11/図2-1024x919.png" alt="" class="wp-image-258"></figure>
 <p>(3) このように表示されたでしょうか。</p>
-<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/11/スクリーンショット-2020-11-02-11.59.03-1024x640.png" alt="" class="wp-image-259"/></figure>
+<figure class="wp-block-image size-large"><img src="assets/uploads/2020/11/スクリーンショット-2020-11-02-11.59.03-1024x640.png" alt="" class="wp-image-259"></figure>
 <h5 class="wp-block-heading">5.2 NDVIの再分類と緑被率の算出</h5>
 <p>今から緑被率を計算します。</p>
 <p>(1) メニューバーから「プロセシング」→「ツールボックス」を選択すると画面右に「プロセシングツールボックス」が開きます。</p>
 <p>(2) そして検索ウインドウに再分類を意味する「reclass」と入力してみましょう。そうすると、下に出てきた「ラスタ解析」→「テーブルによる再分類」をクリックします。</p>
-<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/QGISuse35-1024x840.png" alt="" class="wp-image-186"/></figure>
+<figure class="wp-block-image size-large"><img src="assets/uploads/2020/09/QGISuse35-1024x840.png" alt="" class="wp-image-186"/></figure>
 <p>(3) テーブルによる再分類が開いたら、再分類の区分表を下図の通り設定します。なぜボーダーを0.2にするか、という質問があるかと思いますが、下記既往研究に基づいています。このボーダーを設定し、1と0に分類することで、緑があるのか、ないのか明らかにします。出力ラスタは、ファイルの保存場所を選び、「re_ndvi.tif」という名前で保存します。以上の設定が終わったら、右下の実行をクリックします。</p>
-<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/11/スクリーンショット-2020-11-02-12.11.24-1024x640.png" alt="" class="wp-image-260"/></figure>
+<figure class="wp-block-image size-large"><img src="assets/uploads/2020/11/スクリーンショット-2020-11-02-12.11.24-1024x640.png" alt="" class="wp-image-260"></figure>
 <figure class="wp-block-image"><img src="https://d3i71xaburhd42.cloudfront.net/c4c9e7bf3427e6935fa244788300ba4e60f44c41/2-Table1-1.png" alt="Classification of Landsat 8 Satellite Data Using NDVI Tresholds | Semantic  Scholar"/><figcaption class="wp-element-caption">Taufik, Afirah et al. “Classification of Landsat 8 Satellite Data Using NDVI Tresholds.”&nbsp;<em>Journal of Telecommunication, Electronic and Computer Engineering</em>&nbsp;8 (2016): 37-40.</figcaption></figure>
 <p>(4) このように表示されましたか？</p>
-<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/11/スクリーンショット-2020-11-02-12.13.50-1024x640.png" alt="" class="wp-image-261"/></figure>
+<figure class="wp-block-image size-large"><img src="assets/uploads/2020/11/スクリーンショット-2020-11-02-12.13.50-1024x640.png" alt="" class="wp-image-261"></figure>
 <p>(5) 勘がいい人は気づいたかもしれませんが、演習3と同じ作業です。</p>
 <p>ここからは、各物件の徒歩圏内の緑被率を計算します。</p>
 <p>(6) メニューバーから「プロセシング」→「ツールボックス」を選びます。</p>
 <p>(7) 画面右に出てきた「プロセシングツールボックス」から「ラスタ解析」→「ゾーンヒストグラム」を開きます。</p>
 <p>(8) 入力ラスタで「re_ndvi」、ゾーンのベクタレイヤで「walkablearea」をそれぞれ選びます。次に、出力レイヤの欄でファイルの保存場所と保存名を選びましょう。このデモでは、「spatialanalysis」のフォルダの下に「result.shp」という名前で保存しています。全て設定し終えたら、右下の実行ボタンをクリックしましょう。そして実行が終わったら、「閉じる」をクリックします。</p>
-<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/11/スクリーンショット-2020-11-02-12.37.12-1024x640.png" alt="" class="wp-image-264"/></figure>
+<figure class="wp-block-image size-large"><img src="assets/uploads/2020/11/スクリーンショット-2020-11-02-12.37.12-1024x640.png" alt="" class="wp-image-264"></figure>
 <p>(9) できたresultの属性テーブルを開いてこうなっていればOKです。</p>
-<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/11/スクリーンショット-2020-11-02-12.37.27-1024x640.png" alt="" class="wp-image-263"/></figure>
+<figure class="wp-block-image size-large"><img src="assets/uploads/2020/11/スクリーンショット-2020-11-02-12.37.27-1024x640.png" alt="" class="wp-image-263"></figure>
 <h5 class="wp-block-heading">5.3 各マンション毎の集計</h5>
 <p>(1) 属性テーブルを書き出します。レイヤプロパティからresultを右クリックし、「エクスポート」→「地物の保存」と進みます。「ベクタレイヤを名前をつけて保存」ウインドウが開いたら形式を「カンマで区切られた値[CSV]」を選択し、ファイル名でresult.shpと同じ場所にresult.csvとして保存します。このあとexcelで開くので、エンコーディングはShift_JISにしておきます。また、このデータはQGISで必要ないので、一番下の「保存されたファイルを地図に追加する」というチェックボックスは外して構いません。以上完了したら、右下の「OK」をクリックします。</p>
-<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/11/スクリーンショット-2020-11-02-12.46.12-940x1024.png" alt="" class="wp-image-266"/></figure>
+<figure class="wp-block-image size-large"><img src="assets/uploads/2020/11/スクリーンショット-2020-11-02-12.46.12-940x1024.png" alt="" class="wp-image-266"></figure>
 <p>(2) Excelでcsvを開きます。K列で緑被率を計算しましょう。「=J2/(I2+J2)」と入力し、下も同様に計算します。</p>
-<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/11/スクリーンショット-2020-11-02-12.47.22-1024x660.png" alt="" class="wp-image-267"/></figure>
+<figure class="wp-block-image size-large"><img src="assets/uploads/2020/11/スクリーンショット-2020-11-02-12.47.22-1024x660.png" alt="" class="wp-image-267"></figure>
 <p>(3) ここまでできたらこのファイルを課題として登録しましょう。しっかり保存しておきましょう。お疲れ様でした。</p>
 <p>2020.11.11 QGIS版 初版（政策・メディア研究科 博士課程 1年 中山俊）</p>
       </div>

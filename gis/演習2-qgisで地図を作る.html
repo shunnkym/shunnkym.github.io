@@ -74,52 +74,52 @@
 <h5 class="wp-block-heading">2.1. QGISで地図データの表示</h5>
 <p>(1) QGISを起動します。</p>
 <p>(2) メニューバーの「プロジェクト」→「新規作成」もしくは起動画面から「新規プロジェクト」を選択すると、白い画面が表示されます。本演習では、この白い画面の上に複数の地図データを重ねて表示し、一枚の地図を作ることを目標にします。</p>
-<figure class="wp-block-gallery has-nested-images columns-default is-cropped"><figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/スクリーンショット-2020-09-13-16.32.34-1024x640.png" alt="" class="wp-image-68"/><figcaption class="wp-element-caption">「プロジェクト」→「新規作成」から</figcaption></figure>
-<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/スクリーンショット-2020-09-13-16.35.14-1024x640.png" alt="" class="wp-image-69"/><figcaption class="wp-element-caption">「新規プロジェクト」から</figcaption></figure>
+<figure class="wp-block-gallery has-nested-images columns-default is-cropped"><figure class="wp-block-image size-large"><img src="assets/uploads/2020/09/スクリーンショット-2020-09-13-16.32.34-1024x640.png" alt="" class="wp-image-68"><figcaption class="wp-element-caption">「プロジェクト」→「新規作成」から</figcaption></figure>
+<figure class="wp-block-image size-large"><img src="assets/uploads/2020/09/スクリーンショット-2020-09-13-16.35.14-1024x640.png" alt="" class="wp-image-69"><figcaption class="wp-element-caption">「新規プロジェクト」から</figcaption></figure>
 </figure>
 <p>(3) データソースマネージャーを開きます。開き方は下図を参照してください。</p>
-<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/QGISuse1-1024x640.png" alt="" class="wp-image-70"/></figure>
+<figure class="wp-block-image size-large"><img src="assets/uploads/2020/09/QGISuse1-1024x640.png" alt="" class="wp-image-70"/></figure>
 <p>(4) 出てきた画面の中から演習1で作ったフォルダ(Japan.zipを解凍したものが置かれているはず)に移動しましょう。移動したら「Japan」→「data」と進み、「pref_bnd.shp」をダブルクリックしましょう。そうすると都道府県界が表示されたはずです。</p>
-<figure class="wp-block-gallery has-nested-images columns-default is-cropped"><figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/スクリーンショット-2020-09-13-16.52.50-1024x676.png" alt="" class="wp-image-72"/><figcaption class="wp-element-caption">データソースマネージャー</figcaption></figure>
-<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/スクリーンショット-2020-09-13-16.53.29-1024x640.png" alt="" class="wp-image-73"/><figcaption class="wp-element-caption">表示された都道府県界</figcaption></figure>
+<figure class="wp-block-gallery has-nested-images columns-default is-cropped"><figure class="wp-block-image size-large"><img src="assets/uploads/2020/09/スクリーンショット-2020-09-13-16.52.50-1024x676.png" alt="" class="wp-image-72"><figcaption class="wp-element-caption">データソースマネージャー</figcaption></figure>
+<figure class="wp-block-image size-large"><img src="assets/uploads/2020/09/スクリーンショット-2020-09-13-16.53.29-1024x640.png" alt="" class="wp-image-73"><figcaption class="wp-element-caption">表示された都道府県界</figcaption></figure>
 </figure>
 <p>(5)  同様に「japan.shp」も追加してみましょう。すると、pref_bndレイヤの上にjapanレイヤが重ねられ、都道府県界が市区町村界に変わります。左下のレイヤパネルには、追加されたレイヤがリストアップされています。</p>
-<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/スクリーンショット-2020-09-13-16.59.19-1024x640.png" alt="" class="wp-image-74"/><figcaption class="wp-element-caption">市区町村界が表示されました。左下にレイヤパネルがあることがわかります。</figcaption></figure>
+<figure class="wp-block-image size-large"><img src="assets/uploads/2020/09/スクリーンショット-2020-09-13-16.59.19-1024x640.png" alt="" class="wp-image-74"><figcaption class="wp-element-caption">市区町村界が表示されました。左下にレイヤパネルがあることがわかります。</figcaption></figure>
 <h5 class="wp-block-heading">2.2 レイヤの操作</h5>
 <p>レイヤパネルのレイヤ名の左にあるチェックボックスをクリックすることで、レイヤの表示/非表示を切り替えることができます。</p>
 <p>また画面上部にはデータソースマネージャーを開くためのアイコン以外にもいろいろあります。カーソルを合わせるとアイコンの機能が表示されます。確認してみましょう。</p>
 <p>不要なレイヤはレイヤパネルから削除できます。本演習ではpref_bndレイヤは使用しないので、削除してみましょう。pref_bndレイヤを右クリックすると、次のようなメニューが表示されます。このうち「レイヤの削除(R)」をクリックすると、pref_bndレイヤは「レイヤパネル」から削除されます。「レイヤパネル」から削除しても、データファイルをパソコンから削除することにはなりません。</p>
-<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/スクリーンショット-2020-09-13-17.08.06.png" alt="" class="wp-image-76"/><figcaption class="wp-element-caption">このような画面が出てくるはず</figcaption></figure>
+<figure class="wp-block-image size-large"><img src="assets/uploads/2020/09/スクリーンショット-2020-09-13-17.08.06.png" alt="" class="wp-image-76"><figcaption class="wp-element-caption">このような画面が出てくるはず</figcaption></figure>
 <h5 class="wp-block-heading">3. コロプレス図の表示</h5>
 <p>全てのGISデータには、属性値がまとめられた「属性テーブル」が存在します。では属性テーブルを見てみましょう。レイヤパネルの「japan」を右クリックし、「属性テーブルを開く(O)」をクリックします。</p>
 <p>すると、真っ先に目に飛び込んでくるのは下図赤枠のような「文字化け」ではないでしょうか。そこで文字化けを直します。まず属性テーブルを閉じます。</p>
-<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/QGISuse9-1024x280.png" alt="" class="wp-image-94"/><figcaption class="wp-element-caption">文字化けしている...</figcaption></figure>
+<figure class="wp-block-image size-large"><img src="assets/uploads/2020/09/QGISuse9-1024x280.png" alt="" class="wp-image-94"/><figcaption class="wp-element-caption">文字化けしている...</figcaption></figure>
 <p>そして、レイヤパネルの「japan」を右クリックしてプロパティを開きます。下図のように左のメニューから「ソース」を選びます。すると、エンコーディングの部分がUTF-8になっているのではないでしょうか。これはWindows⇄Mac間のやりとりで発生します。と言うのも、Windowsのデフォルト文字コードはShift-JISで、MacはUTF-8だからです。今回のデータはWindowsで作られていたようなので、Shift-JISを選んであげましょう。選び終わったら右下の「OK」をクリックします。</p>
-<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/QGISuse11-1-969x1024.png" alt="" class="wp-image-96"/></figure>
+<figure class="wp-block-image size-large"><img src="assets/uploads/2020/09/QGISuse11-1-969x1024.png" alt="" class="wp-image-96"/></figure>
 <p>すると、このように文字化けがなくなったことがわかります。これが属性テーブルです。NULLとはデータが入ってないことを表しています。</p>
-<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/QGISuse12-1024x278.png" alt="" class="wp-image-97"/><figcaption class="wp-element-caption">文字化けは綺麗さっぱりなくなりました</figcaption></figure>
+<figure class="wp-block-image size-large"><img src="assets/uploads/2020/09/QGISuse12-1024x278.png" alt="" class="wp-image-97"/><figcaption class="wp-element-caption">文字化けは綺麗さっぱりなくなりました</figcaption></figure>
 <p>このような属性値を分類し、フィーチャーを塗り分けた地図をコロプレス図と呼びます。ここでは、コロプレス図の作成方法を学びます。コロプレス図は、人口などの属性値の地理的分布を概観することができる地図です。ここでは国内における人口の地理的分布をみることにしましょう。</p>
 <p>(1) レイヤパネルの「japan」を右クリックし、プロパティを開く。</p>
 <p>(2) 左のメニューから「シンボロジ」を選択し、「単一定義(single)」となっている部分を「連続値による定義(graduated)」にします。</p>
-<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/QGISuse2-1-969x1024.png" alt="" class="wp-image-79"/><figcaption class="wp-element-caption">赤枠で囲んだところをクリックすると</figcaption></figure>
-<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/スクリーンショット-2020-09-13-19.19.22-1-1024x310.png" alt="" class="wp-image-81"/><figcaption class="wp-element-caption">このような選択肢が出てきます。色々試しても面白いと思います。</figcaption></figure>
+<figure class="wp-block-image size-large"><img src="assets/uploads/2020/09/QGISuse2-1-969x1024.png" alt="" class="wp-image-79"/><figcaption class="wp-element-caption">赤枠で囲んだところをクリックすると</figcaption></figure>
+<figure class="wp-block-image size-large"><img src="assets/uploads/2020/09/スクリーンショット-2020-09-13-19.19.22-1-1024x310.png" alt="" class="wp-image-81"><figcaption class="wp-element-caption">このような選択肢が出てきます。色々試しても面白いと思います。</figcaption></figure>
 <p>(3) 次に値の部分に人口「P_NUM」を入れてみましょう。他の選択肢が何を表わしているかは、行政界データ詳細.txtを参照してください。</p>
-<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/QGISuse3-969x1024.png" alt="" class="wp-image-82"/></figure>
+<figure class="wp-block-image size-large"><img src="assets/uploads/2020/09/QGISuse3-969x1024.png" alt="" class="wp-image-82"/></figure>
 <p>(4) 値を設定したら、下図で赤枠で囲った「分類」をクリックします。そうすると「分類数」の設定に合わせて、分類した結果がウインドウに表示されます。「OK」をクリックして、レイヤプロパティを閉じます。</p>
-<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/QGISuse4-969x1024.png" alt="" class="wp-image-83"/></figure>
+<figure class="wp-block-image size-large"><img src="assets/uploads/2020/09/QGISuse4-969x1024.png" alt="" class="wp-image-83"/></figure>
 <p>以上の操作によって、市区町村の人口の地理的分布が概観することはできたでしょうか？</p>
-<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/スクリーンショット-2020-09-13-20.13.17-1024x640.png" alt="" class="wp-image-84"/></figure>
+<figure class="wp-block-image size-large"><img src="assets/uploads/2020/09/スクリーンショット-2020-09-13-20.13.17-1024x640.png" alt="" class="wp-image-84"></figure>
 <p>実はこのような表現では問題が生じてしまいます。例えば、この地図の中で栃木県宇都宮市(約52万人)と東京都杉並区(約54万人)は、同じ階級に分類され、同じ色で表示されています。つまり宇都宮市と杉並区には、同程度に人口が集中していると言えます。果たしてこれは実情を反映しているでしょうか。</p>
 <p>これはコロプレス図の抱えるジレンマです。実際には、杉並区の方に人口が集中しているはずです。このような結果が導かれたのは、人口とその集計単位である市区町村の大きさの関係を無視したためです。このように本演習で扱っているような空間データを扱う際には、変数と空間集約単位の関係に注意しなければなりません。</p>
 <p>その対処方法として変数を空間集約単位の大きさで割り算する方法があります。ここではどのようにそれを行なうか、練習してみましょう。</p>
 <p>(5) 値の右にある、下図で赤枠で囲ったアイコンをクリックすると「式ダイアログ」が開きます。</p>
-<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/QGISuse5-969x1024.png" alt="" class="wp-image-86"/></figure>
+<figure class="wp-block-image size-large"><img src="assets/uploads/2020/09/QGISuse5-969x1024.png" alt="" class="wp-image-86"/></figure>
 <p>(6) 式ダイアログにP_NUMと入力されているはずです。また、行政界データ詳細.txtによれば、「AREA」に各市区町村の面積が格納されています。そこでP_NUM / AREAと入力します。これによって、分類の対象が人口密度になりました。入力が終わったら右下のOKをクリックしましょう。</p>
-<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/QGISuse6-1024x694.png" alt="" class="wp-image-87"/></figure>
+<figure class="wp-block-image size-large"><img src="assets/uploads/2020/09/QGISuse6-1024x694.png" alt="" class="wp-image-87"/></figure>
 <p>(7) もう一度レイヤプロパティに戻り、先程と同じく「分類」をクリックします。そうすると、分類の値が変化します。新たな分類になっていることを確認したら、右下のOKを押して、レイヤプロパティを閉じます。</p>
-<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/QGISuse7-969x1024.png" alt="" class="wp-image-88"/></figure>
+<figure class="wp-block-image size-large"><img src="assets/uploads/2020/09/QGISuse7-969x1024.png" alt="" class="wp-image-88"/></figure>
 <p>(8) 新しい地図では、三大都市圏が赤くなっていることがわかります。</p>
-<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/スクリーンショット-2020-09-13-20.36.57-1024x640.png" alt="" class="wp-image-91"/></figure>
+<figure class="wp-block-image size-large"><img src="assets/uploads/2020/09/スクリーンショット-2020-09-13-20.36.57-1024x640.png" alt="" class="wp-image-91"></figure>
 <p>ここまできたら「プロジェクト」→「名前をつけて保存」から、演習１で作ったフォルダの直下にno2という名前で保存しておきましょう。</p>
 <h5 class="wp-block-heading">4. 属性テーブルの結合</h5>
 <p>これまでは、japanレイヤに初めから含まれている属性値を用いて、地図上で表現してきました。しかしながら、他のデータが用意されているにもかかわらず、地図上で表現しないのは、勿体無いことです。QGISのテーブル結合機能を用いることで、既存のデータベースをGISで用いることができるようになります。本演習では、総務省によって定められた<a href="http://www.soumu.go.jp/denshijiti/code.html">全国地方公共団体コード</a>(通称:市区町村コード)を用いて、地図データと他のデータベースを関連付けて、地図上で表示させることを目標とします。</p>
@@ -129,63 +129,63 @@
 <li>「Excelやcsvなどのテーブル」と「Excelやcsvなどのテーブル」</li>
 </ol>
 <p>の結合ができます。</p>
-<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/QGISuse8-1024x436.png" alt="" class="wp-image-93"/></figure>
+<figure class="wp-block-image size-large"><img src="assets/uploads/2020/09/QGISuse8-1024x436.png" alt="" class="wp-image-93"/></figure>
 <p>では、実際にテーブル結合を行いましょう。</p>
 <p>(1) データソースマネージャーを開きます。左側で「csvテキスト」を選び、ファイル名の右にある「...」から「Japan」→「統計」→「市町村別人口時系列.csv」 を追加してください。この時、もしサンプルデータとして見えているプレビューが文字化けしていたら、エンコーディングで「Shift_JIS」を選んでください。</p>
-<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/QGISuse13-1024x676.png" alt="" class="wp-image-100"/></figure>
+<figure class="wp-block-image size-large"><img src="assets/uploads/2020/09/QGISuse13-1024x676.png" alt="" class="wp-image-100"/></figure>
 <p>(2) ついで、ジメメトリ定義を開き、「ジオメトリなし(属性のみのテーブル)」を選択します。ジオメトリなしとは、地理的な情報が含まれていないことを表しています。ここで言う地理的な情報とは、座標を指しており、札幌市や室蘭市など自治体名のことではありません。ここまできたら右下の「追加(A)」をクリックし、この画面を閉じます。</p>
-<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/QGISuse14-1024x676.png" alt="" class="wp-image-101"/></figure>
+<figure class="wp-block-image size-large"><img src="assets/uploads/2020/09/QGISuse14-1024x676.png" alt="" class="wp-image-101"/></figure>
 <p>(3) テーブル結合は、結合先となるレイヤのレイヤプロパティから設定します。今回の例では、結合先である「japan」に先ほど読み込んだ「市町村別人口時系列.csv」を結合するので、「japan」を右クリックしてプロパティを開きます。</p>
 <p>(4) 左側のメニューからテーブル結合を選択し、左下にある[+]ボタンをクリックします。そうすると「ベクタ結合の追加」というポップアップが表示されるはずです。結合レイヤが「市区町村別人口時系列」になっていることを確認したら、統合基準の属性とターゲット属性を入力します。結合基準とはcsv側(市区町村別人口時系列.csv)のことで、ターゲットとはshp側(japan)のことです。それぞれキーとなる属性を入力しましょう。さらに「結合する属性の接頭辞」にチェックを入れ、「市区町村別人口時系列_」といった文字が出てきますが、これを消し、「OK」をクリックします。</p>
-<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/QGISuse15-1024x955.png" alt="" class="wp-image-102"/></figure>
+<figure class="wp-block-image size-large"><img src="assets/uploads/2020/09/QGISuse15-1024x955.png" alt="" class="wp-image-102"/></figure>
 <p>(4)' 上図⑤の作業の意味について簡単に説明しましょう。結合されたテーブルのフィールド名(属性テーブルの列名のこと)は、デフォルトの設定で「ファイル名_ ＋元のフィールド名」となってしまいます。しかし、フィールド名の文字数には制限があります。そこでファイル名を元のフィールド名にくっつけないように、「フィールド名の接頭辞」にチェックを入れ、接頭辞にデフォルトで指定されている「ファイル名_」を削除したのです。</p>
 <p>(5) 先ほど「ベクタ結合の追加」で「OK」をクリックしたら、レイヤプロパティに戻ってきたはずです。この画面では下図のように結合のルールが追加されたことが確認できます。確認できたら「OK」 をクリックしてレイヤプロパティを閉じます。「＋」 ボタンから結合の設定を更に追加し、1つの対象レイヤに複数のテーブルを結合させることもできます。</p>
-<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/スクリーンショット-2020-09-14-13.35.21-969x1024.png" alt="" class="wp-image-103"/></figure>
+<figure class="wp-block-image size-large"><img src="assets/uploads/2020/09/スクリーンショット-2020-09-14-13.35.21-969x1024.png" alt="" class="wp-image-103"></figure>
 <p>(6) 属性テーブルを開いてみましょう。テーブルの右側に新しく結合されたデータが見えるはずです。ただし、一点注意があります。テーブル結合では、あくまでも臨時に二つのテーブルを繋げたに過ぎず、shpファイルにその情報は保存されていません。この結果を保存するには、新たなshpファイルとしてエクスポートしなければなりません。</p>
-<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/QGISuse17-1024x213.png" alt="" class="wp-image-104"/></figure>
+<figure class="wp-block-image size-large"><img src="assets/uploads/2020/09/QGISuse17-1024x213.png" alt="" class="wp-image-104"/></figure>
 <p>(7) エクスポートするには「japan」を右クリックし、「エクスポート」→「地物の保存(新しいバージョンだと「新規ファイルに地物を保存」)」を選択します。</p>
-<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/QGISuse18.png" alt="" class="wp-image-105"/></figure>
+<figure class="wp-block-image size-large"><img src="assets/uploads/2020/09/QGISuse18.png" alt="" class="wp-image-105"/></figure>
 <p>(8) 「ベクタレイヤを名前をつけて保存」が開かれたら、形式を「ESRI Shapefile」にし、「Japan」→「data」の下にjapan_v2という名前で保存しておきましょう。</p>
-<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/QGISuse19-941x1024.png" alt="" class="wp-image-106"/></figure>
+<figure class="wp-block-image size-large"><img src="assets/uploads/2020/09/QGISuse19-941x1024.png" alt="" class="wp-image-106"/></figure>
 <h5 class="wp-block-heading">5. レイアウトの作成</h5>
 <p>では、いよいよ最後の仕上げをしていきましょう。作成したコロプレスマップを書き出します。</p>
 <h5 class="wp-block-heading">5.1 地図の配置</h5>
 <p>(1) メニューバーから「プロジェクト」→「新規印刷レイアウト」を選択します。</p>
-<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/QGISuse43-1024x270.png" alt="" class="wp-image-224"/></figure>
+<figure class="wp-block-image size-large"><img src="assets/uploads/2020/09/QGISuse43-1024x270.png" alt="" class="wp-image-224"/></figure>
 <p>(2) 次のような画面が表示されたら、「演習2」と入力し、OKをクリックします。</p>
-<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/スクリーンショット-2020-09-24-21.10.52.png" alt="" class="wp-image-225"/></figure>
+<figure class="wp-block-image size-large"><img src="assets/uploads/2020/09/スクリーンショット-2020-09-24-21.10.52.png" alt="" class="wp-image-225"></figure>
 <p>(3) 次のような画面が表示されればOKです。</p>
-<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/スクリーンショット-2020-09-24-21.13.55-1024x640.png" alt="" class="wp-image-226"/></figure>
+<figure class="wp-block-image size-large"><img src="assets/uploads/2020/09/スクリーンショット-2020-09-24-21.13.55-1024x640.png" alt="" class="wp-image-226"></figure>
 <p>(4) メニューバーから「アイテムを追加」→「地図を追加」を選択します。</p>
-<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/QGISuse44-1024x184.png" alt="" class="wp-image-227"/></figure>
+<figure class="wp-block-image size-large"><img src="assets/uploads/2020/09/QGISuse44-1024x184.png" alt="" class="wp-image-227"/></figure>
 <p>(5) このような画面が表示されますので、「OK」をクリックします。</p>
-<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/スクリーンショット-2020-09-24-21.14.37-1024x662.png" alt="" class="wp-image-228"/></figure>
+<figure class="wp-block-image size-large"><img src="assets/uploads/2020/09/スクリーンショット-2020-09-24-21.14.37-1024x662.png" alt="" class="wp-image-228"></figure>
 <p>(6) 白いキャンバスの上にカーソルを合わせてクリックすると、地図がプロットされます。そのまま地図を拡大させて、キャンバスのサイズに合わせてみましょう。</p>
 <p>(7) このように表示されましたか？</p>
-<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/スクリーンショット-2020-09-24-21.15.32-1024x640.png" alt="" class="wp-image-229"/></figure>
+<figure class="wp-block-image size-large"><img src="assets/uploads/2020/09/スクリーンショット-2020-09-24-21.15.32-1024x640.png" alt="" class="wp-image-229"></figure>
 <h5 class="wp-block-heading">5.2 各種アイテムの配置</h5>
 <p>コロプレスマップに限らず、地図には凡例、方位記号、縮尺(スケールバー)が必要です。</p>
 <p>(1) 先ほど同様、メニューバーから「アイテムを追加」に進み、「凡例を追加」を選択します。</p>
-<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/QGISuse45-1024x185.png" alt="" class="wp-image-230"/></figure>
+<figure class="wp-block-image size-large"><img src="assets/uploads/2020/09/QGISuse45-1024x185.png" alt="" class="wp-image-230"/></figure>
 <p>(2) 地図を配置した時と同様「新規アイテムのプロパティ」が表示されますが、「OK」をクリックして、画面を閉じます。</p>
 <p>(3) (1)と(2)と同じように、方位記号と縮尺(スケールバー)を追加してみましょう。追加したら、下図のようにそれぞれを配置してください。</p>
-<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/スクリーンショット-2020-09-24-21.17.30-1024x640.png" alt="" class="wp-image-231"/></figure>
+<figure class="wp-block-image size-large"><img src="assets/uploads/2020/09/スクリーンショット-2020-09-24-21.17.30-1024x640.png" alt="" class="wp-image-231"></figure>
 <p>(4) 凡例をみてください。「市区町村別人口時系列」「japan」と表示されています。皆さんは、この地図が市区町村別の人口密度を表していることを知っていますが、初めてみた人はわからないでしょう。ですので、凡例をいじっていきます。</p>
 <p>(5) 地図上で凡例を選択し、右のウインドウ中央にある「アイテムプロパティ」をクリックします。そうすると下の方に「凡例アイテム」ウインドウが開きますので、「市町村別別人口時系列」をダブルクリックします。そうすると画面中央のように「凡例プロパティ」が開きますので、名前を「人口密度」に変えてみましょう。同様に「japan」も「市区町村別」に変更してみましょう。</p>
-<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/QGISuse46-1-1024x634.png" alt="" class="wp-image-233"/></figure>
+<figure class="wp-block-image size-large"><img src="assets/uploads/2020/09/QGISuse46-1-1024x634.png" alt="" class="wp-image-233"/></figure>
 <h5 class="wp-block-heading">5.2 書き出し</h5>
 <p>QGISでは、画像やPDFなどのファイル形式に地図をエクスポートすることが可能です。ここではPDFに書き出してみましょう。</p>
 <p>(1) 下図のように画面上部のアイコンから「PDFとしてエクスポート(E)」を選びます。</p>
-<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/QGISuse47-1024x640.png" alt="" class="wp-image-234"/></figure>
+<figure class="wp-block-image size-large"><img src="assets/uploads/2020/09/QGISuse47-1024x640.png" alt="" class="wp-image-234"/></figure>
 <p>(2) 保存先を演習1で作った「spatialanalysis」の下にし、「演習2」という名前で保存します。</p>
-<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/スクリーンショット-2020-09-24-21.21.07-1024x640.png" alt="" class="wp-image-235"/></figure>
+<figure class="wp-block-image size-large"><img src="assets/uploads/2020/09/スクリーンショット-2020-09-24-21.21.07-1024x640.png" alt="" class="wp-image-235"></figure>
 <p>(3) PDF出力のオプションを聞かれますが、基本的に設定を変更することなく「保存」をクリックして構いません。</p>
-<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/09/スクリーンショット-2020-09-24-21.21.32-712x1024.png" alt="" class="wp-image-236"/></figure>
+<figure class="wp-block-image size-large"><img src="assets/uploads/2020/09/スクリーンショット-2020-09-24-21.21.32-712x1024.png" alt="" class="wp-image-236"></figure>
 <p>(4) 保存したPDFを開いて、無事表示されていれば成功です。</p>
 <h5 class="wp-block-heading">5.3 QGISファイルの保存</h5>
 <p>折角ここまで作ってきたファイルです。保存しておきましょう。</p>
 <p>(1)メニューバーから「プロジェクト」を選び、「名前をつけて保存」を選びましょう。次のような画面が出てくるはずです。</p>
-<figure class="wp-block-image size-large"><img src="https://ecogislab.sfc.keio.ac.jp/spatialanalysis/wordpress/wp-content/uploads/2020/10/スクリーンショット-2020-10-15-13.56.31-1024x640.png" alt="" class="wp-image-244"/></figure>
+<figure class="wp-block-image size-large"><img src="assets/uploads/2020/10/スクリーンショット-2020-10-15-13.56.31-1024x640.png" alt="" class="wp-image-244"></figure>
 <p>(2)ファイルの形式をQGISファイルにしたら、保存します。保存場所はspatialanalysisの直下にしましょう。</p>
 <p>2020.9.25 QGIS版 初版（政策・メディア研究科 博士課程 1年 中山俊）</p>
       </div>
